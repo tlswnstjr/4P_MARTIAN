@@ -33,7 +33,7 @@ public class Alpha_Layer : MonoBehaviour
     {
         if (other.tag == "Unnecessary")
         {
-            print(other.gameObject.name);
+            //print(other.gameObject.name);
             saveColor = other.GetComponent<MeshRenderer>().material.color;
             other.GetComponent<MeshRenderer>().material.color = new Color(saveColor.r, saveColor.g, saveColor.b, shrinkingDegree);
             giveMeMTR = other.GetComponent<MeshRenderer>().material;
@@ -49,13 +49,14 @@ public class Alpha_Layer : MonoBehaviour
         giveMeMTR.renderQueue = 3000;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             return;
         }
         print("---------------------------- : " + other.gameObject.name);
+        other.GetComponent<Alpha_Object>().eixtAlpha = true;
         giveMeMTR.SetFloat("_Mode", 0);
         giveMeMTR.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
         giveMeMTR.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);

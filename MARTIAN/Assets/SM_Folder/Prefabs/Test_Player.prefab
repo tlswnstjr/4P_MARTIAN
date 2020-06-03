@@ -625,9 +625,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &2434093863930195830
 MonoBehaviour:
@@ -705,6 +705,12 @@ MonoBehaviour:
   lights:
   - {fileID: 8527445774990951189}
   - {fileID: 8527445775620677793}
+  invClics: 0
+  inv: {fileID: 0}
+  onAction: 0
+  iamge: {fileID: 0}
+  lockerClick: 0
+  myMoveban: 0
 --- !u!114 &8527445775494924771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.76, y: -1.23}
+  m_AnchoredPosition: {x: -7.37, y: -4.37}
   m_SizeDelta: {x: 3.4232, y: 0.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184388000501991207
@@ -923,7 +929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.76, y: -1.68}
+  m_AnchoredPosition: {x: -7.37, y: -4.8199997}
   m_SizeDelta: {x: 3.4232, y: 0.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7427972241301066866
@@ -2068,7 +2074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.76, y: -0.75}
+  m_AnchoredPosition: {x: -7.37, y: -3.8899999}
   m_SizeDelta: {x: 3.4232, y: 0.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8527445776701637505
