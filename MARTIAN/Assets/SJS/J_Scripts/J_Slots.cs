@@ -10,8 +10,7 @@ public class J_Slots : J_SlotButtons
 
     public J_Item _Item;
 
-    //자신이 몇번째 배열의 인덱스를 가지고 있는 지 알려주기위한 변수입니다
-    public int myWhyNub;
+    
 
     public GameObject mainIamge;
     public Image Image;

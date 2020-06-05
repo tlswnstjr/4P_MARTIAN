@@ -10,6 +10,8 @@ public class J_SlotButtons : MonoBehaviour
 
     //지금 무슨 슬롯이 선택 되었는지 확인하기 위한 게임오브젝트입니다
 
+    //자신이 몇번째 배열의 인덱스를 가지고 있는 지 알려주기위한 변수입니다
+    public int myWhyNub;
 
     public enum State
     {
@@ -93,6 +95,7 @@ public class J_SlotButtons : MonoBehaviour
 
     void Contents(string text1, string text2 , string text3)
     {
+        J_Item _Item = J_ItemManager.j_Item.items2[myWhyNub];
         if (slotButton.transform.childCount > 0)
         {
             for (int i = 0; i < slotButton.transform.childCount; i++)
@@ -106,7 +109,8 @@ public class J_SlotButtons : MonoBehaviour
         clickButton = Instantiate(button);
         //소환하면서 지금 누구의 아이템 정보를 전달해줍니다
         //시발 이걸 생각 못했네
-        if(text3 != null)
+        //현제 선택한 아이템이 원소태그가 아니면
+        if(text3 != null && _Item.type!= J_Item.ItemType.STONE)
         {
             Button a = Instantiate(button3);
             a.onClick.AddListener(Actions3);
@@ -114,8 +118,6 @@ public class J_SlotButtons : MonoBehaviour
             a.GetComponentInChildren<Text>().text = text3;
             a.transform.SetParent(slotButton.transform);
         }
-
-        //a.GetComponent
         clickButton.onClick.AddListener(Actions2);
         clickButton.GetComponent<J_SclectButton>().scls = _Slots;
         clickButton.GetComponentInChildren<Text>().text = text1;
@@ -355,8 +357,14 @@ public class J_SlotButtons : MonoBehaviour
         J_Slots a = _Slots.GetComponent<J_Slots>();
         J_Item j_Item = J_ItemManager.j_Item.items2[a.myWhyNub];
         j_Item.my.SetActive(true);
-
+        j_Item.my.GetComponent<Rigidbody>().useGravity = false;
+        j_Item.my.GetComponent<Rigidbody>().isKinematic = true;
+        if(j_Item.my.GetComponent<MeshCollider>()!=null)
+        {
+            j_Item.my.GetComponent<MeshCollider>().isTrigger = true;
+        }
         j_Item.my.transform.position = playerUseItem.transform.position;
+        j_Item.my.transform.rotation = playerUseItem.transform.rotation;
         j_Item.my.gameObject.transform.parent = playerUseItem.transform;
      
         J_Inventory.j_Inventory.gameObject.SetActive(false);
