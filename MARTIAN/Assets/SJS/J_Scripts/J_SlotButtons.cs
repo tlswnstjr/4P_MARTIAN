@@ -30,10 +30,16 @@ public class J_SlotButtons : MonoBehaviour
     public Button button;
     //그냥 취소버튼
     public Button button2;
+    //사용하기 버튼입니다
+    public Button button3;
+
 
     Button clickButton;
     public GameObject player;
 
+
+    //플레이어 아이템 사용시 나타날 곳을 받아 옵니다 
+    public GameObject playerUseItem;
     private void Awake()
     {
         
@@ -41,7 +47,6 @@ public class J_SlotButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         //아래 방법으로 사용하면 버튼을 생성하자마자 함수를 등록해줄수 있다
         //button.onClick.AddListener(() => print("버튼 클릭!"));
     }
@@ -71,22 +76,22 @@ public class J_SlotButtons : MonoBehaviour
     //단지 자기 자신의 인벤토리를 열었다면 
     void Myinv()
     {
-        Contents("버리기", "취소");
+        Contents("버리기", "취소", "사용하기");
     }
 
     //창고를 열었다면
     void Locker()
     {
-        Contents("빼내기", "취소");
+        Contents("빼내기", "취소", null);
     }
 
     //창고 인벤토리를 열었다면
     void LockerInv()
     {
-        Contents("집어 넣기", "취소");
+        Contents("집어 넣기", "취소", null);
     }
 
-    void Contents(string text1, string text2)
+    void Contents(string text1, string text2 , string text3)
     {
         if (slotButton.transform.childCount > 0)
         {
@@ -95,10 +100,20 @@ public class J_SlotButtons : MonoBehaviour
                 Destroy(slotButton.transform.GetChild(i).gameObject);
             }
         }
+
+
         slotButton.SetActive(true);
         clickButton = Instantiate(button);
         //소환하면서 지금 누구의 아이템 정보를 전달해줍니다
         //시발 이걸 생각 못했네
+        if(text3 != null)
+        {
+            Button a = Instantiate(button3);
+            a.onClick.AddListener(Actions3);
+            a.GetComponent<J_SclectButton>().scls = _Slots;
+            a.GetComponentInChildren<Text>().text = text3;
+            a.transform.SetParent(slotButton.transform);
+        }
 
         //a.GetComponent
         clickButton.onClick.AddListener(Actions2);
@@ -122,15 +137,51 @@ public class J_SlotButtons : MonoBehaviour
     void Actions2()
     {
         J_Slots a = _Slots.GetComponent<J_Slots>();
+      
         
         //자기 인벤토리에서 실행하는 상태입니다
         if (state == State.MYINVENYROY)
-        { 
-            for(int i = 0; i < 
+        {
+            for (int i = 0; i < J_Inventory.j_Inventory.items.Count; i++)
+            {
+                if (J_Inventory.j_Inventory.items[i].name == a.name)
+                {
+
+                    J_ItemManager.j_Item.items2[i].auount -=
+                        clickButton.GetComponent<J_SclectButton>().ss;
+
+
+                    if (clickButton.GetComponent<J_SclectButton>().ss != a.itemMy.GetComponent<J_Item>().auount)
+                    {
+                        GameObject x = Instantiate(a.itemMy);
+                        x.transform.position = player.transform.position;
+                        x.GetComponent<J_Item>().auount = clickButton.GetComponent<J_SclectButton>().ss;
+                    }
+
+
+
+                    //만약 슬롯의 아이템 갯수가 0이면 그 자리를 비워줘야합니다
+                    if (J_ItemManager.j_Item.items2[i].auount == 0)
+                    {
+                        //아이템이 없기 때문에 이미지도 비활성화 해줍니다 
+
+                        J_Inventory.j_Inventory.items[i].GetComponent<J_Slots>().mainIamge.SetActive(false);
+
+                        //아이템이 없기 때문에 null값을 넣어줍니다
+                        J_ItemManager.j_Item.items2[i] = null;
+
+                    }
+                    break;
+                }
+            }
+
+           /* for (int i = 0; i < 
                 J_ItemManager.j_Item.items2.Length; i++)
             {
                 if(J_ItemManager.j_Item.items2[i].itemName == a.name)
                 {
+
+
                     J_ItemManager.j_Item.items2[i].auount -=
                         clickButton.GetComponent<J_SclectButton>().ss;
 
@@ -158,6 +209,7 @@ public class J_SlotButtons : MonoBehaviour
                     break;
                 }
             }
+            */
             a.itemMy.transform.position = player.transform.position;
             a.itemMy.GetComponent<J_Item>().auount = clickButton.GetComponent<J_SclectButton>().ss;
             a.itemMy.SetActive(true);
@@ -292,5 +344,21 @@ public class J_SlotButtons : MonoBehaviour
                 }
             }
         }
+    }
+
+    //이 함수는 인벤토리와 동일하게 사용하는 함수입니다 
+    // 그러면 인덱스도 인벤토리 및 아이템 메니저랑 동일합니다 
+    //그러면 그 번호에 있는 아이를 가지고 오면 됩니다 
+    void Actions3()
+    {
+        playerUseItem = GameObject.FindGameObjectWithTag("PlayerUseItemPos");
+        J_Slots a = _Slots.GetComponent<J_Slots>();
+        J_Item j_Item = J_ItemManager.j_Item.items2[a.myWhyNub];
+        j_Item.my.SetActive(true);
+
+        j_Item.my.transform.position = playerUseItem.transform.position;
+        j_Item.my.gameObject.transform.parent = playerUseItem.transform;
+     
+        J_Inventory.j_Inventory.gameObject.SetActive(false);
     }
 }

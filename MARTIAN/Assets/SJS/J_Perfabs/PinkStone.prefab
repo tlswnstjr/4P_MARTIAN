@@ -147,7 +147,7 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: a6b9b8c315a4ee7488e228654b891b9b, type: 3}
   auount: 1
   my: {fileID: 0}
-  type: 2
+  type: 0
   click: 0
 --- !u!65 &3924285483284502429
 BoxCollider:
