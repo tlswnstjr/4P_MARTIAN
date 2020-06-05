@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OxygenLevle : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class OxygenLevle : MonoBehaviour
 
     public float m_CurrentOxygen;
     private bool m_Depletion;
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name != "Test_OUTSIDE") m_Slider.gameObject.SetActive(false);
+    }
 
     private void OnEnable()
     {
