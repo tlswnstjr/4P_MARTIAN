@@ -6,55 +6,55 @@ public class DayAndNight : MonoBehaviour
 {
     [SerializeField] private float secondPerRealTimeSecond;
 
-    private bool isNight = false;
+    #region ---===== 검은안개 =====-----
+    //private bool isNight = false;
 
-    [SerializeField] private float fogDensityCalc;
+    //[SerializeField] private float fogDensityCalc;
 
-    [SerializeField] private float nightFogDensity;
-    private float dayFogDensity;
-    private float currentFogDensity;
+    //[SerializeField] private float nightFogDensity;
+    //private float dayFogDensity;
+    //private float currentFogDensity;
+    #endregion
 
-    Test_PlayerMovement tpm;
+    public static DayAndNight sun;
 
+    public float myRotX;
+
+    private void Awake()
+    {
+        if (sun == null) sun = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        dayFogDensity = RenderSettings.fogDensity;
-        tpm = GameObject.Find("Player_Body").GetComponent<Test_PlayerMovement>();
+        //이것도 검은안개
+        //dayFogDensity = RenderSettings.fogDensity;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(Vector3.right, 0.1f * secondPerRealTimeSecond * Time.deltaTime);
-        if (transform.eulerAngles.x >= 170)
-        {
-            isNight = true;
-            tpm.switchOfTheLight = true;
-            tpm.TurnONOFF();
-        }
-        else if (transform.eulerAngles.x >= -10)
-        {
-            isNight = false;
-            tpm.switchOfTheLight = false;
-            tpm.TurnONOFF();
-        }
+        myRotX = transform.eulerAngles.x;
 
-        if (isNight)
-        {
-            if(currentFogDensity <= nightFogDensity)
-            {
-                currentFogDensity += 0.1f * fogDensityCalc * Time.deltaTime;
-                RenderSettings.fogDensity = currentFogDensity;
-            }
-        }
-        else
-        {
-            if (currentFogDensity >= dayFogDensity)
-            {
-                currentFogDensity -= 0.1f * fogDensityCalc * Time.deltaTime;
-                RenderSettings.fogDensity = currentFogDensity;
-            }
-        }
+        #region ---======검은안개======----
+        ////안개를 씌우고 걷히게 하는 부분
+        //if (isNight)
+        //{
+        //    if(currentFogDensity <= nightFogDensity)
+        //    {
+        //        currentFogDensity += 0.1f * fogDensityCalc * Time.deltaTime;
+        //        RenderSettings.fogDensity = currentFogDensity;
+        //    }
+        //}
+        //else
+        //{
+        //    if (currentFogDensity >= dayFogDensity)
+        //    {
+        //        currentFogDensity -= 0.1f * fogDensityCalc * Time.deltaTime;
+        //        RenderSettings.fogDensity = currentFogDensity;
+        //    }
+        //}
+        #endregion
     }
 }

@@ -12,8 +12,6 @@ public class Test_PlayerMovement : MonoBehaviour
     int floorMask;
     float camRayLength = 100f;
 
-    //라이트를 켤지 말지 결정해줄 불변수
-    public bool switchOfTheLight;
     //라이트
     public Light[] lights;
 
@@ -59,6 +57,7 @@ public class Test_PlayerMovement : MonoBehaviour
 
         Move(h, v);
         Turnning();
+        TurnONOFF();
     }
 
 
@@ -96,14 +95,14 @@ public class Test_PlayerMovement : MonoBehaviour
  
     public void TurnONOFF()
     {
-        if (switchOfTheLight)
+        if (DayAndNight.sun.myRotX >= 170)
         {
             for (int i = 0; i < lights.Length; i++)
             {
                 lights[i].GetComponent<Light>().enabled = true;
             }
         }
-        else
+        else if (DayAndNight.sun.myRotX >= -10)
         {
             for (int i = 0; i < lights.Length; i++)
             {

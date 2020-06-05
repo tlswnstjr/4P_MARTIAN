@@ -35,18 +35,10 @@ public class CleaTheLand : MonoBehaviour
         switch (state)
         {
             case WhereIAm.OUTSIDE:
-                //사용자 입력을 통해 레이를 발사하고 싶다.
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    OutSide_RayFiring();
-                }
+               
                 break;
             case WhereIAm.INSIDE:
-                //사용자 입력을 통해 레이를 발사하고 싶다.
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    InSide_Rayfiring();
-                }
+                
                 break;
         }
     }

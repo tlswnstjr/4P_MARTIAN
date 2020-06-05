@@ -82,6 +82,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5511de2454167fd4b82e2711d1372c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondPerRealTimeSecond: 500
-  fogDensityCalc: 0.5
-  nightFogDensity: 0.2
+  secondPerRealTimeSecond: 10
+  myRotX: 0
