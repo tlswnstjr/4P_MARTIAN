@@ -22,6 +22,7 @@ public class CropsManager : MonoBehaviour
     public float rayDis;
     public float angle;
 
+
     RaycastHit rayHit;
 
     //공장주소

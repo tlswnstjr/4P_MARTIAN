@@ -6,11 +6,18 @@ TagManager:
   tags:
   - Stuff
   - Door
-  - CARROT
-  - POTATO
-  - RADISH
+  - Carrot
+  - Potato
+  - Turnip
   - Crop
   - Unnecessary
+  - Shovel
+  - Drill
+  - OxygenPack
+  - BodyTemperaturePack
+  - HeelPack
+  - WATER
+  - CARROT
   layers:
   - Default
   - TransparentFX

@@ -35,10 +35,10 @@ public class CleaTheLand : MonoBehaviour
         switch (state)
         {
             case WhereIAm.OUTSIDE:
-               
+                if (Input.GetButtonDown("Fire1")) OutSide_RayFiring();
                 break;
             case WhereIAm.INSIDE:
-                
+                if(Input.GetButtonDown("Fire1")) InSide_Rayfiring();
                 break;
         }
     }

@@ -538,6 +538,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.19999999}
   m_SizeDelta: {x: -0.74, y: -0.64}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2037372325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037372326}
+  m_Layer: 11
+  m_Name: GrabPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037372326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037372325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.58, z: 0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2434093865689501837}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1309781196453152271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,8 +1089,7 @@ GameObject:
   - component: {fileID: 2434093865689501839}
   - component: {fileID: 2434093865689501832}
   - component: {fileID: 2434093865689501833}
-  - component: {fileID: 2434093863930195830}
-  - component: {fileID: 2434093863930195831}
+  - component: {fileID: 9129324723918198950}
   - component: {fileID: 8527445775494924781}
   - component: {fileID: 2434093865689501834}
   - component: {fileID: 8527445775494924771}
@@ -1089,6 +1118,7 @@ Transform:
   - {fileID: 4785530801782692112}
   - {fileID: 8527445776238823738}
   - {fileID: 329524349}
+  - {fileID: 2037372326}
   m_Father: {fileID: 8121345224849574597}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1167,7 +1197,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &2434093863930195830
+--- !u!114 &9129324723918198950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1176,27 +1206,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2434093865689501835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c9cf17246677a649b9acbe212982c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a29f1d6c075b7c43a4c6a8761b59576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  rayStart: {fileID: 2078013956836732692}
-  rayDis: 3
-  angle: -3.5
-  m_AmIOutSide: 0
---- !u!114 &2434093863930195831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2434093865689501835}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04cffa714381064d8e9742171cbe4fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 0
+  hand: {fileID: 2037372326}
+  isChecked: 0
+  state_INOUT: 0
+  state_I_AM_OUT: 0
+  state_I_AM_IN: 0
   rayStart: {fileID: 2078013956836732692}
   rayDis: 3
   angle: -3.5
@@ -1207,6 +1224,7 @@ MonoBehaviour:
   radishFactory: {fileID: 3734714069461123257, guid: f3b6719303765c74e9231274e7bbbae2,
     type: 3}
   isInven: 0
+  can_I_Drilling: 0
 --- !u!114 &8527445775494924781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,6 +1238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healPackCount: 0
+  oxygenPackCount: 0
+  bodyTemperaturePackCount: 0
   potatoCount: 6
   carrotCount: 6
   radishCount: 6
