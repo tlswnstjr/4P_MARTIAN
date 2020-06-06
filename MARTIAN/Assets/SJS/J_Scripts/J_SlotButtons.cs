@@ -247,14 +247,14 @@ public class J_SlotButtons : MonoBehaviour
                             .GetComponent<J_Item>().itemName)
                         {
                             GameObject item = Instantiate(infoItem.GetComponent<J_ItemInformationManager>().allItems[j]);
-                            item.transform.position = player.transform.position;
+                            item.transform.position = player.transform.position; 
                             J_Item j_Item = item.GetComponent<J_Item>();
                             J_ItemManager.j_Item.items2[i] = j_Item;
                             J_ItemManager.j_Item.items2[i].auount = clickButton.GetComponent<J_SclectButton>().ss;
                             J_ItemManager.j_Item.items2[i].itemImage = j_Item.itemImage;
                             J_ItemManager.j_Item.items2[i].my = item;
                             item.SetActive(false);
-                            break;
+                            break; 
                         }
 
                     }
