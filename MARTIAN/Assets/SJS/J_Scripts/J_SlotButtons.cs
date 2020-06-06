@@ -307,6 +307,10 @@ public class J_SlotButtons : MonoBehaviour
                         int.Parse(J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().text.text));
                     }
                 }
+                else
+                {
+                    continue;
+                }
 
                 //이 위까지 창고로 넣어주는 명령어입니다
 
