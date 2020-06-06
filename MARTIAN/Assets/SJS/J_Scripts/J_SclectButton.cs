@@ -18,8 +18,7 @@ public class J_SclectButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text1.text = "1";
-        ss = 1;
+        ss = 0;
     }
 
     // Update is called once per frame

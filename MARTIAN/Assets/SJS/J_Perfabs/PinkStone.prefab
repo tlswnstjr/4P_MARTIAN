@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7426508374965582509}
   - component: {fileID: 8076103888327944819}
   - component: {fileID: 3924285483284502429}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PinkStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

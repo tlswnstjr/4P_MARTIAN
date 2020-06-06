@@ -9,12 +9,13 @@ public class J_Slots : J_SlotButtons
     //이 스크립트와 인벤토리 스크립트는 같이 사용 됩니다
 
     public J_Item _Item;
+
     
 
     public GameObject mainIamge;
     public Image Image;
     public Text text;
-    public string name;
+    public string names;
 
     //현제 자신이 클릭 되엇다는걸 알리는 명령문입니다 
     public GameObject itemMy;
@@ -33,7 +34,7 @@ public class J_Slots : J_SlotButtons
     }
     public void MySeilf(string IName, Sprite IIamge, int sum)
     {
-        name = IName;
+        names = IName;
         Image.sprite = IIamge;
 
         text.text = sum.ToString();

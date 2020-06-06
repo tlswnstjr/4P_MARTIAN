@@ -83,7 +83,8 @@ public class J_Coppers : MonoBehaviour
         //get explosion position
         Vector3 explosionPos = transform.position;
         //get colliders in that position and radius
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
+        int ignoreExp = ~LayerMask.GetMask("Player");
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius, ignoreExp);
         //add explosion force to all colliders in that overlap sphere
         foreach (Collider hit in colliders)
         {
@@ -112,7 +113,8 @@ public class J_Coppers : MonoBehaviour
 
         Vector3 explosionPos = transform.position;
         //get colliders in that position and radius
-        Collider[] colliders = Physics.OverlapSphere(explosionPos, 2);
+        int ignoreExp = ~LayerMask.GetMask("Player");
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, 2, ignoreExp);
         //add explosion force to all colliders in that overlap sphere
         foreach (Collider hit in colliders)
         {

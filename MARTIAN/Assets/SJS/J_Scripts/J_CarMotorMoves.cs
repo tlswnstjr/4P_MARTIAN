@@ -32,25 +32,15 @@ public class J_CarMotorMoves : MonoBehaviour
         wheelPair.rightWheelMesh.transform.position = pos;
         wheelPair.rightWheelMesh.transform.rotation = rot;
     }
-
+    float motor;
     public void Update()
     {
         WheelHit hit;
         truck_Infos[0].leftWheel.GetGroundHit(out hit);
 
 
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
+         motor = maxMotorTorque * Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-        float brakeTorque = Mathf.Abs(Input.GetAxis("Jump"));
-        if (brakeTorque > 0.001)
-        {
-            brakeTorque = maxMotorTorque;
-            motor = 0;
-        }
-        else
-        {
-            brakeTorque = 0;
-        }
 
         foreach (Dot_Truck truck_Info in truck_Infos)
         {
@@ -63,10 +53,9 @@ public class J_CarMotorMoves : MonoBehaviour
             {
                 truck_Info.leftWheel.motorTorque = motor;
                 truck_Info.rightWheel.motorTorque = motor;
-            }
+              
 
-            truck_Info.leftWheel.brakeTorque = brakeTorque;
-            truck_Info.rightWheel.brakeTorque = brakeTorque;
+            }
 
             VisualizeWheel(truck_Info);
         }

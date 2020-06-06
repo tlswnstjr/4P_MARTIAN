@@ -11,7 +11,13 @@ public class J_LockerInventroy : MonoBehaviour
     //이 스크립트는 인벤토리 스크립트 입니다 
     //즉 플레이어가 확득한 아이템을 관리 해줍니다.
 
-
+    private void Start()
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            items[i].GetComponent<J_Slots>().myWhyNub = i;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,7 +38,7 @@ public class J_LockerInventroy : MonoBehaviour
         {
             for (int j = 0; j < items.Count; j++)
             {
-                if (J_ItemManager.j_Item.items2[i] != null && items[j].GetComponent<J_Slots>().name == null)
+                if (J_ItemManager.j_Item.items2[i] != null && items[j].GetComponent<J_Slots>().names == null)
                 {
                     items[i].GetComponent<J_Slots>().mainIamge.SetActive(true);
                     items[i].GetComponent<J_Slots>().MySeilf(J_ItemManager.j_Item.items2[i].itemName,

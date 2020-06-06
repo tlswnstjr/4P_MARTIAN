@@ -11,6 +11,7 @@ TagManager:
   - Turnip
   - Crop
   - Unnecessary
+
   - Shovel
   - Drill
   - OxygenPack
@@ -18,39 +19,41 @@ TagManager:
   - HeelPack
   - WATER
   - CARROT
+
+
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  -
   - Water
   - UI
-  - 
-  - 
+  -
+  -
   - PostProcessing
   - Floor
   - Item
   - Player
   - CLEARED LAND
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ore
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
+  -
   m_SortingLayers:
   - name: Default
     uniqueID: 0

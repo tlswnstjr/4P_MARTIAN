@@ -13,8 +13,7 @@ public class J_ItemManager : MonoBehaviour
 
     public GameObject inv;
     private void Awake()
-    {
-        
+    {        
         j_Item = this;
     }
 
@@ -38,7 +37,7 @@ public class J_ItemManager : MonoBehaviour
                     s.mainIamge.SetActive(true);
                     s.Image.sprite = items2[i].itemImage;
                     s.text.text = items2[i].auount.ToString();
-                    s.name = items2[i].itemName;
+                    s.names = items2[i].itemName;
                 }   
                 else
                 {
