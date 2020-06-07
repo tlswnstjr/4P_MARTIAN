@@ -130,6 +130,7 @@ public class Check_In_Outside : MonoBehaviour
                 //손의 차일드가 0보다 크다면
                 if (hand.childCount >= 0 && isChecked == false)
                 {
+
                     //내 차일드를 저장하겠어
                     childtr = hand.GetChild(0).transform;
                     //내 손의 태그를 차일드의 태그와 똑같게 바꾼다

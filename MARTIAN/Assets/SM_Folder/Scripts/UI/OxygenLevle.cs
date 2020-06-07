@@ -34,12 +34,12 @@ public class OxygenLevle : MonoBehaviour
 
     private void Start()
     {
-        //산소UI와 체온UI는 외부씬이 아니라면 꺼놓는다.
-        if (SceneManager.GetActiveScene().name != "Test_OUTSIDE")
-        {
-            m_Slider.gameObject.SetActive(false);
-            b_Slider.gameObject.SetActive(false);
-        }
+        ////산소UI와 체온UI는 외부씬이 아니라면 꺼놓는다.
+        //if (SceneManager.GetActiveScene().name != "Test_OUTSIDE")
+        //{
+        //    m_Slider.gameObject.SetActive(false);
+        //    b_Slider.gameObject.SetActive(false);
+        //}
     }
 
     private void OnEnable()
