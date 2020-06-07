@@ -11,6 +11,10 @@ public class ItemManager : MonoBehaviour
     public int oxygenPackCount;
     //체온팩을 저장할 갯수
     public int bodyTemperaturePackCount;
+
+
+
+    //  초반 지급 아이템 갯수입니다 
     //감자를 저장할 갯수
     public int potatoCount = 6;
     //당근을 저장할 함수
