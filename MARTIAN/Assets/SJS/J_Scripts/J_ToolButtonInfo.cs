@@ -50,6 +50,7 @@ public class J_ToolButtonInfo : MonoBehaviour
     //또 다른 문제점 자신을 계속해서 클릭하면 누적되는것이 아니라 선택을 못하게 막아야한다
     int setSum;
 
+    int nest;
     //버튼이 클릭 되면 
     public void OnButtons()
     {
@@ -60,6 +61,7 @@ public class J_ToolButtonInfo : MonoBehaviour
             if(j_ItemInformationManager.comelpetes[i].GetComponent<J_Item>().itemName == completeName)
             {
                 comelpete.sprite = j_ItemInformationManager.comelpetes[i].GetComponent<J_Item>().itemImage;
+                break;
             }
         }
 
@@ -79,64 +81,66 @@ public class J_ToolButtonInfo : MonoBehaviour
             }
         }
             J_Mune.mune.buttonNmb = gameObject;
-
-        for (int i = 0; i < aountMat; i++)
+        for (nest = 0; nest < aountMat; nest++)
+           
         {
             //매뉴에 지금 내가 들어갔다고 알려준다
             //자기 자신 버튼은 비활성화 해준다
             my.interactable = false;
+
             for (int j = 0; j < J_ItemManager.j_Item.items2.Length; j++)
             {
                 if (J_ItemManager.j_Item.items2[j] != null)
                 {
-
-                    if (names[i] == J_ItemManager.j_Item.items2[j].itemName)
+                    if (names[nest] == J_ItemManager.j_Item.items2[j].itemName)
                     {
-                      
+
                         //서로 다르기 때문에 앞쪽은 빨강색 뒷 색은 검은색으로표시해줍니다   
-                        if (J_ItemManager.j_Item.items2[j].auount < spriteAount[i])
+                        if (J_ItemManager.j_Item.items2[j].auount < spriteAount[nest])
                         {
-                        
+
                             //텍스트를 빨강색으로 표시해줍니다
                             stuff.GetComponentInChildren<Text>().text = "<color=#ff0000>" +
                                 J_ItemManager.j_Item.items2[j].auount.ToString() + "</color>" +
                                  //월래색인 검은색으로 표시합니다
-                                 "/" + spriteAount[i].ToString();
-                            s[i] = false;
+                                 "/" + spriteAount[nest].ToString();
+                            stuff.GetComponent<Image>().sprite = sprites[nest];
                         }
                         //필요 재료량보다 가지고 있는 수가 더 많을 수도 있다
-                        else if (J_ItemManager.j_Item.items2[j].auount >= spriteAount[i])
+                        else if (J_ItemManager.j_Item.items2[j].auount >= spriteAount[nest])
                         {
                             print("같은 값을 가지고 있어 확인되었습니다");
                             stuff.GetComponentInChildren<Text>().text =
                                 J_ItemManager.j_Item.items2[j].auount.ToString() +
-                            "/" + spriteAount[i].ToString();
-                            s[i] = false;
+                            "/" + spriteAount[nest].ToString();
+                            stuff.GetComponent<Image>().sprite = sprites[nest];
                         }
-                    }
-                    else
-                    {
-                        stuff.GetComponentInChildren<Text>().text = "<color=#ff0000>" +
-                                0 + "</color>" +
-                                 "/" + spriteAount[i].ToString();
-
+                        break;
                     }
                 }
-                else if (s[i] == true)
+                else
                 {
-                    print("설마 들어오냐?");
-                    stuff.GetComponentInChildren<Text>().text = "<color=#ff0000>" +
-                                0 + "</color>" +
-                                 "/" + spriteAount[i].ToString();
+                    stuff.GetComponentInChildren<Text>().text =
+                                  "<color=#ff0000>" +
+                                    "0" + "</color>" +
+                                "/" + spriteAount[nest].ToString();
+                    stuff.GetComponent<Image>().sprite = sprites[nest];
+                   
                 }
+                
             }
-            stuff.GetComponent<Image>().sprite = sprites[i];
+
+            GameObject a = Instantiate(stuff);
+            a.transform.SetParent(materials.gameObject.transform);
+
+
+        }
+            
             //서로 갯수가 다르면 플레이어 측 아이템 색을 빨강색으로 표시 합니다
             //즉 아이템 만드는데 필요한 수량이 부족하다는것은 적다는 것이다 
             
 
-            GameObject a = Instantiate(stuff);
-            a.transform.SetParent(materials.gameObject.transform);
-        }
+           
+        
     }
 }

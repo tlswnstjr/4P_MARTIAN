@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 915419206221815952}
   - component: {fileID: 742084147527925908}
   - component: {fileID: 1983780442226610509}
-  - component: {fileID: 5918142348197675180}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: OxygenPack
@@ -54,19 +53,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5918142348197675180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5762149704400349637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mytag: 0
 --- !u!1 &8127544486020929508
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,6 +66,7 @@ GameObject:
   - component: {fileID: 4894026791119874552}
   - component: {fileID: 2982101057688023585}
   - component: {fileID: 2892647264461794697}
+  - component: {fileID: 396147143971889355}
   m_Layer: 10
   m_Name: OxygenPack
   m_TagString: Untagged
@@ -176,3 +163,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &396147143971889355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8127544486020929508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\uC0B0\uC18C\uD329"
+  itemImage: {fileID: 21300000, guid: c4301807de5bdf84ca71d3e8c728e53b, type: 3}
+  auount: 1
+  my: {fileID: 0}
+  type: 1
+  click: 0
+  mytag: 0

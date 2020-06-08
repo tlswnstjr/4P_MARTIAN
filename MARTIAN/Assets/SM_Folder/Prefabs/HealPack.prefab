@@ -66,6 +66,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: "\uD790\uD329"
+  itemImage: {fileID: 21300000, guid: 0429e79fe07efde4ea6201cda48a89bb, type: 3}
+  auount: 1
+  my: {fileID: 0}
+  type: 2
+  click: 0
   mytag: 0
 --- !u!1 &7731011936893252891
 GameObject:

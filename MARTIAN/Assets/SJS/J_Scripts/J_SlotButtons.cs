@@ -233,6 +233,10 @@ public class J_SlotButtons : MonoBehaviour
                 //만약에 같은 이름이 있다면 거기에 넣어준다 
                 if (J_ItemManager.j_Item.items2[i] != null && J_ItemManager.j_Item.items2[i].itemName == _Slots.GetComponent<J_Slots>().names)
                 {
+                    if(J_ItemManager.j_Item.items2[i].type == J_Item.ItemType.WEAPON)
+                    {
+                        continue;
+                    }
                     J_ItemManager.j_Item.items2[i].auount += clickButton.GetComponent<J_SclectButton>().ss;
 
                     break;
@@ -256,10 +260,8 @@ public class J_SlotButtons : MonoBehaviour
                             item.SetActive(false);
                             break; 
                         }
-
                     }
                     break;
-
                 }
             }
 
