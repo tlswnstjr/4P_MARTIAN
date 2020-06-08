@@ -80,7 +80,7 @@ public class J_ToolMakeButton : MonoBehaviour
             {
                 print("완성품입니다");
                 GameObject a = Instantiate(allItem.comelpetes[i]);
-                a.transform.position = player.position;
+                a.transform.position = player.transform.position;
             }
         }
         

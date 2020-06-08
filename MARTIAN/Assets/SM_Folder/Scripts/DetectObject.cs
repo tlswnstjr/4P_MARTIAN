@@ -10,7 +10,7 @@ public enum MYTAG
     OxygenPack,
     TheEnd
 }
-public class DetectObject : MonoBehaviour
+public class DetectObject : J_Item
 {
     public MYTAG mytag;
     MYTAG[] all_mytag = new MYTAG[(int)MYTAG.TheEnd];
@@ -24,7 +24,7 @@ public class DetectObject : MonoBehaviour
     void Start()
     {
         childTransform = transform.gameObject.GetComponentInChildren<Transform>();
-        parent = gameObject.transform.parent.gameObject;
+        //parent = gameObject.transform.parent.gameObject;
 
         all_mytag[0] = MYTAG.HeelPack;
         all_mytag[1] = MYTAG.BodyTemperaturePack;
@@ -93,6 +93,8 @@ public class DetectObject : MonoBehaviour
         SetPosition();
 
         SWITCH();
+
+        aaa();
     }
 
     //내 위치를 차일드의 위치로 한다.

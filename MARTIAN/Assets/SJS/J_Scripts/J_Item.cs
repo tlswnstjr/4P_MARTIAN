@@ -23,7 +23,7 @@ public class J_Item : MonoBehaviour
 
     public ItemType type;
 
-    [HideInInspector]
+   //[HideInInspector]
    public bool click;
 
     public void aaa() 
@@ -32,6 +32,7 @@ public class J_Item : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                print("들어옵니다");
                 GameObject a = Instantiate(gameObject);
                 a.SetActive(false);
                 //아이템 메니저에게 내 자신의 정보를 넣어준다
