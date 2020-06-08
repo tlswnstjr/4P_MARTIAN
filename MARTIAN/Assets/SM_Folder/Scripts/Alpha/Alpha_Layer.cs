@@ -90,21 +90,24 @@ public class Alpha_Layer : MonoBehaviour
         {
             return;
         }
-        //print("---------------------------- : " + other.gameObject.name);
-        Alpha_Object ao = other.GetComponent<Alpha_Object>();
-        if (ao == null) return;
-
-        ao.eixtAlpha = true;
-        for (int i = 0; i < giveMeMTR.Length; i++)
+        if (other.tag == "Unnecessary")
         {
-            //giveMeMTR[i].SetFloat("_Mode", 0);
-            giveMeMTR[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-            giveMeMTR[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-            giveMeMTR[i].SetInt("_ZWrite", 1);
-            giveMeMTR[i].DisableKeyword("_ALPHATEST_ON");
-            giveMeMTR[i].DisableKeyword("_ALPHABLEND_ON");
-            giveMeMTR[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            giveMeMTR[i].renderQueue = -1;
+            //print("---------------------------- : " + other.gameObject.name);
+            Alpha_Object ao = other.GetComponent<Alpha_Object>();
+            if (ao == null) return;
+
+            ao.eixtAlpha = true;
+            for (int i = 0; i < giveMeMTR.Length; i++)
+            {
+                //giveMeMTR[i].SetFloat("_Mode", 0);
+                giveMeMTR[i].SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                giveMeMTR[i].SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                giveMeMTR[i].SetInt("_ZWrite", 1);
+                giveMeMTR[i].DisableKeyword("_ALPHATEST_ON");
+                giveMeMTR[i].DisableKeyword("_ALPHABLEND_ON");
+                giveMeMTR[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                giveMeMTR[i].renderQueue = -1;
+            }
         }
     }
 }

@@ -34,12 +34,6 @@ public class OxygenLevle : MonoBehaviour
 
     private void Start()
     {
-        ////산소UI와 체온UI는 외부씬이 아니라면 꺼놓는다.
-        //if (SceneManager.GetActiveScene().name != "Test_OUTSIDE")
-        //{
-        //    m_Slider.gameObject.SetActive(false);
-        //    b_Slider.gameObject.SetActive(false);
-        //}
     }
 
     private void OnEnable()
@@ -54,6 +48,12 @@ public class OxygenLevle : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //산소UI와 체온UI는 외부씬이 아니라면 꺼놓는다.
+        if (SceneManager.GetActiveScene().name == "Test_INSIDE")
+        {
+            m_Slider.gameObject.SetActive(false);
+            b_Slider.gameObject.SetActive(false);
+        }
         //산소가 줄어든다
         m_CurrentOxygen -= Time.deltaTime / 10f;
         //UI를 표시하겠다(체온,산소 둘다)

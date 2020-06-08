@@ -11,7 +11,7 @@ public class For_Out_From_IN : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene("Map 1");
+                SceneManager.LoadScene("SM_Map");
             }
         }
     }
