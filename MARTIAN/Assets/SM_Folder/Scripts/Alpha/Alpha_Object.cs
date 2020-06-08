@@ -18,9 +18,9 @@ public class Alpha_Object : MonoBehaviour
         myColor = new Color[myMat.Length];
         for (int i = 0; i < myMat.Length; i++)
         {
-            print(myMat[i].GetFloat("_Mode"));
+            //print(myMat[i].GetFloat("_Mode"));
             myRenderingMode[i] = myMat[i].GetFloat("_Mode");
-            print(myRenderingMode[i]);
+            //print(myRenderingMode[i]);
             myColor[i] = myMat[i].color;
         }
 
@@ -38,8 +38,8 @@ public class Alpha_Object : MonoBehaviour
                 myMat[i].color = myColor[i];
                 myMat[i].SetFloat("_Mode", myRenderingMode[i]);
                 //GetComponent<MeshRenderer>().material.color = myColor[];
-                print(GetComponent<MeshRenderer>().material.color);
-                print(GetComponent<MeshRenderer>().material);
+                //print(GetComponent<MeshRenderer>().material.color);
+                //print(GetComponent<MeshRenderer>().material);
             }
             eixtAlpha = false;
         }

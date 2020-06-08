@@ -128,7 +128,7 @@ public class Check_In_Outside : MonoBehaviour
         {
             case WhereIAm.OUTSIDE:
                 //손의 차일드가 0보다 크다면
-                if (hand.childCount >= 0 && isChecked == false)
+                if (hand.childCount > 0 && isChecked == false)
                 {
 
                     //내 차일드를 저장하겠어
@@ -142,7 +142,7 @@ public class Check_In_Outside : MonoBehaviour
                 break;
             case WhereIAm.INSIDE:
                 //손의 차일드가 0보다 크다면
-                if (hand.childCount >= 0 && isChecked == false)
+                if (hand.childCount > 0 && isChecked == false)
                 {
                     //내 차일드를 저장하겠어
                     childtr = hand.GetChild(0).transform;
@@ -194,7 +194,7 @@ public class Check_In_Outside : MonoBehaviour
                 //콜리전엔터된 녀석에게서 J_Coppers를 찾아올 수 있다면
                 if (can_I_Drilling)
                 {
-                    //jacob.Ore();
+                    jacob.Ore();
                 }
                 break;
             case OUTside.BodyTemperaturePack:

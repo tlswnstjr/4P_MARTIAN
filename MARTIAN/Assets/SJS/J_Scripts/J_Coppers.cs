@@ -55,7 +55,7 @@ public class J_Coppers : MonoBehaviour
     }
 
     //모든 광석에 상속될 함수이기때문에 이름을 Ore로 정함
-    void Ore()
+    public void Ore()
     {
         currT += Time.deltaTime;
         //나중에 하나의 조건을 더 만들어야하는데 그 조건은
