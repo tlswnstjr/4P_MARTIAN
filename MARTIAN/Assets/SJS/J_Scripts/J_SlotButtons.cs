@@ -146,7 +146,17 @@ public class J_SlotButtons : MonoBehaviour
         {
             if (clickButton.GetComponent<J_SclectButton>().ss != a.itemMy.GetComponent<J_Item>().auount)
             {
+
                 if (clickButton.GetComponent<J_SclectButton>().ss == 0)
+                {
+                    J_ItemManager.j_Item.items2[a.myWhyNub].auount -=
+           clickButton.GetComponent<J_SclectButton>().ss;
+                    GameObject x = Instantiate(a.itemMy);
+                    x.SetActive(true);
+                    x.transform.position = player.transform.position;
+                    x.GetComponent<J_Item>().auount = clickButton.GetComponent<J_SclectButton>().ss;
+                }
+                else
                 {
                     J_ItemManager.j_Item.items2[a.myWhyNub].auount -=
            clickButton.GetComponent<J_SclectButton>().ss;
