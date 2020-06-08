@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DontDestroyObjects : MonoBehaviour
 {
-    public Transform player, Camera, Inv;
+    public Transform player, Camera, InvCanvas, invManager, ItemManager ;
     void Start()
     {
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(Camera);
-        DontDestroyOnLoad(Inv);
+        DontDestroyOnLoad(InvCanvas);
+        DontDestroyOnLoad(invManager);
+        DontDestroyOnLoad(ItemManager);
         DontDestroyOnLoad(gameObject);
     }
 }
