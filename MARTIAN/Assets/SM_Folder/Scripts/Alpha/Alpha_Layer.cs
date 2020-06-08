@@ -90,7 +90,7 @@ public class Alpha_Layer : MonoBehaviour
         {
             return;
         }
-        print("---------------------------- : " + other.gameObject.name);
+        //print("---------------------------- : " + other.gameObject.name);
         Alpha_Object ao = other.GetComponent<Alpha_Object>();
         if (ao == null) return;
 

@@ -18,7 +18,6 @@ public class SoilCondition : MonoBehaviour
     //실제시간 20분을 초로 환산하면..?
     public float maxWetTime = 1200f;
 
-    public GameObject cropFactory;
 
     CropsGrowUP cgu;
 

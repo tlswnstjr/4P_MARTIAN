@@ -131,17 +131,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 329524348, guid: 1ad28e2126ca94e43b06d2fdc8e163e7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 329524350, guid: 1ad28e2126ca94e43b06d2fdc8e163e7, type: 3}
       propertyPath: my_camera
       value: 
       objectReference: {fileID: 266063673}
     - target: {fileID: 1571782590, guid: 1ad28e2126ca94e43b06d2fdc8e163e7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1571782590, guid: 1ad28e2126ca94e43b06d2fdc8e163e7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2434093865689501834, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
         type: 3}
@@ -168,15 +172,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6717503225687345549, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
+    - target: {fileID: 6618552551467841319, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
         type: 3}
-      propertyPath: m_AnchorMax.x
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6717503225687345549, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717503225687345549, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
+        type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8121345224849574597, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
         type: 3}
@@ -242,6 +251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401456272490932426, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8527445775618688091, guid: 1ad28e2126ca94e43b06d2fdc8e163e7,
         type: 3}
@@ -648,7 +662,6 @@ MonoBehaviour:
   player: {fileID: 380668870}
   Camera: {fileID: 1972621770}
   Inv: {fileID: 1849231305}
-  setTheScene: 0
 --- !u!4 &2144211587
 Transform:
   m_ObjectHideFlags: 0

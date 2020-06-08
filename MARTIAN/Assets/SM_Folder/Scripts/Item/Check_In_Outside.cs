@@ -107,8 +107,15 @@ public class Check_In_Outside : MonoBehaviour
 
     private void OnEnable()
     {
-        if (SceneManager.GetActiveScene().name == "Test_OUTSIDE") state_INOUT = WhereIAm.OUTSIDE;
-        if (SceneManager.GetActiveScene().name == "Test_INSIDE") state_INOUT = WhereIAm.INSIDE;
+        if (SceneManager.GetActiveScene().name == "Test_OUTSIDE")
+        {
+            state_INOUT = WhereIAm.OUTSIDE;
+
+        }
+        if (SceneManager.GetActiveScene().name == "Test_INSIDE")
+        {
+            state_INOUT = WhereIAm.INSIDE;
+        }
     }
 
     // Update is called once per frame
@@ -116,17 +123,26 @@ public class Check_In_Outside : MonoBehaviour
     {
         //안과 밖에따라서 사용할 Enum을 분류해줄 함수
         Switch_INOUT();
-        //밖에 있을때 사용할 아이템들을 정리해놓은 함수
-        Switch_OUTSIDE();
-        //안에 있을때 사용할 아이템들을 정리해놓은 함수
-        Switch_INSIDE();
+        if (nope)
+        {
+            //밖에 있을때 사용할 아이템들을 정리해놓은 함수
+            Switch_OUTSIDE();
+        }
+        if (yea)
+        {
+            //안에 있을때 사용할 아이템들을 정리해놓은 함수
+            Switch_INSIDE();
+        }
     }
 
+    bool nope = false;
+    bool yea = false;
     public void Switch_INOUT()
     {
         switch (state_INOUT)
         {
             case WhereIAm.OUTSIDE:
+                nope = true;
                 //손의 차일드가 0보다 크다면
                 if (hand.childCount > 0 && isChecked == false)
                 {
@@ -137,10 +153,12 @@ public class Check_In_Outside : MonoBehaviour
                     hand.tag = childtr.tag;
                     //차일드의 타입을 검사하는 함수
                     WHAT_KIND_OF_ARE_YOU_OUT();
+
                     isChecked = true;
                 }
                 break;
             case WhereIAm.INSIDE:
+                yea = true;
                 //손의 차일드가 0보다 크다면
                 if (hand.childCount > 0 && isChecked == false)
                 {
@@ -150,6 +168,7 @@ public class Check_In_Outside : MonoBehaviour
                     hand.tag = childtr.tag;
                     //차일드의 타입을 검사하는 함수
                     WHAT_KIND_OF_ARE_YOU_IN();
+
                     isChecked = true;
                 }
                 break;
@@ -177,6 +196,7 @@ public class Check_In_Outside : MonoBehaviour
             if (hand.tag == in_allState[i].ToString())
             {
                 state_I_AM_IN = in_allState[i];
+
             }
         }
     }
@@ -219,6 +239,8 @@ public class Check_In_Outside : MonoBehaviour
                     ol.m_CurrentOxygen = ol.m_StartOxygen;
                 }
                 break;
+            case OUTside.OUTsideEnd:
+                break;
         }
     }
 
@@ -259,6 +281,8 @@ public class Check_In_Outside : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E)) cl.h_CurrentHunger += 3f;
                 break;
             case INside.Shovel:
+                Debug.Log("1111111111111111");
+
                 //삽의 내부에서의 기능
                 if (Input.GetButtonDown("Fire1")) Shovel_INSIDE();
                 break;
@@ -274,6 +298,8 @@ public class Check_In_Outside : MonoBehaviour
                 if (isInven) return;
                 if (Input.GetButtonDown("Fire1")) SprinkleWater(ref im.waterCount);
                 if (Input.GetKeyDown(KeyCode.E)) cl.t_CurrentThirsty += 10f;
+                break;
+            case INside.INsideEnd:
                 break;
         }
     }
