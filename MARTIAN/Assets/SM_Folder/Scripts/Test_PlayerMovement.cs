@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Test_PlayerMovement : MonoBehaviour
 {
+    //내 부모
+    Transform parnt;
+
+    Animator anim;
+
     public float moveSpeed = 6f;
 
     Vector3 movement;
@@ -33,10 +38,16 @@ public class Test_PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        parnt = gameObject.transform.parent;
+        DontDestroyOnLoad(parnt);
+
         floorMask = LayerMask.GetMask("Floor");
         playerRigidbody = GetComponent<Rigidbody>();
     }
-
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
     private void FixedUpdate()
     {
         PlayerInputs();
@@ -84,11 +95,13 @@ public class Test_PlayerMovement : MonoBehaviour
     {
         //Vector3 dir = new Vector3(h, 0, v);
         movement.Set(h, 0f, v);
+        //애니메이터 컨트롤러의 파라미터값을 세팅
+        anim.SetFloat("Speed", movement.magnitude);
+        
         // movement 를 내가 바라보는 방향에서의 방향으로 변경
         movement = transform.TransformDirection(movement);
 
         movement = movement.normalized * moveSpeed * Time.deltaTime;
-
 
         playerRigidbody.MovePosition(transform.position + movement);
     }
