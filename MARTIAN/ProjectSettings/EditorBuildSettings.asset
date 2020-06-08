@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SM_Folder/Scenes/Test_INSIDE.unity
     guid: 337e88ebeeaeb7543bbbda666d6bd324
+  - enabled: 0
+    path: Assets/test.unity
+    guid: b1c382bfb16ae7e41b9962065dd5974a
   m_configObjects: {}
