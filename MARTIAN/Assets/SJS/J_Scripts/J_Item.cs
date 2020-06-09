@@ -33,10 +33,11 @@ public class J_Item : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 print("들어옵니다");
-                GameObject a = Instantiate(gameObject);
-                a.SetActive(false);
+
+                /*GameObject a = Instantiate(gameObject.transform.parent.gameObject);
+                a.SetActive(false);*/
                 //아이템 메니저에게 내 자신의 정보를 넣어준다
-                J_ItemManager.j_Item.ClicksItem(a);
+                J_ItemManager.j_Item.ClicksItem(gameObject);
                 //Destroy(gameObject);
                 gameObject.SetActive(false);
             }

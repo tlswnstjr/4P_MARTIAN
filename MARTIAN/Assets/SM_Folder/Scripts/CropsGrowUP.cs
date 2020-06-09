@@ -67,15 +67,15 @@ public class CropsGrowUP : MonoBehaviour
     private void SpawnCrops(GameObject cropFactory)
     {
         int a = UnityEngine.Random.Range(1, 5);
-        for (int i = 0; i < a; i++)
+        print(a);
+        for (int i = 0; i <= a; i++)
         {
             GameObject crops = Instantiate(cropFactory);
             crops.transform.position = spawnPos.position;
             if (i == a)
             {
-                Debug.Log("~~~~~~~~~~");
                 //내 부모를 죽이겠다.
-                Destroy(gameObject.transform.parent);
+                Destroy(gameObject.transform.parent.gameObject);
             }
         }
     }

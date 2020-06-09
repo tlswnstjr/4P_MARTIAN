@@ -119,7 +119,7 @@ MeshCollider:
   m_GameObject: {fileID: 8401930208519518521}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -245,7 +245,7 @@ MeshCollider:
   m_GameObject: {fileID: 9219411411021021898}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -272,6 +272,11 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8784278815122730118, guid: 082a5add4557ffa43bd940b84116ac89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8784278815122807500, guid: 082a5add4557ffa43bd940b84116ac89,
         type: 3}
       propertyPath: m_Name
@@ -281,6 +286,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784278815122807500, guid: 082a5add4557ffa43bd940b84116ac89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784278815122810894, guid: 082a5add4557ffa43bd940b84116ac89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784278815123054986, guid: 082a5add4557ffa43bd940b84116ac89,
         type: 3}
