@@ -30,7 +30,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         }
 
         // 해상도를 윈도우 모드로 960 x 640 크기로 설정한다.
-        Screen.SetResolution(960, 640
+        Screen.SetResolution(1980, 1080
             , FullScreenMode.Windowed);
     }
 
@@ -111,15 +111,20 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         print("확인차");
         if (PhotonNetwork.IsMasterClient)
         {
-            print("아 짜증나");
-            //photonView.RPC("ReincarnationSummons", RpcTarget.All);
-            for (int i = 0; i < a; i++)
+            if(photonView.IsMine)
             {
-                GameObject sum = PhotonNetwork.Instantiate(Path.Combine("Stone", names), tr, Quaternion.identity);
-                //Instantiate(reincarnation);
-                //여기가 새로 생성해주는 재료의 크기를 정해주는 변수입니다
-                sum.transform.localScale = new Vector3(ReincarnationSize, ReincarnationSize, ReincarnationSize);
+                print("몇번일까요");
+                print("아 짜증나");
+                //photonView.RPC("ReincarnationSummons", RpcTarget.All);
+                for (int i = 0; i < a; i++)
+                {
+                    GameObject sum = PhotonNetwork.Instantiate(Path.Combine("Stone", names), tr, Quaternion.identity);
+                    //Instantiate(reincarnation);
+                    //여기가 새로 생성해주는 재료의 크기를 정해주는 변수입니다
+                    sum.transform.localScale = new Vector3(ReincarnationSize, ReincarnationSize, ReincarnationSize);
+                }
             }
+          
         }
     }
 

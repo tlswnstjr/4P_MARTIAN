@@ -30,11 +30,18 @@ public class J_Item : MonoBehaviourPun
     [PunRPC]
     public void aaa() 
     {
-        print(photonView.ViewID);
-        //아이템 메니저에게 내 자신의 정보를 넣어준다
-        J_ItemManager.j_Item.ClicksItem(gameObject);
-        //Destroy(gameObject);
-        gameObject.SetActive(false);
+        if(photonView.IsMine)
+        {
+            //아이템 메니저에게 내 자신의 정보를 넣어준다
+            J_ItemManager.j_Item.ClicksItem(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     private void OnTriggerEnter(Collider coll)
