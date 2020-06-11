@@ -11,6 +11,7 @@ public class J_Players : MonoBehaviourPun
     public PhotonView view;
     //내 부모
     Transform parnt;
+    Check_In_Outside cio;
 
     public Animator anim;
     public Transform myTr;
@@ -33,7 +34,8 @@ public class J_Players : MonoBehaviourPun
     public bool onAction;
 
     bool onInv;
-
+    
+     
     //아이템을 클릭하여 나오는 선택창입니다
     public GameObject iamge;
 
@@ -47,6 +49,7 @@ public class J_Players : MonoBehaviourPun
         parnt = gameObject.transform.parent;
         //DontDestroyOnLoad(parnt);
 
+        cio = GetComponent<Check_In_Outside>();
 
         floorMask = LayerMask.GetMask("Floor");
         playerRigidbody = GetComponent<Rigidbody>();
@@ -67,10 +70,11 @@ public class J_Players : MonoBehaviourPun
             PlayerInputs();
             //인벤토리가 켜지면 바로 탈출하여 아래 코드를 막는다
             //또 한 툴을 열었을때도 아래 코드를 실행하는 것을 막아 줘야한다
-            if (inv.activeSelf || myMoveban)
+            if (inv.activeSelf || myMoveban || cio.doingAnim)
             {
                 return;
             }
+
 
             if (iamge.activeSelf == true)
             {

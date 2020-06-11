@@ -213,7 +213,7 @@ public class Check_In_Outside : MonoBehaviour
             }
         }
     }
-
+    bool a;
     #region -----------====== 밖에서 사용할 아이템들의 함수 ========----------
     public void Switch_OUTSIDE()
     {
@@ -229,24 +229,57 @@ public class Check_In_Outside : MonoBehaviour
                 } 
                 break;
             case OUTside.Drill:
-                if (isInven || doingAnim) return;
-                //콜리전엔터된 녀석에게서 J_Coppers를 찾아올 수 있다면
-                if (can_I_Drilling)
                 {
-                    if (Input.GetKeyDown(KeyCode.E)) { 
-                    anim.SetBool("Drilling", true);
-                        doingAnim = true;
-                    }
-                    if (Input.GetKey(KeyCode.E))
+                    if (can_I_Drilling)
                     {
-                        currntT += Time.deltaTime;
-                        if (currntT > 1)
+                        if (Input.GetKey(KeyCode.E))
                         {
-                            anim.SetBool("Drilling", false);
-                            jacob.Ore();
+                            currntT += Time.deltaTime;
+                            if (a == false)
+                            {
+                                anim.SetBool("Drilling", true);
+                                a = true;
+                            }
+
+                            if (currntT > 2)
+                            {
+                                anim.SetBool("Drilling", false);
+
+                                jacob.Ore();
+                                currntT = 0;
+                                a = false;
+
+                            }
                         }
                     }
+                    else
+                    {
+                        anim.SetBool("Drilling", false);
+                        currntT = 0;
+                        a = false;
+                    }
+                  
                 }
+                //if (isInven || doingAnim)
+                //    return;
+                ////콜리전엔터된 녀석에게서 J_Coppers를 찾아올 수 있다면
+                //if (can_I_Drilling)
+                //{
+                //    if (Input.GetKeyDown(KeyCode.E)) { 
+                //   
+                //        doingAnim = true;
+                //    }
+                //   if (Input.GetKey(KeyCode.E))
+                //    {
+                //        currntT += Time.deltaTime;
+                //        if (currntT > 1)
+                //        {
+                //            anim.SetBool("Drilling", false);
+                //            jacob.Ore();
+                //            doingAnim = false;
+                //        }
+                //    }
+                //}
                 break;
             case OUTside.BodyTemperaturePack:
                 if (isInven || doingAnim) return;

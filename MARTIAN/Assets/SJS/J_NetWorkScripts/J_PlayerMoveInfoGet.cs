@@ -18,6 +18,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     public Animator animator;
     float lerpSpeed = 50.0f;
 
+    public GameObject itemManager;
     //다른 플레이어의 이동을 동기화 해줄 변수
     Vector3 otherPos;
     // Start is called before the first frame update
@@ -51,6 +52,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         }
         else
         {
+            itemManager.SetActive(false);
             cam.SetActive(false);
             transform.position = Vector3.Lerp(transform.position, otherPos, Time.deltaTime * lerpSpeed);
             // transform.rotation = Quaternion.Euler(rot);
