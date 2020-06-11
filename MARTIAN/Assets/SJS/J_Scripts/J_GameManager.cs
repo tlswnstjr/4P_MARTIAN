@@ -14,7 +14,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 
 
 
-    
+    public PhotonView view;
 
     public bool[] readyClick;
     public bool x;
@@ -87,12 +87,42 @@ public class J_GameManager : MonoBehaviourPunCallbacks
             GameObject x =  PhotonNetwork.Instantiate(Path.Combine("Ore","Ore"), new Vector3(-10, 1, -40), Quaternion.identity);
             x.SetActive(true);
 
+           
+            
+
             //gameStart.GetComponentInChildren<Text>().text = "게임 스타트";
             // 반응형 오브젝트 프리팹을 생성한다.
             //PhotonNetwork.Instantiate("InteractiveObject", new Vector3(0, 3, 0), Quaternion.identity);
-            
+
         }
     }
+
+    public void StoneIns()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            //photonView.RPC("aaa", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    void Masters(int a, string names, float ReincarnationSize, Vector3 tr)
+    {
+        print("확인차");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            print("아 짜증나");
+            //photonView.RPC("ReincarnationSummons", RpcTarget.All);
+            for (int i = 0; i < a; i++)
+            {
+                GameObject sum = PhotonNetwork.Instantiate(Path.Combine("Stone", names), tr, Quaternion.identity);
+                //Instantiate(reincarnation);
+                //여기가 새로 생성해주는 재료의 크기를 정해주는 변수입니다
+                sum.transform.localScale = new Vector3(ReincarnationSize, ReincarnationSize, ReincarnationSize);
+            }
+        }
+    }
+
 
     void Update()
     {

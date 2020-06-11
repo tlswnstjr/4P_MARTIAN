@@ -4,8 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class J_Players : MonoBehaviour
+using Photon.Pun;
+public class J_Players : MonoBehaviourPun
 {
+    //내 부모의 photonview 가져오기 
+    public PhotonView view;
     //내 부모
     Transform parnt;
 
@@ -51,6 +54,7 @@ public class J_Players : MonoBehaviour
     }
     private void Start()
     {
+
         inv = J_Inventory.j_Inventory.gameObject;
         iamge = J_Inventory.j_Inventory.iamges;
         inv.SetActive(false);
@@ -58,25 +62,29 @@ public class J_Players : MonoBehaviour
     private void FixedUpdate()
     {
         //inv.activeSelf ||
-        PlayerInputs();
-        //인벤토리가 켜지면 바로 탈출하여 아래 코드를 막는다
-        //또 한 툴을 열었을때도 아래 코드를 실행하는 것을 막아 줘야한다
-        if (inv.activeSelf || myMoveban)
+        if(view.IsMine)
         {
-            return;
-        }
+            PlayerInputs();
+            //인벤토리가 켜지면 바로 탈출하여 아래 코드를 막는다
+            //또 한 툴을 열었을때도 아래 코드를 실행하는 것을 막아 줘야한다
+            if (inv.activeSelf || myMoveban)
+            {
+                return;
+            }
 
-        if (iamge.activeSelf == true)
-        {
-            //아이템설정 창이 열려있으면 닫아준다 
-            iamge.SetActive(false);
-        }
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+            if (iamge.activeSelf == true)
+            {
+                //아이템설정 창이 열려있으면 닫아준다 
+                iamge.SetActive(false);
+            }
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
 
-        // Move(h, v, 7);
-        //Turnning();
-        TurnONOFF();
+            // Move(h, v, 7);
+            //Turnning();
+            TurnONOFF();
+        }
+      
     }
 
     public void Turnning()

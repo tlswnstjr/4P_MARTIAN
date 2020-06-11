@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class J_ItemManager : MonoBehaviour
+using Photon.Pun;
+public class J_ItemManager : MonoBehaviourPun
 {
    public static J_ItemManager j_Item;
 
@@ -52,6 +52,7 @@ public class J_ItemManager : MonoBehaviour
 
 
     //눈에 보이지는 않지만 내부적으로 인ㅂ넨토리 안을 채워줍니다 
+    //[PunRPC]
     public void ClicksItem(GameObject x)
     {
         for (int i = 0; i < items2.Length; i++)

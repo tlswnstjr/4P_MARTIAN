@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-public class J_Inventory : MonoBehaviourPun, IPunObservable
+public class J_Inventory : MonoBehaviourPun
 {
     public static J_Inventory j_Inventory;
     public GameObject iamges;
@@ -33,8 +33,12 @@ public class J_Inventory : MonoBehaviourPun, IPunObservable
     void Update()
     {
         //현제 뷰가 자기 자신일 때만 실행합니다 그외에는 무시합니다
-        ClicksItemManagers();
-        ButtonAction();
+        if(photonView.IsMine)
+        {
+            ClicksItemManagers();
+            ButtonAction();
+        }
+
     }
    
 
@@ -67,10 +71,6 @@ public class J_Inventory : MonoBehaviourPun, IPunObservable
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        
-    }
 
     public void ccc()
     {

@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39206546}
   - component: {fileID: 39206545}
+  - component: {fileID: 39206547}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -141,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b72aaf511033340ad666a4c03f3f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
   readyClick: 
   x: 0
   myNub: 0
@@ -158,6 +160,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39206547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39206544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &841066148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1926,6 +1950,34 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2994735250758739024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2994735250758739026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3636514669562816803, guid: 527aab1bcc94170488eff54e08e06b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 2994735250758739024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2994735250758739027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994735250758739026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2994735250758739028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3636514670112672717, guid: 527aab1bcc94170488eff54e08e06b65,

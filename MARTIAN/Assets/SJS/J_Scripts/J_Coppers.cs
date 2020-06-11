@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
-public class J_Coppers : MonoBehaviourPunCallbacks
+public class J_Coppers : MonoBehaviourPun
 {
     //이 스크립트는 구리에 대한 스크립트입니다
     //플레이어 상호 작용으로 인해서 일정 시간 동안 채굴당하면
@@ -50,8 +50,8 @@ public class J_Coppers : MonoBehaviourPunCallbacks
     {
         if (mining)
         {
-            if(Input.GetKey(KeyCode.E))
-            Ore();
+                if (Input.GetKey(KeyCode.E))
+                    Ore();
         }
 
     }
@@ -67,6 +67,7 @@ public class J_Coppers : MonoBehaviourPunCallbacks
 
         if (currT >= 1f)
         {
+            //explode();
             photonView.RPC("explode", RpcTarget.All);
         }
 
@@ -101,12 +102,14 @@ public class J_Coppers : MonoBehaviourPunCallbacks
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, explosionUpward);
             }
         }
-        ReincarnationSummons();
+        PhotonView pr = J_GameManager.gm.GetComponent<PhotonView>();
+        pr.RPC("Masters", RpcTarget.MasterClient , a, reincarnation.name, ReincarnationSize, transform.position);
     }
 
     public float ReincarnationSize;
-    void ReincarnationSummons()
+    public void ReincarnationSummons()
     {
+        print("확인합니다");
         for (int i = 0; i < a; i++)
         {
             GameObject sum = PhotonNetwork.Instantiate(Path.Combine("Stone", reincarnation.name), transform.position, Quaternion.identity);
@@ -154,6 +157,7 @@ public class J_Coppers : MonoBehaviourPunCallbacks
     {
         if (coll.gameObject.tag == "Player")
         {
+            print("안녕 형 걍 포기해");
             //충돌 대상이 플레이어면 채굴이 가능합니다
             mining = true;
         }

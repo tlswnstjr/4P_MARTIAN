@@ -20,6 +20,7 @@ public class J_Ore : J_Item
             {
                 //aaa();
                 photonView.RPC("aaa", Photon.Pun.RpcTarget.AllBuffered);
+                //J_GameManager.gm.StoneIns();
             }
         }
     }
