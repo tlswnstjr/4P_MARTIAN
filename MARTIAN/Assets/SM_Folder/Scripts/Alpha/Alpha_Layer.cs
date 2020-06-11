@@ -54,10 +54,11 @@ public class Alpha_Layer : MonoBehaviour
     {
         if (other.tag == "Unnecessary")
         {
+            //DebugMsgManager.Instance.debugText.text = "OnTriggerStay \n";
             giveMeMTR = other.GetComponent<MeshRenderer>().materials;
             Alpha_Object ao = other.GetComponent<Alpha_Object>();
             if (ao == null) return;
-
+            //DebugMsgManager.Instance.debugText.text += "ag pass \n";
             ao.eixtAlpha = false;
 
             for (int i = 0; i < giveMeMTR.Length; i++)
@@ -80,6 +81,7 @@ public class Alpha_Layer : MonoBehaviour
                 giveMeMTR[i].EnableKeyword("_ALPHABLEND_ON");
                 giveMeMTR[i].DisableKeyword("_ALPHAPREMULTIPLY_ON");
                 giveMeMTR[i].renderQueue = 3000;
+                //DebugMsgManager.Instance.debugText.text += "Alpha  적용 \n";
             }
         }
     }

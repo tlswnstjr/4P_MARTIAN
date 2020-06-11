@@ -281,8 +281,6 @@ public class Check_In_Outside : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E)) cl.h_CurrentHunger += 3f;
                 break;
             case INside.Shovel:
-                Debug.Log("1111111111111111");
-
                 //삽의 내부에서의 기능
                 if (Input.GetButtonDown("Fire1")) Shovel_INSIDE();
                 break;
@@ -313,7 +311,8 @@ public class Check_In_Outside : MonoBehaviour
         if (Physics.Raycast(ray, out rayHit, rayDis, (1 << 12)))
         {
             GameObject PreparedLand = rayHit.transform.gameObject;
-            if (PreparedLand.transform.childCount <= 0 && crops > 0)
+            mr = rayHit.transform.gameObject.GetComponent<MeshRenderer>();
+            if (PreparedLand.transform.childCount <= 0 && mr.enabled == true && crops > 0)
             {
                 GameObject plant = Instantiate(plantCrops);
                 plant.transform.position = PreparedLand.transform.position;
@@ -321,6 +320,7 @@ public class Check_In_Outside : MonoBehaviour
                 //소지한 작물 갯수를 줄인다.
                 crops--;
             }
+            else return;
             //plant.transform.position = PreparedLand.transform.position;
         }
     }
@@ -343,6 +343,7 @@ public class Check_In_Outside : MonoBehaviour
             sc.state = SoilCondition.AmIWet.Yes;
         }
     }
+    MeshRenderer mr;
     private void Shovel_INSIDE()
     {
         Ray ray = new Ray(rayStart.transform.position, rayStart.transform.forward * rayDis + rayStart.transform.up * angle);
@@ -350,7 +351,7 @@ public class Check_In_Outside : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, rayDis, (1 << 12)))
         {
-            MeshRenderer mr = rayHit.transform.gameObject.GetComponent<MeshRenderer>();
+            mr = rayHit.transform.gameObject.GetComponent<MeshRenderer>();
             if (mr.enabled == false) mr.enabled = true;
         }
     }

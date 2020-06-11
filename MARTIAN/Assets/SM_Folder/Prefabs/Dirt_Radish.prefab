@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6806142252637265474}
   - {fileID: 1368656302946814533}
+  - {fileID: 7299703677978884698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89,7 +90,7 @@ MeshCollider:
   m_GameObject: {fileID: 3734714069461123257}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -183,7 +184,7 @@ MeshCollider:
   m_GameObject: {fileID: 6807751781884344444}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -205,6 +206,7 @@ MonoBehaviour:
   point: 0.2
   glitter: {fileID: 1368656302960999525}
   cropFactory: {fileID: 0}
+  spawnPos: {fileID: 7299703677978884698}
 --- !u!135 &4106455942383008301
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -218,6 +220,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.7
   m_Center: {x: 0, y: 0.27, z: 0}
+--- !u!1 &6969463507652308137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7299703677978884698}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7299703677978884698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969463507652308137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.79, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3736271167461184189}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7716485499025140687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,10 +272,25 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8784278815122730118, guid: 082a5add4557ffa43bd940b84116ac89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8784278815122807500, guid: 082a5add4557ffa43bd940b84116ac89,
         type: 3}
       propertyPath: m_Name
       value: star1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784278815122807500, guid: 082a5add4557ffa43bd940b84116ac89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784278815122810894, guid: 082a5add4557ffa43bd940b84116ac89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784278815123054986, guid: 082a5add4557ffa43bd940b84116ac89,
         type: 3}
