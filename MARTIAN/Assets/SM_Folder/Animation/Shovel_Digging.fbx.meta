@@ -144,7 +144,8 @@ ModelImporter:
     2100004: Ch48_hair
     4300000: Ch48
     4300002: Ch48_hair1
-    7400000: mixamo.com
+    7400000: Shovel_OUTSIDE
+    7400002: Shovel_INSIDE
     9500000: //RootNode
     13700000: Ch48
     13700002: Ch48_hair1
@@ -176,7 +177,95 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Shovel_OUTSIDE
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 145
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.7827484
+        functionName: Shovel_OUTSIDE
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d7f40656db281164bbd6566b20c69520,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.98626274
+        functionName: ReturnBool
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d7f40656db281164bbd6566b20c69520,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shovel_INSIDE
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 145
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.7966453
+        functionName: Shovel_INSIDE
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d7f40656db281164bbd6566b20c69520,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.98717946
+        functionName: ReturnBool
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d7f40656db281164bbd6566b20c69520,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

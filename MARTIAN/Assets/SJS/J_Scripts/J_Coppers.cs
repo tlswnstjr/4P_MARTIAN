@@ -48,27 +48,27 @@ public class J_Coppers : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (mining)
-        {
-            if(Input.GetKey(KeyCode.E))
-            Ore();
-        }
+        //if (mining)
+        //{
+        //    if(Input.GetKey(KeyCode.E))
+        //    Ore();
+        //}
 
     }
 
     //모든 광석에 상속될 함수이기때문에 이름을 Ore로 정함
     public void Ore()
     {
-        currT += Time.deltaTime;
+        //currT += Time.deltaTime;
         //나중에 하나의 조건을 더 만들어야하는데 그 조건은
         //플레이어가 무슨 채굴 장비를 가지고 있는지 확인하는 변수입니다
         //지금은 5초라는 시간으로 만들어지만 나중에는 채굴 장비의 종류에 따라
         // 저 시간이 달라집니다
-
-        if (currT >= 1f)
-        {
-            photonView.RPC("explode", RpcTarget.All);
-        }
+        explode();
+        //if (currT >= 1f)
+        //{
+        //    //photonView.RPC("explode", RpcTarget.All);
+        //}
 
     }
 
@@ -150,23 +150,23 @@ public class J_Coppers : MonoBehaviourPunCallbacks
         piece.GetComponent<Rigidbody>().mass = cubeSize;
     }
 
-    private void OnCollisionEnter(Collision coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            //충돌 대상이 플레이어면 채굴이 가능합니다
-            mining = true;
-        }
-    }
+    //private void OnCollisionEnter(Collision coll)
+    //{
+    //    if (coll.gameObject.tag == "Player")
+    //    {
+    //        //충돌 대상이 플레이어면 채굴이 가능합니다
+    //        mining = true;
+    //    }
+    //}
 
 
-    private void OnCollisionExit(Collision coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            //충돌 대상이 플레이어면 채굴이 가능합니다
-            mining = false;
-        }
-    }
+    //private void OnCollisionExit(Collision coll)
+    //{
+    //    if (coll.gameObject.tag == "Player")
+    //    {
+    //        //충돌 대상이 플레이어면 채굴이 가능합니다
+    //        mining = false;
+    //    }
+    //}
 
 }

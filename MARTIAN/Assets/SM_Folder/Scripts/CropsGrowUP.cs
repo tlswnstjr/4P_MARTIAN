@@ -53,18 +53,18 @@ public class CropsGrowUP : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SpawnCrops(cropFactory);
-            }
-        }
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.C))
+    //        {
+    //            SpawnCrops(cropFactory);
+    //        }
+    //    }
+    //}
 
-    private void SpawnCrops(GameObject cropFactory)
+    public void SpawnCrops(GameObject cropFactory)
     {
         int a = UnityEngine.Random.Range(1, 5);
         print(a);

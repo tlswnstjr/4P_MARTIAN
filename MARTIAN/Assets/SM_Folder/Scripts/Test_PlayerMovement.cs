@@ -9,6 +9,7 @@ public class Test_PlayerMovement : MonoBehaviour
     Transform parnt;
 
     Animator anim;
+    Check_In_Outside cio;
 
     public float moveSpeed = 6f;
 
@@ -47,13 +48,15 @@ public class Test_PlayerMovement : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        cio = GetComponent<Check_In_Outside>();
     }
     private void FixedUpdate()
     {
         PlayerInputs();
         //인벤토리가 켜지면 바로 탈출하여 아래 코드를 막는다
         //또 한 툴을 열었을때도 아래 코드를 실행하는 것을 막아 줘야한다
-        if (inv.activeSelf || myMoveban)
+        //애니메이션 할때도 막아야한다.
+        if (inv.activeSelf || myMoveban || cio.doingAnim)
         {
             return;
         }

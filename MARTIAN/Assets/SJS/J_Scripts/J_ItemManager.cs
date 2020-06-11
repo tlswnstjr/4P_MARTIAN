@@ -15,13 +15,13 @@ public class J_ItemManager : MonoBehaviour
     private void Awake()
     {        
         j_Item = this;
-        inv = J_Inventory.j_Inventory.gameObject;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
+        inv = J_Inventory.j_Inventory.gameObject;
     }
 
     // Update is called once per frame

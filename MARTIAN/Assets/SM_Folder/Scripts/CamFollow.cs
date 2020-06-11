@@ -13,8 +13,8 @@ public class CamFollow : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(true);
         offset = transform.position - target.position;
-        print(offset);
     }
 
     private void FixedUpdate()
