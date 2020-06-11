@@ -7,7 +7,7 @@ public class DontDestroyObjects : MonoBehaviour
     public Transform player, Camera, InvCanvas, invManager, ItemManager ;
     void Start()
     {
-        DontDestroyOnLoad(player);
+        //DontDestroyOnLoad(player);
         DontDestroyOnLoad(Camera);
         DontDestroyOnLoad(InvCanvas);
         DontDestroyOnLoad(invManager);

@@ -15,6 +15,7 @@ public class J_ItemManager : MonoBehaviour
     private void Awake()
     {        
         j_Item = this;
+        inv = J_Inventory.j_Inventory.gameObject;
     }
 
 
@@ -26,14 +27,15 @@ public class J_ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inv.activeSelf)
+       
+        if (inv.activeSelf)
         {
             for (int i = 0; i < items2.Length; i++)
             {
                 J_Slots s = J_Inventory.j_Inventory.items[i].GetComponent<J_Slots>();
                 if(items2[i] !=null)
                 {
-                    s.itemMy = items2[i].my;
+                    s.itemMy = items2[i].my;        
                     s.mainIamge.SetActive(true);
                     s.Image.sprite = items2[i].itemImage;
                     s.text.text = items2[i].auount.ToString();

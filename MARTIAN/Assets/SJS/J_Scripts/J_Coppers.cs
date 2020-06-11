@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class J_Coppers : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+using System.IO;
+public class J_Coppers : MonoBehaviourPunCallbacks
 {
     //이 스크립트는 구리에 대한 스크립트입니다
     //플레이어 상호 작용으로 인해서 일정 시간 동안 채굴당하면
@@ -65,11 +67,12 @@ public class J_Coppers : MonoBehaviour
 
         if (currT >= 1f)
         {
-            explode();
+            photonView.RPC("explode", RpcTarget.All);
         }
 
     }
 
+    [PunRPC]
     void explode()
     {
         gameObject.SetActive(false);
@@ -83,7 +86,9 @@ public class J_Coppers : MonoBehaviour
         //get explosion position
         Vector3 explosionPos = transform.position;
         //get colliders in that position and radius
-        int ignoreExp = ~LayerMask.GetMask("Player");
+        int ignoreExp = 1 << 10;
+        //~LayerMask.GetMask("Player");
+
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius, ignoreExp);
         //add explosion force to all colliders in that overlap sphere
         foreach (Collider hit in colliders)
@@ -104,16 +109,15 @@ public class J_Coppers : MonoBehaviour
     {
         for (int i = 0; i < a; i++)
         {
-            GameObject sum = Instantiate(reincarnation);
-
-            sum.transform.position = transform.position;
+            GameObject sum = PhotonNetwork.Instantiate(Path.Combine("Stone", reincarnation.name), transform.position, Quaternion.identity);
+                //Instantiate(reincarnation);
             //여기가 새로 생성해주는 재료의 크기를 정해주는 변수입니다
             sum.transform.localScale = new Vector3(ReincarnationSize, ReincarnationSize, ReincarnationSize);
         }
 
-        Vector3 explosionPos = transform.position;
+       /* Vector3 explosionPos = transform.position;
         //get colliders in that position and radius
-        int ignoreExp = ~LayerMask.GetMask("Player");
+        int ignoreExp = 1 << 10;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, 2, ignoreExp);
         //add explosion force to all colliders in that overlap sphere
         foreach (Collider hit in colliders)
@@ -125,7 +129,7 @@ public class J_Coppers : MonoBehaviour
                 //add explosion force to this body with given parameters
                 rb.AddExplosionForce(10, transform.position, explosionRadius, explosionUpward);
             }
-        }
+        }*/
     }
 
 

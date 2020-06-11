@@ -85,7 +85,7 @@ public class Test_PlayerMovement : MonoBehaviour
 
             Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
             playerRigidbody.MoveRotation(newRotation);
-            Vector3 a =  Vector3.forward;
+            Vector3 a = Vector3.forward;
             a = transform.forward;
         }
 
@@ -97,7 +97,7 @@ public class Test_PlayerMovement : MonoBehaviour
         movement.Set(h, 0f, v);
         //애니메이터 컨트롤러의 파라미터값을 세팅
         anim.SetFloat("Speed", movement.magnitude);
-        
+
         // movement 를 내가 바라보는 방향에서의 방향으로 변경
         movement = transform.TransformDirection(movement);
 
@@ -105,7 +105,7 @@ public class Test_PlayerMovement : MonoBehaviour
 
         playerRigidbody.MovePosition(transform.position + movement);
     }
- 
+
     public void TurnONOFF()
     {
         if (DayAndNight.sun.myRotX >= 170)
@@ -147,4 +147,4 @@ public class Test_PlayerMovement : MonoBehaviour
         }
 
     }
-} 
+}

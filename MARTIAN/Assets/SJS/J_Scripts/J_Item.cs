@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class J_Item : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+public class J_Item : MonoBehaviourPun
 {
     //아이템 이름
     public string itemName;
@@ -17,7 +18,7 @@ public class J_Item : MonoBehaviour
     public enum ItemType
     {
         WEAPON,  //장비
-        Consumer, //소비
+        CONSUMER, //소비CONSUMER
         STONE,  //원석
     }
 
@@ -26,21 +27,15 @@ public class J_Item : MonoBehaviour
    //[HideInInspector]
    public bool click;
 
+    [PunRPC]
     public void aaa() 
     {
-        if (click == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                print("들어옵니다");
-                GameObject a = Instantiate(gameObject);
-                a.SetActive(false);
-                //아이템 메니저에게 내 자신의 정보를 넣어준다
-                J_ItemManager.j_Item.ClicksItem(a);
-                //Destroy(gameObject);
-                gameObject.SetActive(false);
-            }
-        }
+        GameObject a = Instantiate(gameObject);
+        a.SetActive(false);
+        //아이템 메니저에게 내 자신의 정보를 넣어준다
+        J_ItemManager.j_Item.ClicksItem(a);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider coll)

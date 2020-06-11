@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class CamFollow : MonoBehaviour
+using Photon.Pun;
+public class CamFollow : MonoBehaviourPun
 {
     //뭘 따라갈것인가
     public Transform target;
@@ -14,12 +14,13 @@ public class CamFollow : MonoBehaviour
     void Start()
     {
         offset = transform.position - target.position;
+        print(offset);
     }
 
     private void FixedUpdate()
-    {
-        Vector3 targetCamPos = target.position + offset;
+    {      
+            Vector3 targetCamPos = target.position + offset;
 
-        transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);      
     }
 }

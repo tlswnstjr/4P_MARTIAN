@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class J_Inventory : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+public class J_Inventory : MonoBehaviourPun, IPunObservable
 {
     public static J_Inventory j_Inventory;
+    public GameObject iamges;
     //이 리스트 아이템 보관 및 정보를 담을 변수리스트입니다
     public List<GameObject> items = new List<GameObject>();
 
@@ -30,9 +32,13 @@ public class J_Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        ClicksItemManagers();
-        ButtonAction();
+        //현제 뷰가 자기 자신일 때만 실행합니다 그외에는 무시합니다
+        if(photonView.IsMine)
+        {
+            ClicksItemManagers();
+            ButtonAction();
+        }
+       
     }
    
 
@@ -65,6 +71,15 @@ public class J_Inventory : MonoBehaviour
         }
     }
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        
+    }
+
+    public void ccc()
+    {
+        print("확인합니다");
+    }
 
     //이 함수는 리스트의 모든 내용 물을 검사하여 중복 되는 것이 있으면 합쳐 줍니다
 

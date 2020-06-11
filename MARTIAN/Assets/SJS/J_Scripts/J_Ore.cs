@@ -14,6 +14,13 @@ public class J_Ore : J_Item
     // Update is called once per frame
     void Update()
     {
-        aaa();
+        if (click == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                //aaa();
+                photonView.RPC("aaa", Photon.Pun.RpcTarget.AllBuffered);
+            }
+        }
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class J_SlotButtons : MonoBehaviour
+using Photon.Pun;
+using System.IO;
+public class J_SlotButtons : MonoBehaviourPun
 {
     //이 스크립트는 슬롯을 클릭하면 ui가 나타나는 스크립트입니다
     //나타나는 ui들은 여러가지 선택지를 고를수 있게 합니다 
@@ -146,14 +148,19 @@ public class J_SlotButtons : MonoBehaviour
         {
             if (clickButton.GetComponent<J_SclectButton>().ss != a.itemMy.GetComponent<J_Item>().auount)
             {
-                if (clickButton.GetComponent<J_SclectButton>().ss == 0)
-                {
+               
+                //우선 아이템의 스크립트를 할당 받는다 
+                    J_Item itme = a.itemMy.GetComponent<J_Item>();
+                //선택된 자신의 아이템 갯수와 지금 현제 뺄려는 아이템 갯수를 서로 계싼해준다 
                     J_ItemManager.j_Item.items2[a.myWhyNub].auount -=
-           clickButton.GetComponent<J_SclectButton>().ss;
-                    GameObject x = Instantiate(a.itemMy);
+            clickButton.GetComponent<J_SclectButton>().ss;
+                GameObject x = PhotonNetwork.Instantiate(Path.Combine(itme.type.ToString(), itme.name.Contains(itme.name).ToString()), transform.position, Quaternion.identity);
+                        //Instantiate(a.itemMy);
                     x.SetActive(true);
                     x.transform.position = player.transform.position;
                     x.GetComponent<J_Item>().auount = clickButton.GetComponent<J_SclectButton>().ss;
+                if (clickButton.GetComponent<J_SclectButton>().ss == 0)
+                {
                 }
 
             }
@@ -223,7 +230,7 @@ public class J_SlotButtons : MonoBehaviour
         #endregion
 
 
-
+        #region 창고에서 인벤으로 
         else if (state == State.LOCKER)
         {
             J_Slots slotss = _Slots.GetComponent<J_Slots>();
@@ -276,7 +283,7 @@ public class J_SlotButtons : MonoBehaviour
                 slotss.mainIamge.SetActive(false);
             }
         }
-
+        #endregion
 
         //자신 인벤토리에서 창고로 넣어주는 상태입니다
         #region 자신 인벤에서 창고로
