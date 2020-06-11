@@ -43,7 +43,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         {
             J_Players.Move(h, v, runSpeed);
             J_Players.Turnning();
-            
+            J_Players.PlayerInputs();
         }
         else
         {

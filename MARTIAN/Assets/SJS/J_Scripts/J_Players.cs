@@ -168,9 +168,10 @@ public class J_Players : MonoBehaviour
 
     //자기 자신의 움직임을 막습니다
     public bool myMoveban;
-    void PlayerInputs()
+   public void PlayerInputs()
     {
         //인벤토리 열고 닫기입니다
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             inv.SetActive(!inv.activeSelf);

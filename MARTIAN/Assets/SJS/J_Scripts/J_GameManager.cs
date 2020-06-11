@@ -14,13 +14,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 
 
 
-    //스타트 버튼이 있는 곳입니다
-    public Button gameStart;
-
-    //이 타겟 아래 자식으로 소환해 줄것입니다
-    public GameObject target;
-
-    public GameObject canvas;
+    
 
     public bool[] readyClick;
     public bool x;
@@ -96,6 +90,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
             //gameStart.GetComponentInChildren<Text>().text = "게임 스타트";
             // 반응형 오브젝트 프리팹을 생성한다.
             //PhotonNetwork.Instantiate("InteractiveObject", new Vector3(0, 3, 0), Quaternion.identity);
+            
         }
     }
 

@@ -137,7 +137,7 @@ public class J_Coppers : MonoBehaviourPunCallbacks
     {
         GameObject piece;
         piece = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
+        piece.layer = LayerMask.NameToLayer("ttt");
         //새로 만들어준 큐브들의 위치를 이 스크립트 큐브의 위치로 정해준다
         piece.transform.position = transform.position + new Vector3(cubeSize * x,
             cubeSize * y, cubeSize * z) - cubesPivot;

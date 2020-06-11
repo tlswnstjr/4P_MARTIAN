@@ -30,10 +30,8 @@ public class J_Item : MonoBehaviourPun
     [PunRPC]
     public void aaa() 
     {
-        GameObject a = Instantiate(gameObject);
-        a.SetActive(false);
         //아이템 메니저에게 내 자신의 정보를 넣어준다
-        J_ItemManager.j_Item.ClicksItem(a);
+        J_ItemManager.j_Item.ClicksItem(gameObject);
         //Destroy(gameObject);
         gameObject.SetActive(false);
     }
