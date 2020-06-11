@@ -47,7 +47,7 @@ public class J_SlotButtons : MonoBehaviourPun
     public GameObject playerUseItem;
     private void Awake()
     {
-
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -146,6 +146,7 @@ public class J_SlotButtons : MonoBehaviourPun
         //자기 인벤토리에서 실행하는 상태입니다
         if (state == State.MYINVENYROY)
         {
+            if(player == null) player = GameObject.FindGameObjectWithTag("Player");
             if (clickButton.GetComponent<J_SclectButton>().ss != a.itemMy.GetComponent<J_Item>().auount)
             {
                
@@ -154,9 +155,10 @@ public class J_SlotButtons : MonoBehaviourPun
                 //선택된 자신의 아이템 갯수와 지금 현제 뺄려는 아이템 갯수를 서로 계싼해준다 
                     J_ItemManager.j_Item.items2[a.myWhyNub].auount -=
             clickButton.GetComponent<J_SclectButton>().ss;
-                GameObject x = PhotonNetwork.Instantiate(Path.Combine(itme.type.ToString(), itme.name.Contains(itme.name).ToString()), transform.position, Quaternion.identity);
-                        //Instantiate(a.itemMy);
-                    x.SetActive(true);
+                GameObject x = PhotonNetwork.Instantiate(Path.Combine(itme.type.ToString(), itme.name.Replace("(Clone)", "")), transform.position, Quaternion.identity);
+                //Instantiate(a.itemMy);
+                //(Clone)
+                x.SetActive(true);
                     x.transform.position = player.transform.position;
                     x.GetComponent<J_Item>().auount = clickButton.GetComponent<J_SclectButton>().ss;
                 if (clickButton.GetComponent<J_SclectButton>().ss == 0)

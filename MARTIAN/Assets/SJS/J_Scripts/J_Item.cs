@@ -30,20 +30,18 @@ public class J_Item : MonoBehaviourPun
     [PunRPC]
     public void aaa()
     {
-        if (click == true)
+        if(photonView.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                print("들어옵니다");
-
-                /*GameObject a = Instantiate(gameObject.transform.parent.gameObject);
-                a.SetActive(false);*/
-                //아이템 메니저에게 내 자신의 정보를 넣어준다
-                J_ItemManager.j_Item.ClicksItem(gameObject);
-                //Destroy(gameObject);
-                gameObject.SetActive(false);
-            }
+            //아이템 메니저에게 내 자신의 정보를 넣어준다
+            J_ItemManager.j_Item.ClicksItem(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnTriggerEnter(Collider coll)

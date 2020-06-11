@@ -23,8 +23,12 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
+        if(photonView.IsMine)
+        {
+            J_GameManager.gm.view = photonView;
+
+        }
         J_Players.enabled = true;
-        print(J_Players.anim);
     }
 
     // Update is called once per frame
@@ -43,7 +47,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         {
             J_Players.Move(h, v, runSpeed);
             J_Players.Turnning();
-            
+            J_Players.PlayerInputs();
         }
         else
         {

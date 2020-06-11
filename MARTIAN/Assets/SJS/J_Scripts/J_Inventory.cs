@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
-public class J_Inventory : MonoBehaviourPun, IPunObservable
+public class J_Inventory : MonoBehaviourPun
 {
     public static J_Inventory j_Inventory;
     public GameObject iamges;
@@ -38,7 +38,7 @@ public class J_Inventory : MonoBehaviourPun, IPunObservable
             ClicksItemManagers();
             ButtonAction();
         }
-       
+
     }
    
 
@@ -71,10 +71,6 @@ public class J_Inventory : MonoBehaviourPun, IPunObservable
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        
-    }
 
     public void ccc()
     {

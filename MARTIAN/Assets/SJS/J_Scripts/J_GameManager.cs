@@ -14,13 +14,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 
 
 
-    //스타트 버튼이 있는 곳입니다
-    public Button gameStart;
-
-    //이 타겟 아래 자식으로 소환해 줄것입니다
-    public GameObject target;
-
-    public GameObject canvas;
+    public PhotonView view;
 
     public bool[] readyClick;
     public bool x;
@@ -36,7 +30,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         }
 
         // 해상도를 윈도우 모드로 960 x 640 크기로 설정한다.
-        Screen.SetResolution(960, 640
+        Screen.SetResolution(1980, 1080
             , FullScreenMode.Windowed);
     }
 
@@ -93,11 +87,47 @@ public class J_GameManager : MonoBehaviourPunCallbacks
             GameObject x =  PhotonNetwork.Instantiate(Path.Combine("Ore","Ore"), new Vector3(-10, 1, -40), Quaternion.identity);
             x.SetActive(true);
 
+           
+            
+
             //gameStart.GetComponentInChildren<Text>().text = "게임 스타트";
             // 반응형 오브젝트 프리팹을 생성한다.
             //PhotonNetwork.Instantiate("InteractiveObject", new Vector3(0, 3, 0), Quaternion.identity);
+
         }
     }
+
+    public void StoneIns()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            //photonView.RPC("aaa", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    void Masters(int a, string names, float ReincarnationSize, Vector3 tr)
+    {
+        print("확인차");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if(photonView.IsMine)
+            {
+                print("몇번일까요");
+                print("아 짜증나");
+                //photonView.RPC("ReincarnationSummons", RpcTarget.All);
+                for (int i = 0; i < a; i++)
+                {
+                    GameObject sum = PhotonNetwork.Instantiate(Path.Combine("Stone", names), tr, Quaternion.identity);
+                    //Instantiate(reincarnation);
+                    //여기가 새로 생성해주는 재료의 크기를 정해주는 변수입니다
+                    sum.transform.localScale = new Vector3(ReincarnationSize, ReincarnationSize, ReincarnationSize);
+                }
+            }
+          
+        }
+    }
+
 
     void Update()
     {

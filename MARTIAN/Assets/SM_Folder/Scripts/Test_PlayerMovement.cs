@@ -40,7 +40,7 @@ public class Test_PlayerMovement : MonoBehaviour
     private void Awake()
     {
         parnt = gameObject.transform.parent;
-        DontDestroyOnLoad(parnt);
+        //DontDestroyOnLoad(parnt);
 
         floorMask = LayerMask.GetMask("Floor");
         playerRigidbody = GetComponent<Rigidbody>();
