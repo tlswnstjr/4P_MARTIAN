@@ -20,3 +20,6 @@ MARTIAN/PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj
 MARTIAN/PhotonWebSocket.csproj
 MARTIAN/PunDemos.DemoHubEditor.csproj
 MARTIAN/PunDemos.DemoSlotcarEditor.csproj
+MARTIAN/PunDemos.DemoSlotcarEditor.csproj
+MARTIAN/PunDemos.DemoHubEditor.csproj
+

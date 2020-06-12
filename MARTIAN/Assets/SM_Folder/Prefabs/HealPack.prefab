@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7731011936322750520}
   - component: {fileID: 7731011936322750521}
   - component: {fileID: 7731011936322750526}
-  - component: {fileID: 7697119321979740608}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: HeelPack
@@ -54,25 +53,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7697119321979740608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7731011936322750527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "\uD790\uD329"
-  itemImage: {fileID: 21300000, guid: 0429e79fe07efde4ea6201cda48a89bb, type: 3}
-  auount: 1
-  my: {fileID: 0}
-  type: 2
-  click: 0
-  mytag: 0
 --- !u!1 &7731011936893252891
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,9 +66,10 @@ GameObject:
   - component: {fileID: 7731011936893252885}
   - component: {fileID: 7731011936893252890}
   - component: {fileID: 7731011936893252881}
+  - component: {fileID: 3968458216600674387}
   m_Layer: 10
   m_Name: HealPack
-  m_TagString: Untagged
+  m_TagString: HeelPack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,3 +163,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3968458216600674387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731011936893252891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\uD790\uD329"
+  itemImage: {fileID: 21300000, guid: 0429e79fe07efde4ea6201cda48a89bb, type: 3}
+  auount: 1
+  my: {fileID: 0}
+  type: 2
+  click: 0
+  mytag: 0

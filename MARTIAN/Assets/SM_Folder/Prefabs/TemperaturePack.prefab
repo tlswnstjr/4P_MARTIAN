@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2530295337184422065}
   - component: {fileID: 5302131219646526312}
   - component: {fileID: 5247474220661058752}
+  - component: {fileID: 5970085713791040503}
   m_Layer: 10
   m_Name: TemperaturePack
-  m_TagString: Untagged
+  m_TagString: BodyTemperaturePack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +110,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5970085713791040503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170003492177434285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\uD56B\uD329"
+  itemImage: {fileID: 21300000, guid: 3df5f44b9c46ee9468f1e5722d30575f, type: 3}
+  auount: 1
+  my: {fileID: 0}
+  type: 1
+  click: 0
+  mytag: 0
 --- !u!1 &3387056550137964684
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +140,6 @@ GameObject:
   - component: {fileID: 7800869758109114841}
   - component: {fileID: 7690477754644185565}
   - component: {fileID: 8895089274216337412}
-  - component: {fileID: 3663412489976103397}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: BodyTemperaturePack
@@ -163,16 +182,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3663412489976103397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3387056550137964684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a4814c1c631c840b2701d7f12da653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mytag: 0
