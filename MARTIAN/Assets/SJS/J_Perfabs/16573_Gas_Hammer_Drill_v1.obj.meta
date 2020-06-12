@@ -11,7 +11,12 @@ ModelImporter:
     2300000: Drill
     3300000: Drill
     4300000: Drill
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrillMat
+    second: {fileID: 2100000, guid: 1ec84e382e588be4eb1803082a2f5226, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -561,13 +561,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037372325}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.58, z: 0.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.70710677, y: 0.000012248756, z: 0.000012248756, w: 0.70710677}
+  m_LocalPosition: {x: -0.043, y: -0, z: 0.032}
+  m_LocalScale: {x: 0.6666666, y: 0.6666667, z: 0.6666667}
   m_Children: []
-  m_Father: {fileID: 2434093865689501837}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 5720064829562686129}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 90.00201}
 --- !u!1 &1309781196453152271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1118,6 @@ Transform:
   - {fileID: 4785530801782692112}
   - {fileID: 8527445776238823738}
   - {fileID: 329524349}
-  - {fileID: 2037372326}
   - {fileID: 5720064829562686313}
   m_Father: {fileID: 8121345224849574597}
   m_RootOrder: 0
@@ -1225,7 +1224,13 @@ MonoBehaviour:
   radishFactory: {fileID: 3734714069461123257, guid: f3b6719303765c74e9231274e7bbbae2,
     type: 3}
   isInven: 0
+  doingAnim: 0
   can_I_Drilling: 0
+  cl: {fileID: 0}
+  im: {fileID: 0}
+  ph: {fileID: 0}
+  ol: {fileID: 0}
+  jacob: {fileID: 0}
 --- !u!114 &8527445775494924781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2753,7 +2758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 773e65368c3e43c4bad1e6e4fac5f72a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 773e65368c3e43c4bad1e6e4fac5f72a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2788,6 +2793,12 @@ PrefabInstance:
 --- !u!4 &5720064829562686313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400134, guid: 773e65368c3e43c4bad1e6e4fac5f72a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5720064829562818671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5720064829562686129 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400094, guid: 773e65368c3e43c4bad1e6e4fac5f72a,
     type: 3}
   m_PrefabInstance: {fileID: 5720064829562818671}
   m_PrefabAsset: {fileID: 0}
