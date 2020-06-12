@@ -39,6 +39,7 @@ public class DetectObject : J_Item
         {
             if (gameObject.tag == all_mytag[i].ToString())
             {
+                Debug.Log("aaaaaaaaaaaaaaaaaaaa");
                 mytag = all_mytag[i];
             }
         }
@@ -56,7 +57,7 @@ public class DetectObject : J_Item
                     {
                         //나를 지우고 아이템 매니져에게 힐팩카운트를 1 한다.
                         ItemManager.instance.healPackCount += 1;
-                        Destroy(parent);
+                        Destroy(gameObject);
                     }
                 }
                 break;
@@ -68,7 +69,7 @@ public class DetectObject : J_Item
                     {
                         //나를 지우고 아이템 매니져에게 힐팩카운트를 1 한다.
                         ItemManager.instance.bodyTemperaturePackCount += 1;
-                        Destroy(parent);
+                        Destroy(gameObject);
                     }
                 }
                 break;
@@ -80,7 +81,7 @@ public class DetectObject : J_Item
                     {
                         //나를 지우고 아이템 매니져에게 힐팩카운트를 1 한다.
                         ItemManager.instance.oxygenPackCount += 1;
-                        Destroy(parent);
+                        Destroy(gameObject);
                     }
                 }
                 break;
@@ -109,6 +110,7 @@ public class DetectObject : J_Item
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("sssssssssss");
             isPlayer = true;
         }
 

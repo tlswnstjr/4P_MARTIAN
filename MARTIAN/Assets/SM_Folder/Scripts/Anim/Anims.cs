@@ -13,6 +13,9 @@ public class Anims : MonoBehaviour
     public GameObject rayStart;
     public float rayDis;
     public float angle;
+
+    public J_Item item;
+
     RaycastHit rayHit;
 
     MeshRenderer mr;
@@ -36,22 +39,62 @@ public class Anims : MonoBehaviour
     //감자심는 함수
     void Plant_Potato() => PlantCrops(potatoFactory, ref im.potatoCount);
     //감자먹을때
-    void Eat_Potato() => cl.h_CurrentHunger += 5f;
+    void Eat_Potato()
+    {
+        cl.h_CurrentHunger += 5f;
+        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        {
+            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+            {
+                J_ItemManager.j_Item.items2[i].auount--;
+            }
+        }
+    }
 
     //당근심는 함수
     void Plant_Carrot() { 
     PlantCrops(carrotFactory, ref im.carrotCount);
     }
     //당근 먹을때
-    void Eat_Carrot() => cl.h_CurrentHunger += 7f;
+    void Eat_Carrot()
+    {
+        cl.h_CurrentHunger += 7f;
+        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        {
+            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+            {
+                J_ItemManager.j_Item.items2[i].auount--;
+            }
+        }
+    }
 
     //순무
     void Plant_Turnip() => PlantCrops(turnipFactory, ref im.carrotCount);
     //순무 먹을때
-    void Eat_Turnip() => cl.h_CurrentHunger += 3f;
+    void Eat_Turnip()
+    {
+        cl.h_CurrentHunger += 3f;
+        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        {
+            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+            {
+                J_ItemManager.j_Item.items2[i].auount--;
+            }
+        }
+    }
 
     //물 마실때
-    void Drink_Water() => cl.t_CurrentThirsty += 10f;
+    void Drink_Water()
+    {
+        cl.t_CurrentThirsty += 10f;
+        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        {
+            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+            {
+                J_ItemManager.j_Item.items2[i].auount--;
+            }
+        }
+    }
 
     //힐팩 쓸때
     void Healling() => ph.m_CurrentHealth += 50f;
@@ -89,19 +132,20 @@ public class Anims : MonoBehaviour
     }
     
     //물 뿌릴때
-    public void SprinkleWater(ref int waterCount)
+    public void SprinkleWater()
     {
         
         Ray ray = new Ray(rayStart.transform.position, rayStart.transform.forward * rayDis + rayStart.transform.up * angle);
         Debug.DrawRay(rayStart.transform.position, rayStart.transform.forward * rayDis + rayStart.transform.up * angle, Color.blue);
 
-        if (Physics.Raycast(ray, out rayHit, rayDis, (1 << 12)) && waterCount > 0)
+        if (Physics.Raycast(ray, out rayHit, rayDis, (1 << 12)) && ItemManager.instance.waterCount > 0)
         {
             MeshRenderer mr = rayHit.transform.gameObject.GetComponent<MeshRenderer>();
             mr.material.color = new Color(0.3867925f, 0.1446878f, 0.1112941f);
 
             //물 카운트를 줄인다.
-            waterCount--;
+            ItemManager.instance.waterCount--;
+            
             //흙의 상태를 젖음으로 바꿔준다
             SoilCondition sc = rayHit.transform.gameObject.GetComponent<SoilCondition>();
             sc.state = SoilCondition.AmIWet.Yes;

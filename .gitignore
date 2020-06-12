@@ -7,16 +7,4 @@ MARTIAN/Assembly-CSharp
 MARTIAN/UpgradeLog.htm
 
 MARTIAN/MARTIAN.sln
-MARTIAN/Assembly-CSharp.csproj
-MARTIAN/Assembly-CSharp-Editor.csproj
-MARTIAN/PhotonChat.csproj
-MARTIAN/PhotonRealtime.csproj
-MARTIAN/PhotonUnityNetworking.csproj
-MARTIAN/PhotonUnityNetworking.Demos.csproj
-MARTIAN/PhotonUnityNetworking.Editor.csproj
-MARTIAN/PhotonUnityNetworking.Utilities.csproj
-MARTIAN/PhotonUnityNetworking.Utilities.Culling.Editor.csproj
-MARTIAN/PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj
-MARTIAN/PhotonWebSocket.csproj
-MARTIAN/PunDemos.DemoHubEditor.csproj
-MARTIAN/PunDemos.DemoSlotcarEditor.csproj
+MARTIAN/*.csproj
