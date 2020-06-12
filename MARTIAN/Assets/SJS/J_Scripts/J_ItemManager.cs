@@ -7,21 +7,29 @@ public class J_ItemManager : MonoBehaviourPun
 {
    public static J_ItemManager j_Item;
 
-    public J_Item[] items2 = new J_Item[21];
+    //2차원 배열입니다 
+    //앞의 숫자는 플레이어 수 
+    // 뒤의 자리수는 아이템 보관가능수입니다
+    public J_Item[] items2 = new J_Item[ 21];
     //아이템의 정보를 관리해 줄 변수배열입니다
     //public GameObject[] items;
 
     public GameObject inv;
     private void Awake()
-    {        
-        j_Item = this;
+    {
+
+        inv = J_Inventory.j_Inventory.gameObject;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        inv = J_Inventory.j_Inventory.gameObject;
+        if (photonView.IsMine)
+        {
+            j_Item = this;
+        }
+        
     }
 
     // Update is called once per frame

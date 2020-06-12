@@ -33,11 +33,19 @@ public class J_Inventory : MonoBehaviourPun
     void Update()
     {
         //현제 뷰가 자기 자신일 때만 실행합니다 그외에는 무시합니다
-        if(photonView.IsMine)
+        //if(gameObject.activeSelf == true)
+        //{
+        //    if (photonView.IsMine)
+        //    {
+               
+        //    }
+        //}
+        if(gameObject.activeSelf == true)
         {
             ClicksItemManagers();
             ButtonAction();
         }
+
 
     }
    

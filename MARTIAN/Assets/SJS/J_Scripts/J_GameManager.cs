@@ -30,7 +30,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         }
 
         // 해상도를 윈도우 모드로 960 x 640 크기로 설정한다.
-        Screen.SetResolution(1980, 1080
+        Screen.SetResolution(1080, 640
             , FullScreenMode.Windowed);
     }
 

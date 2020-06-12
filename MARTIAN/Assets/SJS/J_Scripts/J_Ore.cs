@@ -19,6 +19,7 @@ public class J_Ore : J_Item
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 //aaa();
+                if(photonView.IsMine)
                 photonView.RPC("aaa", Photon.Pun.RpcTarget.AllBuffered);
                 //J_GameManager.gm.StoneIns();
             }
