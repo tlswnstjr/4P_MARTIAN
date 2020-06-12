@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 1180057874746379268}
   m_Layer: 11
   m_Name: GrabPos
-  m_TagString: Untagged
+  m_TagString: PlayerUseItemPos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1872,6 +1872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5127240646583933550}
   - component: {fileID: 5127240646583933551}
+  - component: {fileID: 848033653}
   m_Layer: 0
   m_Name: InventroyManager
   m_TagString: Untagged
@@ -1906,7 +1907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items2:
-  - {fileID: 0}
+  - {fileID: 4151452791609635612, guid: 971d4db7bb235cd4e82eb4d01f9ca9d0, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1928,6 +1929,28 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inv: {fileID: 0}
+--- !u!114 &848033653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5127240646583933549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5399160608057744096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,9 +3118,9 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 438f7b8459bcda04abfc525c90c3bd06, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773e65368c3e43c4bad1e6e4fac5f72a, type: 3}
---- !u!4 &6845938498370589387 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400134, guid: 773e65368c3e43c4bad1e6e4fac5f72a,
+--- !u!1 &6845938498370490091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100134, guid: 773e65368c3e43c4bad1e6e4fac5f72a,
     type: 3}
   m_PrefabInstance: {fileID: 6845938498370456013}
   m_PrefabAsset: {fileID: 0}
@@ -3107,9 +3130,9 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6845938498370456013}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6845938498370490091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100134, guid: 773e65368c3e43c4bad1e6e4fac5f72a,
+--- !u!4 &6845938498370589387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400134, guid: 773e65368c3e43c4bad1e6e4fac5f72a,
     type: 3}
   m_PrefabInstance: {fileID: 6845938498370456013}
   m_PrefabAsset: {fileID: 0}

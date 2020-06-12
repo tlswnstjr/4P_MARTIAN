@@ -8,7 +8,7 @@ using System.IO;
 public class J_SlotButtons : MonoBehaviourPun
 {
     //이 스크립트는 슬롯을 클릭하면 ui가 나타나는 스크립트입니다
-    //나타나는 ui들은 여러가지 선택지를 고를수 있게 합니다 
+    //나타나는 ui들은 여러가지 선택지를 고를수 있게 합니다
 
     //지금 무슨 슬롯이 선택 되었는지 확인하기 위한 게임오브젝트입니다
 
@@ -43,11 +43,11 @@ public class J_SlotButtons : MonoBehaviourPun
     public GameObject player;
 
 
-    //플레이어 아이템 사용시 나타날 곳을 받아 옵니다 
+    //플레이어 아이템 사용시 나타날 곳을 받아 옵니다
     public GameObject playerUseItem;
     private void Awake()
     {
-        
+
     }
     // Start is called before the first frame update
     void Start()
@@ -78,7 +78,7 @@ public class J_SlotButtons : MonoBehaviourPun
         }
     }
 
-    //단지 자기 자신의 인벤토리를 열었다면 
+    //단지 자기 자신의 인벤토리를 열었다면
     void Myinv()
     {
         Contents("버리기", "취소", "사용하기");
@@ -141,7 +141,7 @@ public class J_SlotButtons : MonoBehaviourPun
 
     void Actions2()
     {
-        #region 내 자신 인벤토리 
+        #region 내 자신 인벤토리
         J_Slots a = _Slots.GetComponent<J_Slots>();
         //자기 인벤토리에서 실행하는 상태입니다
         if (state == State.MYINVENYROY)
@@ -149,10 +149,10 @@ public class J_SlotButtons : MonoBehaviourPun
             if(player == null) player = GameObject.FindGameObjectWithTag("Player");
             if (clickButton.GetComponent<J_SclectButton>().ss != a.itemMy.GetComponent<J_Item>().auount)
             {
-               
-                //우선 아이템의 스크립트를 할당 받는다 
+
+                //우선 아이템의 스크립트를 할당 받는다
                     J_Item itme = a.itemMy.GetComponent<J_Item>();
-                //선택된 자신의 아이템 갯수와 지금 현제 뺄려는 아이템 갯수를 서로 계싼해준다 
+                //선택된 자신의 아이템 갯수와 지금 현제 뺄려는 아이템 갯수를 서로 계싼해준다
                     J_ItemManager.j_Item.items2[a.myWhyNub].auount -=
             clickButton.GetComponent<J_SclectButton>().ss;
                 GameObject x = PhotonNetwork.Instantiate(Path.Combine(itme.type.ToString(), itme.name.Replace("(Clone)", "")), transform.position, Quaternion.identity);
@@ -171,7 +171,7 @@ public class J_SlotButtons : MonoBehaviourPun
             else if (J_ItemManager.j_Item.items2[a.myWhyNub].auount ==
                 clickButton.GetComponent<J_SclectButton>().ss)
             {
-                //아이템이 없기 때문에 이미지도 비활성화 해줍니다 
+                //아이템이 없기 때문에 이미지도 비활성화 해줍니다
 
                 J_Inventory.j_Inventory.items[a.myWhyNub].GetComponent<J_Slots>().mainIamge.SetActive(false);
 
@@ -187,7 +187,7 @@ public class J_SlotButtons : MonoBehaviourPun
         }
         #endregion
         #region
-        /* for (int i = 0; i < 
+        /* for (int i = 0; i <
                  J_ItemManager.j_Item.items2.Length; i++)
              {
                  if(J_ItemManager.j_Item.items2[i].itemName == a.name)
@@ -210,7 +210,7 @@ public class J_SlotButtons : MonoBehaviourPun
                      //만약 슬롯의 아이템 갯수가 0이면 그 자리를 비워줘야합니다
                      if (J_ItemManager.j_Item.items2[i].auount ==0)
                      {
-                         //아이템이 없기 때문에 이미지도 비활성화 해줍니다 
+                         //아이템이 없기 때문에 이미지도 비활성화 해줍니다
 
                          J_Inventory.j_Inventory.items[i].GetComponent<J_Slots>().mainIamge.SetActive(false);
 
@@ -232,14 +232,14 @@ public class J_SlotButtons : MonoBehaviourPun
         #endregion
 
 
-        #region 창고에서 인벤으로 
+        #region 창고에서 인벤으로
         else if (state == State.LOCKER)
         {
             J_Slots slotss = _Slots.GetComponent<J_Slots>();
             for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
             {
 
-                //만약에 같은 이름이 있다면 거기에 넣어준다 
+                //만약에 같은 이름이 있다면 거기에 넣어준다
                 if (J_ItemManager.j_Item.items2[i] != null && J_ItemManager.j_Item.items2[i].itemName == _Slots.GetComponent<J_Slots>().names)
                 {
                     if(J_ItemManager.j_Item.items2[i].type == J_Item.ItemType.WEAPON)
@@ -260,14 +260,14 @@ public class J_SlotButtons : MonoBehaviourPun
                             .GetComponent<J_Item>().itemName)
                         {
                             GameObject item = Instantiate(infoItem.GetComponent<J_ItemInformationManager>().allItems[j]);
-                            item.transform.position = player.transform.position; 
+                            item.transform.position = player.transform.position;
                             J_Item j_Item = item.GetComponent<J_Item>();
                             J_ItemManager.j_Item.items2[i] = j_Item;
                             J_ItemManager.j_Item.items2[i].auount = clickButton.GetComponent<J_SclectButton>().ss;
                             J_ItemManager.j_Item.items2[i].itemImage = j_Item.itemImage;
                             J_ItemManager.j_Item.items2[i].my = item;
                             item.SetActive(false);
-                            break; 
+                            break;
                         }
                     }
                     break;
@@ -343,40 +343,71 @@ public class J_SlotButtons : MonoBehaviourPun
                 }
                 break;
             }
-           
+
 
         }
         #endregion
 
     }
 
-
-    //이 함수는 인벤토리와 동일하게 사용하는 함수입니다 
-    // 그러면 인덱스도 인벤토리 및 아이템 메니저랑 동일합니다 
-    //그러면 그 번호에 있는 아이를 가지고 오면 됩니다 
+    GameObject x;
+    //이 함수는 인벤토리와 동일하게 사용하는 함수입니다
+    // 그러면 인덱스도 인벤토리 및 아이템 메니저랑 동일합니다
+    //그러면 그 번호에 있는 아이를 가지고 오면 됩니다
     void Actions3()
     {
         playerUseItem = GameObject.FindGameObjectWithTag("PlayerUseItemPos");
         J_Slots a = _Slots.GetComponent<J_Slots>();
         J_Item j_Item = J_ItemManager.j_Item.items2[a.myWhyNub];
-        j_Item.my.SetActive(true);
-        j_Item.my.GetComponent<Rigidbody>().useGravity = false;
-        j_Item.my.GetComponent<Rigidbody>().isKinematic = true;
-        if (j_Item.my.GetComponent<MeshCollider>() != null)
+
+        //시작 할 때 지급되는 템들을 위한 명령어 입니다
+        if(j_Item.my == null)
         {
-            j_Item.my.GetComponent<MeshCollider>().isTrigger = true;
+            if (j_Item.type == J_Item.ItemType.WEAPON)
+            {
+                for (int i = 0; i < J_ItemInformationManager.alls.comelpetes.Length; i++)
+                {
+                    if (J_ItemInformationManager.alls.comelpetes[i].GetComponent<J_Item>().itemName == j_Item.itemName)
+                    {
+                        x = PhotonNetwork.Instantiate(Path.Combine(j_Item.type.ToString(), j_Item.name.Replace("(Clone)", "")),
+                            transform.position, Quaternion.identity);
+                        x.SetActive(true);
+                    }
+                }
+
+            }
+            if(x.GetComponent<Rigidbody>() == null)
+            {
+                x.AddComponent<Rigidbody>();
+            }
+            x.GetComponent<Rigidbody>().useGravity = false;
+            x.GetComponent<Rigidbody>().isKinematic = true;
+            if (x.GetComponent<MeshCollider>() != null)
+            {
+                x.GetComponent<MeshCollider>().isTrigger = true;
+            }
+            x.transform.position = playerUseItem.transform.position;
+            x.transform.rotation = playerUseItem.transform.rotation;
+            x.gameObject.transform.parent = playerUseItem.transform;
+
+            J_Inventory.j_Inventory.gameObject.SetActive(false);
         }
-        j_Item.my.transform.position = playerUseItem.transform.position;
-        j_Item.my.transform.rotation = playerUseItem.transform.rotation;
-        j_Item.my.gameObject.transform.parent = playerUseItem.transform;
-        if(photonView.IsMine)
+        else
         {
-           Anims anims = GameObject.FindGameObjectWithTag("ANIMS").GetComponent<Anims>();
-            anims.item = j_Item;
+            j_Item.my.SetActive(true);
+            j_Item.my.GetComponent<Rigidbody>().useGravity = false;
+            j_Item.my.GetComponent<Rigidbody>().isKinematic = true;
+            if (j_Item.my.GetComponent<MeshCollider>() != null)
+            {
+                j_Item.my.GetComponent<MeshCollider>().isTrigger = true;
+            }
+            j_Item.my.transform.position = playerUseItem.transform.position;
+            j_Item.my.transform.rotation = playerUseItem.transform.rotation;
+            j_Item.my.gameObject.transform.parent = playerUseItem.transform;
+
+            J_Inventory.j_Inventory.gameObject.SetActive(false);
         }
 
-
-        J_Inventory.j_Inventory.gameObject.SetActive(false);
     }
 }
 
@@ -384,7 +415,7 @@ public class J_SlotButtons : MonoBehaviourPun
 
 
 /* if(J_LockerInvs.j_LockerInvs.items[slotss.myWhyNub] != null)
-                {                   
+                {
                     //int.Parse(gameObject.GetComponent<J_Slots>().text.text)
                     //J_LockerInvs.j_LockerInvs.items[i] = gameObject.GetComponent<J_Slots>();
                    J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().mainIamge.SetActive(true);
@@ -401,12 +432,10 @@ public class J_SlotButtons : MonoBehaviourPun
                         J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().MySeilf(
                             gameObject.GetComponent<J_Slots>().name,
                       gameObject.GetComponent<J_Slots>().Image.sprite,
-                      clickButton.GetComponent<J_SclectButton>().ss + 
+                      clickButton.GetComponent<J_SclectButton>().ss +
                       int.Parse(J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().text.text));
                     }
                     else
                     {
                         continue;
                     }*/
-    
-    

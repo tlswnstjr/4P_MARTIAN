@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 #region -----------======= Tag 를 따지는 Enum ========------
 //외부에서 사용할 Enum
@@ -31,7 +32,7 @@ public enum INside
 }
 #endregion
 
-public class Check_In_Outside : MonoBehaviour
+public class Check_In_Outside : MonoBehaviourPun
 {
     #region -------===== IN/OUT 을 따지는 Enum ======-------
     public enum WhereIAm
@@ -245,10 +246,11 @@ public class Check_In_Outside : MonoBehaviour
                             {
                                 anim.SetBool("Drilling", false);
 
-                                jacob.Ore();
+                                PhotonView pr = jacob.gameObject.GetComponent<PhotonView>();
+                                pr.RPC("explode", RpcTarget.All);
                                 currntT = 0;
                                 a = false;
-
+                                can_I_Drilling = false;
                             }
                         }
                     }

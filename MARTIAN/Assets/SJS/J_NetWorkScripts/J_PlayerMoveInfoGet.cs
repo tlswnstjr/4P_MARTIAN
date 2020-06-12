@@ -11,12 +11,15 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
 
     float animSpeed;
 
-    Vector3 rot;
+    Quaternion rot;
 
     public GameObject cam;
     public float runSpeed;
     public Animator animator;
     float lerpSpeed = 50.0f;
+
+    //만약 자기 클라이언트가 아니면 아이템 메니져를 삭제한다 
+
 
     public GameObject itemManager;
     //다른 플레이어의 이동을 동기화 해줄 변수
@@ -28,6 +31,10 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         {
             J_GameManager.gm.view = photonView;
 
+        }
+        else
+        {
+            Destroy(itemManager);
         }
         J_Players.enabled = true;
     }
@@ -52,10 +59,10 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         }
         else
         {
-            itemManager.SetActive(false);
+            
             cam.SetActive(false);
             transform.position = Vector3.Lerp(transform.position, otherPos, Time.deltaTime * lerpSpeed);
-            // transform.rotation = Quaternion.Euler(rot);
+            transform.rotation = rot;
             J_Players.anim.SetFloat("Speed", animSpeed);
         }
     }
@@ -67,13 +74,13 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         if(stream.IsWriting)
         {
             stream.SendNext(J_Players.myTr.position);
-            //stream.SendNext(test_PlayerMovement.myTr.rotation);
+            stream.SendNext(J_Players.myTr.rotation);
             stream.SendNext(J_Players.anim.GetFloat("Speed"));
         }
         else
         {
             otherPos = (Vector3)stream.ReceiveNext();
-            //rot = (Vector3)stream.ReceiveNext();
+            rot = (Quaternion)stream.ReceiveNext();
             animSpeed = (float)stream.ReceiveNext();
         }
     }
