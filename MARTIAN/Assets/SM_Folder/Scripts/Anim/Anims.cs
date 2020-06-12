@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Anims : MonoBehaviour
 {
-    CalorieLevle cl;
     PlayerHP ph;
     ItemManager im;
     OxygenLevle ol;
@@ -29,7 +28,6 @@ public class Anims : MonoBehaviour
 
     private void Start()
     {
-        cl = gameObject.GetComponentInParent<CalorieLevle>();
         ph = gameObject.GetComponentInParent<PlayerHP>();
         im = gameObject.GetComponentInParent<ItemManager>();
         ol = gameObject.GetComponentInParent<OxygenLevle>();
@@ -41,30 +39,41 @@ public class Anims : MonoBehaviour
     //감자먹을때
     void Eat_Potato()
     {
-        cl.h_CurrentHunger += 5f;
-        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        ph.h_CurrentHunger += 5f;
+        //for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        //{
+        //    if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+        //    {
+        //        J_ItemManager.j_Item.items2[i].auount--;
+        //    }
+        //}
+        im.potatoCount--;
+        if (im.potatoCount < 0)
         {
-            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
-            {
-                J_ItemManager.j_Item.items2[i].auount--;
-            }
+            Destroy(cio.childtr.gameObject);
         }
     }
 
     //당근심는 함수
-    void Plant_Carrot() { 
-    PlantCrops(carrotFactory, ref im.carrotCount);
+    void Plant_Carrot()
+    {
+        PlantCrops(carrotFactory, ref im.carrotCount);
     }
     //당근 먹을때
     void Eat_Carrot()
     {
-        cl.h_CurrentHunger += 7f;
-        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        ph.h_CurrentHunger += 7f;
+        //for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        //{
+        //    if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+        //    {
+        //        J_ItemManager.j_Item.items2[i].auount--;
+        //    }
+        //}
+        im.carrotCount--;
+        if (im.carrotCount < 0)
         {
-            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
-            {
-                J_ItemManager.j_Item.items2[i].auount--;
-            }
+            Destroy(cio.childtr.gameObject);
         }
     }
 
@@ -73,31 +82,57 @@ public class Anims : MonoBehaviour
     //순무 먹을때
     void Eat_Turnip()
     {
-        cl.h_CurrentHunger += 3f;
-        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        ph.h_CurrentHunger += 3f;
+        //for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        //{
+        //    if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+        //    {
+        //        J_ItemManager.j_Item.items2[i].auount--;
+        //    }
+        //}
+        im.radishCount--;
+        if (im.radishCount < 0)
         {
-            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
-            {
-                J_ItemManager.j_Item.items2[i].auount--;
-            }
+            Destroy(cio.childtr.gameObject);
         }
     }
 
     //물 마실때
     void Drink_Water()
     {
-        cl.t_CurrentThirsty += 10f;
-        for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        ph.t_CurrentThirsty += 10f;
+        //for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        //{
+        //    if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+        //    {
+        //        J_ItemManager.j_Item.items2[i].auount--;
+        //    }
+        //}
+        im.waterCount--;
+        if (im.waterCount < 0)
         {
-            if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
-            {
-                J_ItemManager.j_Item.items2[i].auount--;
-            }
+            Destroy(cio.childtr.gameObject);
         }
     }
 
     //힐팩 쓸때
-    void Healling() => ph.m_CurrentHealth += 50f;
+    void Healling()
+    {
+        ph.m_CurrentHealth += 50f;
+        //for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
+        //{
+        //    if (item.itemName == J_ItemManager.j_Item.items2[i].itemName)
+        //    {
+        //        J_ItemManager.j_Item.items2[i].auount--;
+        //    }
+        //}
+        //일단 임시로 쓰고있는 ItemManager의 카운트도 줄이자.
+        im.healPackCount--;
+        if (im.healPackCount < 0)
+        {
+            Destroy(cio.childtr.gameObject);
+        }
+    }
 
     //산소팩 쓸때
     void Oxygen() => ol.m_CurrentOxygen = ol.m_StartOxygen;
@@ -130,11 +165,11 @@ public class Anims : MonoBehaviour
             if (mr.enabled == false) mr.enabled = true;
         }
     }
-    
+
     //물 뿌릴때
     public void SprinkleWater()
     {
-        
+
         Ray ray = new Ray(rayStart.transform.position, rayStart.transform.forward * rayDis + rayStart.transform.up * angle);
         Debug.DrawRay(rayStart.transform.position, rayStart.transform.forward * rayDis + rayStart.transform.up * angle, Color.blue);
 
@@ -145,7 +180,7 @@ public class Anims : MonoBehaviour
 
             //물 카운트를 줄인다.
             ItemManager.instance.waterCount--;
-            
+
             //흙의 상태를 젖음으로 바꿔준다
             SoilCondition sc = rayHit.transform.gameObject.GetComponent<SoilCondition>();
             sc.state = SoilCondition.AmIWet.Yes;

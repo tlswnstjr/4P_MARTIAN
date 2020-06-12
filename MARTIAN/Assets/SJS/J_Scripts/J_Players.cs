@@ -58,35 +58,36 @@ public class J_Players : MonoBehaviourPun
     private void Start()
     {
 
-        inv = J_Inventory.j_Inventory.gameObject;
-        iamge = J_Inventory.j_Inventory.iamges;
+        //inv = J_Inventory.j_Inventory.gameObject;
+        //iamge = J_Inventory.j_Inventory.iamges;
         inv.SetActive(false);
     }
     private void FixedUpdate()
     {
-        //inv.activeSelf ||
-        if(view.IsMine)
+        PlayerInputs();
+        //인벤토리가 켜지면 바로 탈출하여 아래 코드를 막는다
+        //또 한 툴을 열었을때도 아래 코드를 실행하는 것을 막아 줘야한다
+        if (inv.activeSelf || myMoveban || cio.doingAnim)
         {
-            PlayerInputs();
-            //인벤토리가 켜지면 바로 탈출하여 아래 코드를 막는다
-            //또 한 툴을 열었을때도 아래 코드를 실행하는 것을 막아 줘야한다
-            if (inv.activeSelf || myMoveban || cio.doingAnim)
-            {
-                return;
-            }
+            return;
+        }
 
 
-            if (iamge.activeSelf == true)
-            {
-                //아이템설정 창이 열려있으면 닫아준다 
-                iamge.SetActive(false);
-            }
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
+        if (iamge.activeSelf == true)
+        {
+            //아이템설정 창이 열려있으면 닫아준다 
+            iamge.SetActive(false);
+        }
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-            // Move(h, v, 7);
-            //Turnning();
-            TurnONOFF();
+         Move(h, v, 7);
+        Turnning();
+        TurnONOFF();
+        //inv.activeSelf ||
+        if (view.IsMine)
+        {
+          
         }
       
     }

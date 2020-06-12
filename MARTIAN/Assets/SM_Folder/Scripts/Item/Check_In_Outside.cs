@@ -47,7 +47,7 @@ public class Check_In_Outside : MonoBehaviourPun
     public bool isChecked;
 
     //차일드를 저장할 변수
-    Transform childtr;
+    public Transform childtr;
     #endregion
 
     //=======================================
@@ -80,7 +80,6 @@ public class Check_In_Outside : MonoBehaviourPun
     public bool can_I_Drilling = false;
 
     //외부 스크립트를 저장할 변수
-    public CalorieLevle cl;
     public ItemManager im;
     public PlayerHP ph;
     public OxygenLevle ol;
@@ -106,19 +105,20 @@ public class Check_In_Outside : MonoBehaviourPun
         in_allState[4] = INside.HeelPack;
 
 
-        cl = gameObject.GetComponent<CalorieLevle>();
         im = gameObject.GetComponent<ItemManager>();
         ph = gameObject.GetComponent<PlayerHP>();
         ol = gameObject.GetComponent<OxygenLevle>();
         anim = GetComponentInChildren<Animator>();
+
+        state_I_AM_IN = INside.INsideEnd;
+        state_I_AM_OUT = OUTside.OUTsideEnd;
     }
 
     private void OnEnable()
     {
-        if (SceneManager.GetActiveScene().name == "Test_OUTSIDE")
+        if (SceneManager.GetActiveScene().name == "SM_Map")
         {
             state_INOUT = WhereIAm.OUTSIDE;
-
         }
         if (SceneManager.GetActiveScene().name == "Test_INSIDE")
         {
@@ -129,11 +129,6 @@ public class Check_In_Outside : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-
-        {
-            print(gameObject.name);
-        }
         //안과 밖에따라서 사용할 Enum을 분류해줄 함수
         Switch_INOUT();
         if (nope)
@@ -147,6 +142,15 @@ public class Check_In_Outside : MonoBehaviourPun
             Switch_INSIDE();
 
         }
+        //if (photonView.IsMine)
+        //{
+        if (hand.childCount > 0 && Input.GetKeyDown(KeyCode.O))
+        {
+            Destroy(childtr.gameObject);
+            isChecked = false;
+            anim.SetTrigger("Tuck tool");
+        }
+        //}
     }
 
     bool nope = false;
@@ -388,6 +392,7 @@ public class Check_In_Outside : MonoBehaviourPun
                 //E버튼을 누르면 ItemManger의 힐팩 카운트가 0보다 클때만 피를 회복하겠다.
                 if (Input.GetKeyDown(KeyCode.E) && ph.m_CurrentHealth < ph.m_StartingHealth && ItemManager.instance.healPackCount > 0)
                 {
+                    Debug.Log("111111111111111111111");
                     anim.SetTrigger("Use_HealPack");
                     doingAnim = true;
                 }

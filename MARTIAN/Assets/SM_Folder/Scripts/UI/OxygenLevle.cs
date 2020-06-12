@@ -43,7 +43,7 @@ public class OxygenLevle : MonoBehaviour
 
         ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHP>();
 
-        SetOxygenUI();
+        Invoke("SetOxygenUI", 1); 
     }
 
     private void FixedUpdate()

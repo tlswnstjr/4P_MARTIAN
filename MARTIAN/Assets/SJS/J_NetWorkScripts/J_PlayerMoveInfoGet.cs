@@ -27,15 +27,16 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        if(photonView.IsMine)
+        
+        if (photonView.IsMine)
         {
             J_GameManager.gm.view = photonView;
 
         }
-        else
-        {
-            Destroy(itemManager);
-        }
+        //else
+        //{
+        //    Destroy(itemManager);
+        //}
         J_Players.enabled = true;
     }
 
@@ -51,20 +52,20 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     //나 자신인지 아니인지 확인하기 위한 함수입니다
     public void IsMyAndYous()
     {
-        if(photonView.IsMine)
-        {
+        //if(photonView.IsMine)
+        //{
             J_Players.Move(h, v, runSpeed);
             J_Players.Turnning();
             J_Players.PlayerInputs();
-        }
-        else
-        {
+        //}
+        //else
+        //{
             
-            cam.SetActive(false);
-            transform.position = Vector3.Lerp(transform.position, otherPos, Time.deltaTime * lerpSpeed);
-            transform.rotation = rot;
-            J_Players.anim.SetFloat("Speed", animSpeed);
-        }
+        //    //cam.SetActive(false);
+        //    transform.position = Vector3.Lerp(transform.position, otherPos, Time.deltaTime * lerpSpeed);
+        //    transform.rotation = rot;
+        //    J_Players.anim.SetFloat("Speed", animSpeed);
+        //}
     }
 
     //서버에 값을 올려줍니다

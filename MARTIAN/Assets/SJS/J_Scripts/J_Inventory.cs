@@ -60,7 +60,6 @@ public class J_Inventory : MonoBehaviourPun
                 items[i].GetComponent<J_Slots>().MySeilf(null, null, 0);
             }
         }
-        
     }
 
     void ButtonAction()
@@ -74,7 +73,6 @@ public class J_Inventory : MonoBehaviourPun
             else
             {
                 items[i].GetComponent<Button>().interactable = false;
-
             }
         }
     }

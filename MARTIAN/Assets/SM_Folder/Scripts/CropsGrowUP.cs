@@ -53,16 +53,16 @@ public class CropsGrowUP : MonoBehaviour
         }
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.gameObject.tag == "Player")
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.C))
-    //        {
-    //            SpawnCrops(cropFactory);
-    //        }
-    //    }
-    //}
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                SpawnCrops(cropFactory);
+            }
+        }
+    }
 
     public void SpawnCrops(GameObject cropFactory)
     {
