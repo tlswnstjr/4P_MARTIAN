@@ -367,11 +367,10 @@ public class J_SlotButtons : MonoBehaviourPun
         j_Item.my.transform.position = playerUseItem.transform.position;
         j_Item.my.transform.rotation = playerUseItem.transform.rotation;
         j_Item.my.gameObject.transform.parent = playerUseItem.transform;
-        if(photonView.IsMine)
-        {
-           Anims anims = GameObject.FindGameObjectWithTag("ANIMS").GetComponent<Anims>();
+            Anims anims = GameObject.FindGameObjectWithTag("ANIMS").GetComponent<Anims>();
+            Animator anis =  anims.gameObject.transform.GetComponent<Animator>();
+            anis.SetTrigger("Grab Tool");
             anims.item = j_Item;
-        }
 
 
         J_Inventory.j_Inventory.gameObject.SetActive(false);

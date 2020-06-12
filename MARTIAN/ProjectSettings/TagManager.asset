@@ -19,15 +19,19 @@ TagManager:
   - WATER
   - CARROT
   - Inv
+  - POTATO
+  - RADISH
+  - PlayerUseItemPos
+  - ANIMS
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  -
-  -
+  - 
+  - 
   - PostProcessing
   - Floor
   - Item
@@ -35,23 +39,23 @@ TagManager:
   - CLEARED LAND
   - Ore
   - Crops
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
