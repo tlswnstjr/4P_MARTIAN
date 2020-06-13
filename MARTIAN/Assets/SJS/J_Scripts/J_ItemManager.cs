@@ -17,8 +17,8 @@ public class J_ItemManager : MonoBehaviourPun
     public GameObject inv;
     private void Awake()
     {
+        //inv = J_Inventory.j_Inventory.gameObject;
 
-        inv = J_Inventory.j_Inventory.gameObject;
     }
 
 

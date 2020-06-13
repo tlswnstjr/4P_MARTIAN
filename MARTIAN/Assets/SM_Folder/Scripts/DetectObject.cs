@@ -39,7 +39,6 @@ public class DetectObject : J_Item
         {
             if (gameObject.tag == all_mytag[i].ToString())
             {
-                Debug.Log("aaaaaaaaaaaaaaaaaaaa");
                 mytag = all_mytag[i];
             }
         }
@@ -95,7 +94,7 @@ public class DetectObject : J_Item
 
         SWITCH();
 
-        aaa();
+        //aaa();
     }
 
     //내 위치를 차일드의 위치로 한다.
@@ -110,7 +109,6 @@ public class DetectObject : J_Item
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("sssssssssss");
             isPlayer = true;
         }
 
