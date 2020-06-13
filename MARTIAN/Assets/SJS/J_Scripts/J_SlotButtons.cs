@@ -336,7 +336,7 @@ public class J_SlotButtons : MonoBehaviourPun
                 else
                 {
                     J_ItemManager.j_Item.items2[slotss.myWhyNub].auount -= clickButton.GetComponent<J_SclectButton>().ss;
-                    if(J_ItemManager.j_Item.items2[slotss.myWhyNub].auount==0)
+                    if (J_ItemManager.j_Item.items2[slotss.myWhyNub].auount == 0)
                     {
                         J_ItemManager.j_Item.items2[slotss.myWhyNub] = null;
                     }
@@ -344,12 +344,17 @@ public class J_SlotButtons : MonoBehaviourPun
                 }
                 break;
             }
-
-
         }
         #endregion
 
     }
+
+    void InvOutAndLockerGO()
+    {
+      
+    }
+
+
 
     GameObject x;
     //이 함수는 인벤토리와 동일하게 사용하는 함수입니다

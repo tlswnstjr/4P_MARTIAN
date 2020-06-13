@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class J_Locker : MonoBehaviour
+//창고 ui스크립트를 상속해줍니다 
+public class J_Locker : J_LockerInvs, IPunObservable
 {
     //이스크립트는 보관함 스크립트입니다 
 
@@ -59,6 +61,33 @@ public class J_Locker : MonoBehaviour
         {
             player.lockerClick = false;
             offLocker = false;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        //내가 값을 서버로 올려 보낼 때
+        if(stream.IsWriting)
+        {
+            for(int i = 0; i < items.Count; i++)
+            {
+               //그 아이템 위치에 이름값에 ""혹은 nill이 아니면 값이 있다는 뜻으로 그 값을 서버로 올려줘야한다
+                if (items[i].GetComponent<J_Slots>().names != "" || items[i].GetComponent<J_Slots>().names != null)
+                {
+                    stream.SendNext(items[i]);
+                }               
+            }
+        }
+        else
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                //아이템 창의 이름 값에 비어 있다면 그곳에 서버에 올라간 아이템 정보를 가져 옵니다
+                if(items[i].GetComponent<J_Slots>().names == "" || items[i].GetComponent<J_Slots>().names == null)
+                {
+                    items[i] = (J_Slots)stream.ReceiveNext();
+                }
+            }
         }
     }
 }

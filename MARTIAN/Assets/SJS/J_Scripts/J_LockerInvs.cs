@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class J_LockerInvs : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+public class J_LockerInvs : MonoBehaviourPun
 {
 
     public static J_LockerInvs j_LockerInvs;
