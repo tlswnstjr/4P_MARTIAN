@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2259cae423fae4dbba674a54ef6566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   inventroyAndLocker: {fileID: 0}
 --- !u!54 &1774059353024045434
 Rigidbody:
@@ -117,10 +118,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 1774059353024045435}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

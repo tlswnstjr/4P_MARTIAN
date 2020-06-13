@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SJS/SJSM_Map.unity
     guid: c53af074110b7eb40874fc027f4bbbd9
+  - enabled: 1
+    path: Assets/SM_Folder/Scenes/Test_INSIDE.unity
+    guid: 337e88ebeeaeb7543bbbda666d6bd324
   m_configObjects: {}

@@ -10,6 +10,7 @@ using System.IO;
 
 public class J_GameManager : MonoBehaviourPunCallbacks
 {
+   
     public static J_GameManager gm;
 
     public Transform lockerPos;
@@ -31,7 +32,8 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         }
 
         // 해상도를 윈도우 모드로 960 x 640 크기로 설정한다.
-        Screen.SetResolution(1080, 640
+        Screen.SetResolution(1280, 960
+
             , FullScreenMode.Windowed);
     }
 

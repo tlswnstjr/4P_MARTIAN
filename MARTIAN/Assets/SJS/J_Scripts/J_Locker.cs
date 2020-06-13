@@ -32,21 +32,27 @@ public class J_Locker : J_LockerInvs, IPunObservable
         //플레이어가 충돌중인게 확인되면
         if(offLocker)
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(photon.IsMine)
             {
-                inventroyAndLocker.SetActive(!inventroyAndLocker.activeSelf);
-                player.myMoveban = !player.myMoveban;
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    inventroyAndLocker.SetActive(!inventroyAndLocker.activeSelf);
+                    player.myMoveban = !player.myMoveban;
+                }
             }
+            
             
         }
     }
 
+    PhotonView photon;
 
     private void OnTriggerEnter(Collider coll)
     {
         player = coll.GetComponent<Test_PlayerMovement>();
         if (coll.gameObject.tag == "Player")
         {
+            photon = coll.transform.parent.GetComponent<PhotonView>();
             player.lockerClick = true;
            
             offLocker = true;
@@ -74,7 +80,7 @@ public class J_Locker : J_LockerInvs, IPunObservable
                //그 아이템 위치에 이름값에 ""혹은 nill이 아니면 값이 있다는 뜻으로 그 값을 서버로 올려줘야한다
                 if (items[i].GetComponent<J_Slots>().names != "" || items[i].GetComponent<J_Slots>().names != null)
                 {
-                    stream.SendNext(items[i]);
+                    stream.SendNext(items[i].GetComponent<J_Slots>());
                 }               
             }
         }

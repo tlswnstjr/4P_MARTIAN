@@ -9,7 +9,11 @@ public class LookAtTheCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(transform.position + my_camera.transform.rotation * Vector3.back,
-            my_camera.transform.rotation *Vector3.up);
+        if(my_camera != null)
+        {
+            transform.LookAt(transform.position + my_camera.transform.rotation * Vector3.back,
+            my_camera.transform.rotation * Vector3.up);
+        }
+        
     }
 }

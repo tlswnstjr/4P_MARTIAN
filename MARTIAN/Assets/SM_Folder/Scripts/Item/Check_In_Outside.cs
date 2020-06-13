@@ -64,13 +64,6 @@ public class Check_In_Outside : MonoBehaviourPun
     public PhotonView playerBodys;
 
 
-
-
-
-
-
-
-
         //레이저
     public GameObject rayStart;
     public float rayDis;
@@ -102,6 +95,8 @@ public class Check_In_Outside : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+        playerBodys = gameObject.GetComponentInParent<PhotonView>();
+
         out_allState[0] = OUTside.Shovel;
         out_allState[1] = OUTside.Drill;
         out_allState[2] = OUTside.OxygenPack;
@@ -161,15 +156,15 @@ public class Check_In_Outside : MonoBehaviourPun
 
             }
         }
-        //if (photonView.IsMine)
-        //{
-        if (hand.childCount > 0 && Input.GetKeyDown(KeyCode.O))
+        if (playerBodys.IsMine)
         {
-            Destroy(childtr.gameObject);
-            isChecked = false;
-            anim.SetTrigger("Tuck tool");
+            if (hand.childCount > 0 && Input.GetKeyDown(KeyCode.O))
+            {
+                Destroy(childtr.gameObject);
+                isChecked = false;
+                anim.SetTrigger("Tuck tool");
+            }
         }
-        //}
     }
 
     bool nope = false;

@@ -81,15 +81,10 @@ public class J_Players : MonoBehaviourPun
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-         Move(h, v, 7);
-        Turnning();
-        TurnONOFF();
+         //Move(h, v, 7);
+        //Turnning();
+       // TurnONOFF();
         //inv.activeSelf ||
-        if (view.IsMine)
-        {
-          
-        }
-      
     }
 
     public void Turnning()
@@ -111,25 +106,6 @@ public class J_Players : MonoBehaviourPun
 
     }
 
-    /*private void Turnning()
-    {
-        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit floorHit;
-
-        if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
-        {
-            Vector3 playerToMouse = floorHit.point - transform.position;
-            playerToMouse.y = 0f;
-
-            Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
-            playerRigidbody.MoveRotation(newRotation);
-            Vector3 a =  Vector3.forward;
-            a = transform.forward;
-        }
-
-    }*/
-
     public void Move(float h, float v, float speed)
     {
         //Vector3 dir = new Vector3(h, 0, v);
@@ -144,23 +120,6 @@ public class J_Players : MonoBehaviourPun
 
         playerRigidbody.MovePosition(transform.position + movement);
     }
-
-
-    /* private void Move(float h, float v)
-     {
-         //Vector3 dir = new Vector3(h, 0, v);
-         movement.Set(h, 0f, v);
-         //애니메이터 컨트롤러의 파라미터값을 세팅
-         anim.SetFloat("Speed", movement.magnitude);
-
-         // movement 를 내가 바라보는 방향에서의 방향으로 변경
-         movement = transform.TransformDirection(movement);
-
-         movement = movement.normalized * moveSpeed * Time.deltaTime;
-
-         playerRigidbody.MovePosition(transform.position + movement);
-     }*/
-
     public void TurnONOFF()
     {
         if (DayAndNight.sun.myRotX >= 170)
