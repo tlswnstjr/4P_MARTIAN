@@ -17,6 +17,7 @@ public class J_Tool : MonoBehaviour
     void Start()
     {
         playerMove = GameObject.Find("Player_Body").GetComponent<Test_PlayerMovement>();
+        shop = GameObject.Find("INVENTORY").transform.GetChild(2).gameObject;
     }
 
     // Update is called once per frame

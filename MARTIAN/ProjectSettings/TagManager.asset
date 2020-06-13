@@ -24,6 +24,8 @@ TagManager:
   - PlayerUseItemPos
   - ANIMS
   - Players
+  - LockerAndIvn
+  - Shop
   layers:
   - Default
   - TransparentFX

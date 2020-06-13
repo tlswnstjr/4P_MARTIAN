@@ -58,8 +58,8 @@ public class J_Players : MonoBehaviourPun
     private void Start()
     {
 
-        //inv = J_Inventory.j_Inventory.gameObject;
-        //iamge = J_Inventory.j_Inventory.iamges;
+        inv = J_Inventory.j_Inventory.gameObject;
+        iamge = J_Inventory.j_Inventory.iamges;
         inv.SetActive(false);
     }
     private void FixedUpdate()

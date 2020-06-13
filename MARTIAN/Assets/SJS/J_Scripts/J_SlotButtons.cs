@@ -135,7 +135,7 @@ public class J_SlotButtons : MonoBehaviourPun
 
     void Actions()
     {
-        slotButton.SetActive(false);
+        //slotButton.SetActive(false);
     }
 
 
@@ -235,6 +235,7 @@ public class J_SlotButtons : MonoBehaviourPun
         #region 창고에서 인벤으로
         else if (state == State.LOCKER)
         {
+            player = GameObject.FindGameObjectWithTag("Player");
             J_Slots slotss = _Slots.GetComponent<J_Slots>();
             for (int i = 0; i < J_ItemManager.j_Item.items2.Length; i++)
             {
@@ -418,30 +419,3 @@ public class J_SlotButtons : MonoBehaviourPun
 }
 
 
-
-
-/* if(J_LockerInvs.j_LockerInvs.items[slotss.myWhyNub] != null)
-                {
-                    //int.Parse(gameObject.GetComponent<J_Slots>().text.text)
-                    //J_LockerInvs.j_LockerInvs.items[i] = gameObject.GetComponent<J_Slots>();
-                   J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().mainIamge.SetActive(true);
-                    if (J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().text.text == "")
-                    {
-                        J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().MySeilf(
-                            gameObject.GetComponent<J_Slots>().name,
-                      gameObject.GetComponent<J_Slots>().Image.sprite,
-                      clickButton.GetComponent<J_SclectButton>().ss);
-                    }
-                    else if(J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().text.text != "" && slotss.name ==
-                        J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().name)
-                    {
-                        J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().MySeilf(
-                            gameObject.GetComponent<J_Slots>().name,
-                      gameObject.GetComponent<J_Slots>().Image.sprite,
-                      clickButton.GetComponent<J_SclectButton>().ss +
-                      int.Parse(J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().text.text));
-                    }
-                    else
-                    {
-                        continue;
-                    }*/

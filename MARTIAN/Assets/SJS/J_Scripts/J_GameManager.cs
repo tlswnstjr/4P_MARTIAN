@@ -12,7 +12,8 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 {
     public static J_GameManager gm;
 
-
+    public Transform lockerPos;
+    public Transform toolPos;
 
     public PhotonView view;
 
@@ -57,9 +58,9 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         //그러면 빌드한 애동 여기서 생성을 해주는건데 왜 게임 씬 혹은 빌드 파일에서 서로의 플레이어가 보이지
         //않는 것 일까요 흠 
 
-       
-            PhotonNetwork.Instantiate(Path.Combine("Test_Player"), new Vector3(-10, 1, -20), Quaternion.identity);
-               
+
+        PhotonNetwork.Instantiate(Path.Combine("Test_Player"), new Vector3(-10, 1, -20), Quaternion.identity);
+
         //Test_Player
         // PhotonNetwork.Instantiate(Path.Combine("Camera Rig"), transform.position, Quaternion.identity);
 
@@ -84,12 +85,12 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         {
             //지금 막 방을 만든 사람이 반장이라면 맵 전체의 구성을 만들우 둔다 
             //이제 여기서 추가해줘야하는 것들은 맵 뿐만아니라 각 플레이어끼리 상호작용하는 것들도 해줘야한다 
-            GameObject x =  PhotonNetwork.Instantiate(Path.Combine("Ore","Ore"), new Vector3(-10, 1, -40), Quaternion.identity);
+            GameObject x = PhotonNetwork.Instantiate(Path.Combine("Ore", "Ore"), new Vector3(-10, 1, -40), Quaternion.identity);
             x.SetActive(true);
 
-           
-            
 
+            PhotonNetwork.Instantiate(Path.Combine("Locker"), lockerPos.position, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Tools"), toolPos.position, Quaternion.identity);
             //gameStart.GetComponentInChildren<Text>().text = "게임 스타트";
             // 반응형 오브젝트 프리팹을 생성한다.
             //PhotonNetwork.Instantiate("InteractiveObject", new Vector3(0, 3, 0), Quaternion.identity);
@@ -111,7 +112,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         print("확인차");
         if (PhotonNetwork.IsMasterClient)
         {
-            if(photonView.IsMine)
+            if (photonView.IsMine)
             {
                 print("몇번일까요");
                 print("아 짜증나");
@@ -124,7 +125,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
                     sum.transform.localScale = new Vector3(ReincarnationSize, ReincarnationSize, ReincarnationSize);
                 }
             }
-          
+
         }
     }
 
@@ -132,7 +133,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
     void Update()
     {
 
-      
+
 
         // 1. 방에서 나가기
         if (Input.GetKeyDown(KeyCode.L))

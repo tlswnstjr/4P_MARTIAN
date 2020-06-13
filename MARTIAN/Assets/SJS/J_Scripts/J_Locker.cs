@@ -19,7 +19,9 @@ public class J_Locker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //inventroyAndLocker = GameObject.FindGameObjectWithTag("LcckerAndInv");
+        inventroyAndLocker = GameObject.Find("INVENTORY").transform.GetChild(3).gameObject;
+
     }
 
     // Update is called once per frame

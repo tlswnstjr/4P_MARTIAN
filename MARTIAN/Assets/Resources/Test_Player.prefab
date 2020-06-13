@@ -1121,6 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 1180057874746379268}
   isChecked: 0
+  childtr: {fileID: 0}
   state_INOUT: 0
   state_I_AM_OUT: 0
   state_I_AM_IN: 0
@@ -1137,7 +1138,6 @@ MonoBehaviour:
   isInven: 0
   doingAnim: 0
   can_I_Drilling: 0
-  cl: {fileID: 0}
   im: {fileID: 0}
   ph: {fileID: 0}
   ol: {fileID: 0}
