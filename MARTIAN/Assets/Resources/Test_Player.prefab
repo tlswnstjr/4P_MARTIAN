@@ -1125,6 +1125,7 @@ MonoBehaviour:
   state_INOUT: 0
   state_I_AM_OUT: 0
   state_I_AM_IN: 0
+  playerBodys: {fileID: 3386777416002208137}
   rayStart: {fileID: 916199734535288502}
   rayDis: 3
   angle: -3.5
@@ -1458,7 +1459,7 @@ GameObject:
   - component: {fileID: 4832493105984348026}
   m_Layer: 11
   m_Name: Test_Player
-  m_TagString: Untagged
+  m_TagString: Players
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1533,7 +1534,7 @@ MonoBehaviour:
   J_Players: {fileID: 717186410448667197}
   cam: {fileID: 4681006332435144419}
   runSpeed: 10
-  animator: {fileID: 0}
+  animator: {fileID: 6845938498363079853}
   itemManager: {fileID: 5127240646583933549}
 --- !u!114 &4832493105984348026
 MonoBehaviour:
@@ -1907,7 +1908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items2:
-  - {fileID: 4151452791609635612, guid: 971d4db7bb235cd4e82eb4d01f9ca9d0, type: 3}
+  - {fileID: 6948869891376731930, guid: 2338e285acc5194458d0afbccfe1c9a5, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -2245,6 +2246,7 @@ MonoBehaviour:
   rayStart: {fileID: 916199734535288502}
   rayDis: 3
   angle: -3.5
+  item: {fileID: 0}
   potatoFactory: {fileID: 9219411411021021898, guid: 6037b916f5cb68642a03232f6bf39d24,
     type: 3}
   carrotFactory: {fileID: 6077778283635901793, guid: 8213e951808e472428fe1f7086252331,
@@ -3055,6 +3057,10 @@ PrefabInstance:
     - target: {fileID: 100134, guid: 773e65368c3e43c4bad1e6e4fac5f72a, type: 3}
       propertyPath: m_Name
       value: SpaceWoman character
+      objectReference: {fileID: 0}
+    - target: {fileID: 100134, guid: 773e65368c3e43c4bad1e6e4fac5f72a, type: 3}
+      propertyPath: m_TagString
+      value: ANIMS
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 773e65368c3e43c4bad1e6e4fac5f72a, type: 3}
       propertyPath: m_LocalPosition.x

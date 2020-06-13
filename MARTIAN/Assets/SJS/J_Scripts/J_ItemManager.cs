@@ -29,6 +29,10 @@ public class J_ItemManager : MonoBehaviourPun
         {
             j_Item = this;
         }
+        else
+        {
+
+        }
         
     }
 

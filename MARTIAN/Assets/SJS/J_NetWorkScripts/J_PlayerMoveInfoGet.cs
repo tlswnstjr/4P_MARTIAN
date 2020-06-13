@@ -15,6 +15,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
 
     public GameObject cam;
     public float runSpeed;
+    //이 애니매이터를 이용해서 애니메이션 동기화를 해줘야합니다 
     public Animator animator;
     float lerpSpeed = 50.0f;
 
@@ -27,7 +28,10 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        if(photonView.IsMine)
+        print(animator.parameters[2].ToString());
+        print(animator.parameters[2].name);
+
+        if (photonView.IsMine)
         {
             J_GameManager.gm.view = photonView;
 

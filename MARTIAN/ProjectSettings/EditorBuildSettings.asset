@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/SM_Folder/Scenes/SM_Map.unity
-    guid: 337410dbe2c352d47890a8bbb0a610b1
-  - enabled: 0
-    path: Assets/SM_Folder/Scenes/Test_INSIDE.unity
-    guid: 337e88ebeeaeb7543bbbda666d6bd324
   - enabled: 1
     path: Assets/SJS/GameRoomS.unity
     guid: 6038a4b156d76a4499bbd1f164793dd5

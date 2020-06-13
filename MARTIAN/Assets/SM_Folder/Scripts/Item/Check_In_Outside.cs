@@ -61,6 +61,16 @@ public class Check_In_Outside : MonoBehaviourPun
 
     //=============
 
+    public PhotonView playerBodys;
+
+
+
+
+
+
+
+
+
         //레이저
     public GameObject rayStart;
     public float rayDis;
@@ -130,63 +140,73 @@ public class Check_In_Outside : MonoBehaviourPun
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
-
         {
             print(gameObject.name);
+            anim.SetBool("Drilling", true);
         }
         //안과 밖에따라서 사용할 Enum을 분류해줄 함수
         Switch_INOUT();
-        if (nope)
-        {
-            //밖에 있을때 사용할 아이템들을 정리해놓은 함수
-            Switch_OUTSIDE();
-        }
-        if (yea)
-        {
-            //안에 있을때 사용할 아이템들을 정리해놓은 함수
-            Switch_INSIDE();
 
+        if(hand.childCount != 0)
+        {
+            if (nope)
+            {
+                //밖에 있을때 사용할 아이템들을 정리해놓은 함수
+                Switch_OUTSIDE();
+            }
+            else if (yea)
+            {
+                //안에 있을때 사용할 아이템들을 정리해놓은 함수
+                Switch_INSIDE();
+
+            }
         }
+      
     }
 
     bool nope = false;
     bool yea = false;
+  
     public void Switch_INOUT()
     {
-        switch (state_INOUT)
+        if(playerBodys.IsMine)
         {
-            case WhereIAm.OUTSIDE:
-                nope = true;
-                //손의 차일드가 0보다 크다면
-                if (hand.childCount > 0 && isChecked == false)
-                {
+            switch (state_INOUT)
+            {
+                case WhereIAm.OUTSIDE:
+                    nope = true;
+                    //손의 차일드가 0보다 크다면
+                    if (hand.childCount > 0 && isChecked == false)
+                    {
 
-                    //내 차일드를 저장하겠어
-                    childtr = hand.GetChild(0).transform;
-                    //내 손의 태그를 차일드의 태그와 똑같게 바꾼다
-                    hand.tag = childtr.tag;
-                    //차일드의 타입을 검사하는 함수
-                    WHAT_KIND_OF_ARE_YOU_OUT();
+                        //내 차일드를 저장하겠어
+                        childtr = hand.GetChild(0).transform;
+                        //내 손의 태그를 차일드의 태그와 똑같게 바꾼다
+                        hand.tag = childtr.tag;
+                        //차일드의 타입을 검사하는 함수
+                        WHAT_KIND_OF_ARE_YOU_OUT();
 
-                    isChecked = true;
-                }
-                break;
-            case WhereIAm.INSIDE:
-                yea = true;
-                //손의 차일드가 0보다 크다면
-                if (hand.childCount > 0 && isChecked == false)
-                {
-                    //내 차일드를 저장하겠어
-                    childtr = hand.GetChild(0).transform;
-                    //내 손의 태그를 차일드의 태그와 똑같게 바꾼다
-                    hand.tag = childtr.tag;
-                    //차일드의 타입을 검사하는 함수
-                    WHAT_KIND_OF_ARE_YOU_IN();
+                        isChecked = true;
+                    }
+                    break;
+                case WhereIAm.INSIDE:
+                    yea = true;
+                    //손의 차일드가 0보다 크다면
+                    if (hand.childCount > 0 && isChecked == false)
+                    {
+                        //내 차일드를 저장하겠어
+                        childtr = hand.GetChild(0).transform;
+                        //내 손의 태그를 차일드의 태그와 똑같게 바꾼다
+                        hand.tag = childtr.tag;
+                        //차일드의 타입을 검사하는 함수
+                        WHAT_KIND_OF_ARE_YOU_IN();
 
-                    isChecked = true;
-                }
-                break;
+                        isChecked = true;
+                    }
+                    break;
+            }
         }
+    
     }
 
     //밖에꺼
@@ -218,100 +238,85 @@ public class Check_In_Outside : MonoBehaviourPun
     #region -----------====== 밖에서 사용할 아이템들의 함수 ========----------
     public void Switch_OUTSIDE()
     {
-        switch (state_I_AM_OUT)
+        if(playerBodys.IsMine)
         {
-            case OUTside.Shovel:
-                if (isInven || doingAnim) return;
-                //삽의 바깥에서의 기능
-                if (Input.GetButtonDown("Fire1")) {
-                    /*Shovel_OUTSIDE();*/
-                    anim.SetTrigger("Outside_Shovel");
-                    doingAnim = true;
-                } 
-                break;
-            case OUTside.Drill:
-                {
-                    if (can_I_Drilling)
+            switch (state_I_AM_OUT)
+            {
+                case OUTside.Shovel:
+                    if (isInven || doingAnim) return;
+                    //삽의 바깥에서의 기능
+                    if (Input.GetButtonDown("Fire1"))
                     {
-                        if (Input.GetKey(KeyCode.E))
+                        /*Shovel_OUTSIDE();*/
+                        anim.SetTrigger("Outside_Shovel");
+                        doingAnim = true;
+                    }
+                    break;
+                case OUTside.Drill:
+                    {
+                        if (can_I_Drilling)
                         {
-                            currntT += Time.deltaTime;
-                            if (a == false)
+                            if (Input.GetKey(KeyCode.E))
                             {
-                                anim.SetBool("Drilling", true);
-                                a = true;
-                            }
+                                currntT += Time.deltaTime;
+                                if (a == false)
+                                {
+                                    anim.SetBool("Drilling", true);
+                                    a = true;
+                                }
 
-                            if (currntT > 2)
-                            {
-                                anim.SetBool("Drilling", false);
+                                if (currntT > 2)
+                                {
+                                    anim.SetBool("Drilling", false);
 
-                                PhotonView pr = jacob.gameObject.GetComponent<PhotonView>();
-                                pr.RPC("explode", RpcTarget.All);
-                                currntT = 0;
-                                a = false;
-                                can_I_Drilling = false;
+                                    PhotonView pr = jacob.gameObject.GetComponent<PhotonView>();
+                                    pr.RPC("explode", RpcTarget.All);
+                                    currntT = 0;
+                                    a = false;
+                                    can_I_Drilling = false;
+                                }
                             }
                         }
-                    }
-                    else
+                        else
+                        {
+                            anim.SetBool("Drilling", false);
+                            currntT = 0;
+                            a = false;
+                        }
+
+                    }                
+                    break;
+                case OUTside.BodyTemperaturePack:
+                    if (isInven || doingAnim) return;
+                    if (Input.GetKeyDown(KeyCode.E) && ol.b_CurrentTemperature < ol.b_StartTemperature && ItemManager.instance.bodyTemperaturePackCount > 0)
                     {
-                        anim.SetBool("Drilling", false);
-                        currntT = 0;
-                        a = false;
+                        //ol.b_CurrentTemperature = ol.b_StartTemperature;
+                        anim.SetTrigger("Use_TemperaturePack");
+                        doingAnim = true;
                     }
-                  
-                }
-                //if (isInven || doingAnim)
-                //    return;
-                ////콜리전엔터된 녀석에게서 J_Coppers를 찾아올 수 있다면
-                //if (can_I_Drilling)
-                //{
-                //    if (Input.GetKeyDown(KeyCode.E)) { 
-                //   
-                //        doingAnim = true;
-                //    }
-                //   if (Input.GetKey(KeyCode.E))
-                //    {
-                //        currntT += Time.deltaTime;
-                //        if (currntT > 1)
-                //        {
-                //            anim.SetBool("Drilling", false);
-                //            jacob.Ore();
-                //            doingAnim = false;
-                //        }
-                //    }
-                //}
-                break;
-            case OUTside.BodyTemperaturePack:
-                if (isInven || doingAnim) return;
-                if (Input.GetKeyDown(KeyCode.E) && ol.b_CurrentTemperature < ol.b_StartTemperature && ItemManager.instance.bodyTemperaturePackCount > 0)
-                {
-                    //ol.b_CurrentTemperature = ol.b_StartTemperature;
-                    anim.SetTrigger("Use_TemperaturePack");
-                    doingAnim = true;
-                }
-                break;
-            case OUTside.HeelPack:
-                if (isInven || doingAnim) return;
-                //E버튼을 누르면 ItemManger의 힐팩 카운트가 0보다 클때만 피를 회복하겠다.
-                if (Input.GetKeyDown(KeyCode.E) && ph.m_CurrentHealth < ph.m_StartingHealth && ItemManager.instance.healPackCount > 0)
-                {
-                    anim.SetTrigger("Use_HealPack");
-                    doingAnim = true;
-                }
-                break;
-            case OUTside.OxygenPack:
-                if (isInven || doingAnim) return;
-                if (Input.GetKeyDown(KeyCode.E) && ol.m_CurrentOxygen < ol.m_StartOxygen && ItemManager.instance.oxygenPackCount > 0)
-                {
-                    anim.SetTrigger("Use_OxygerPack");
-                    doingAnim = true;
-                }
-                break;
-            case OUTside.OUTsideEnd:
-                break;
+                    break;
+                case OUTside.HeelPack:
+                    if (isInven || doingAnim) return;
+                    //E버튼을 누르면 ItemManger의 힐팩 카운트가 0보다 클때만 피를 회복하겠다.
+                    if (Input.GetKeyDown(KeyCode.E) && ph.m_CurrentHealth < ph.m_StartingHealth && ItemManager.instance.healPackCount > 0)
+                    {
+                        anim.SetTrigger("Use_HealPack");
+                        doingAnim = true;
+                    }
+                    break;
+                case OUTside.OxygenPack:
+                    if (isInven || doingAnim) return;
+                    if (Input.GetKeyDown(KeyCode.E) && ol.m_CurrentOxygen < ol.m_StartOxygen && ItemManager.instance.oxygenPackCount > 0)
+                    {
+                        anim.SetTrigger("Use_OxygerPack");
+                        doingAnim = true;
+                    }
+                    break;
+                case OUTside.OUTsideEnd:
+                    break;
+            }
         }
+      
     }
 
     //밖에서 사용할 삽

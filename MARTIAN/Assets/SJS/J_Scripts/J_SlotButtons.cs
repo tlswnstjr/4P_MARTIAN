@@ -354,13 +354,14 @@ public class J_SlotButtons : MonoBehaviourPun
     //이 함수는 인벤토리와 동일하게 사용하는 함수입니다
     // 그러면 인덱스도 인벤토리 및 아이템 메니저랑 동일합니다
     //그러면 그 번호에 있는 아이를 가지고 오면 됩니다
+    //현수 다녀감
     void Actions3()
     {
         playerUseItem = GameObject.FindGameObjectWithTag("PlayerUseItemPos");
         J_Slots a = _Slots.GetComponent<J_Slots>();
         J_Item j_Item = J_ItemManager.j_Item.items2[a.myWhyNub];
 
-        //시작 할 때 지급되는 템들을 위한 명령어 입니다
+        //시작 할 때 지급되는 템들을 위한 명령어 입니다...아...그러시군여...?
         if(j_Item.my == null)
         {
             if (j_Item.type == J_Item.ItemType.WEAPON)
@@ -372,6 +373,7 @@ public class J_SlotButtons : MonoBehaviourPun
                         x = PhotonNetwork.Instantiate(Path.Combine(j_Item.type.ToString(), j_Item.name.Replace("(Clone)", "")),
                             transform.position, Quaternion.identity);
                         x.SetActive(true);
+                        break;
                     }
                 }
 
@@ -390,9 +392,14 @@ public class J_SlotButtons : MonoBehaviourPun
             x.transform.rotation = playerUseItem.transform.rotation;
             x.gameObject.transform.parent = playerUseItem.transform;
 
+            Anims anims = GameObject.FindGameObjectWithTag("ANIMS").GetComponent<Anims>();
+            Animator anis = anims.gameObject.transform.GetComponent<Animator>();
+            anis.SetTrigger("Grab Tool");
+            anims.item = j_Item;
+
             J_Inventory.j_Inventory.gameObject.SetActive(false);
         }
-
+        else
         {
             j_Item.my.SetActive(true);
             j_Item.my.GetComponent<Rigidbody>().useGravity = false;
@@ -404,13 +411,6 @@ public class J_SlotButtons : MonoBehaviourPun
             j_Item.my.transform.position = playerUseItem.transform.position;
             j_Item.my.transform.rotation = playerUseItem.transform.rotation;
             j_Item.my.gameObject.transform.parent = playerUseItem.transform;
-
-            Anims anims = GameObject.FindGameObjectWithTag("ANIMS").GetComponent<Anims>();
-            Animator anis =  anims.gameObject.transform.GetComponent<Animator>();
-            anis.SetTrigger("Grab Tool");
-            anims.item = j_Item;
-
-
             J_Inventory.j_Inventory.gameObject.SetActive(false);
         }
 

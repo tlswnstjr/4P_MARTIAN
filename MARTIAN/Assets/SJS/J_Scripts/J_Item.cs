@@ -30,8 +30,9 @@ public class J_Item : MonoBehaviourPun
     [PunRPC]
     public void aaa()
     {
-        if(photonView.IsMine)
+        if(photon.IsMine)
         {
+            print("먹기");
             //아이템 메니저에게 내 자신의 정보를 넣어준다
             J_ItemManager.j_Item.ClicksItem(gameObject);
             //Destroy(gameObject);
@@ -39,22 +40,33 @@ public class J_Item : MonoBehaviourPun
         }
         else
         {
+            print("삭제");
             Destroy(gameObject);
         }
 
     }
 
+    PhotonView photon;
+
     private void OnTriggerEnter(Collider coll)
     {
         if(coll.gameObject.tag == "Player")
         {
-            click = true;
+
+            photon = coll.GetComponentInParent<PhotonView>();
+            if(photon != null)
+            {
+                if (photon.IsMine)
+                    click = true;
+            }
+            
         }
     }
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.tag == "Player")
         {
+            photon = null;
             click = false;
         }
     }
