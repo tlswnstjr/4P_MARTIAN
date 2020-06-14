@@ -6,6 +6,8 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
 {
     //이 스크립트는 네트워크에 자기 자신의 정보를 보내줄 스크립트입니다 
     public J_Players J_Players;
+    public J_Slots sloters;
+
 
     float h, v;
 
@@ -18,6 +20,11 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     //이 애니매이터를 이용해서 애니메이션 동기화를 해줘야합니다 
     public Animator animator;
     float lerpSpeed = 50.0f;
+
+
+    
+
+
 
     //만약 자기 클라이언트가 아니면 아이템 메니져를 삭제한다 
 

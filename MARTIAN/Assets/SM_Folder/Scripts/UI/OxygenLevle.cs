@@ -55,6 +55,8 @@ public class OxygenLevle : MonoBehaviour
             b_Slider.gameObject.SetActive(false);
         }
         //산소가 줄어든다
+        //이 값을 J_PlayerMoveInfoGet에 넘겨 줘서 시리얼 라이즈에 넣어야한다 
+        //시이발 할거 줜나 많어 아 개빡친다 
         m_CurrentOxygen -= Time.deltaTime / 10f;
         //UI를 표시하겠다(체온,산소 둘다)
         SetOxygenUI();

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 114958202825086136}
   m_Layer: 0
   m_Name: Locker
-  m_TagString: Untagged
+  m_TagString: Locker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   inventroyAndLocker: {fileID: 0}
+  photon: {fileID: 0}
 --- !u!54 &1774059353024045434
 Rigidbody:
   m_ObjectHideFlags: 0
