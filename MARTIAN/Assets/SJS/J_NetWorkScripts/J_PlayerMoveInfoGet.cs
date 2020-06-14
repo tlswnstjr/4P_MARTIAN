@@ -36,6 +36,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
+        oxygenLevle.m_CurrentOxygen = oxygenLevle.m_StartOxygen;
         if (photonView.IsMine)
         {
             J_GameManager.gm.view = photonView;
