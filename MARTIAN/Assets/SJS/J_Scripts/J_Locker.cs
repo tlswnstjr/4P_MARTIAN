@@ -9,7 +9,7 @@ public class J_Locker : J_LockerInvs, IPunObservable
 {
     //이스크립트는 보관함 스크립트입니다 
 
-    
+    List<J_Slots> yousList = new List<J_Slots>();
     //이 아래 bool문은 플레이어가 충돌중에 있는지 확인하고 그 다음 키 입력에 대한
     //상태 전이를 확인해주기 위해 존재합니다
     bool offLocker;
