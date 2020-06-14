@@ -6,6 +6,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
 {
     //이 스크립트는 네트워크에 자기 자신의 정보를 보내줄 스크립트입니다 
     public J_Players J_Players;
+    public OxygenLevle oxygenLevle;
     public J_Slots sloters;
 
 
@@ -22,7 +23,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     float lerpSpeed = 50.0f;
 
 
-    
+    float hpbar;
 
 
 
@@ -65,6 +66,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
             J_Players.Move(h, v, runSpeed);
             J_Players.Turnning();
             J_Players.PlayerInputs();
+            oxygenLevle.m_CurrentOxygen -= Time.deltaTime / 10f;
         }
         else
         {
@@ -85,12 +87,14 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
             stream.SendNext(J_Players.myTr.position);
             stream.SendNext(J_Players.myTr.rotation);
             stream.SendNext(J_Players.anim.GetFloat("Speed"));
+            stream.SendNext(oxygenLevle.m_CurrentOxygen);
         }
         else
         {
             otherPos = (Vector3)stream.ReceiveNext();
             rot = (Quaternion)stream.ReceiveNext();
             animSpeed = (float)stream.ReceiveNext();
+            hpbar = (float)stream.ReceiveNext();
         }
     }
 }
