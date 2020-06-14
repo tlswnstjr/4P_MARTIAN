@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class DayAndNight : MonoBehaviour
+using Photon.Pun;
+public class DayAndNight : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] private float secondPerRealTimeSecond;
 
@@ -20,6 +20,7 @@ public class DayAndNight : MonoBehaviour
 
     public float myRotX;
 
+    Quaternion rot;
     private void Awake()
     {
         if (sun == null) sun = this;
@@ -27,6 +28,7 @@ public class DayAndNight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(true);
         //이것도 검은안개
         //dayFogDensity = RenderSettings.fogDensity;
     }
@@ -34,8 +36,17 @@ public class DayAndNight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.right, 0.1f * secondPerRealTimeSecond * Time.deltaTime);
-        myRotX = transform.eulerAngles.x;
+        if(photonView.IsMine)
+        {
+            transform.Rotate(Vector3.right, 0.1f * secondPerRealTimeSecond * Time.deltaTime);
+            myRotX = transform.eulerAngles.x;
+        }
+        else
+        {
+            transform.rotation = rot;
+            myRotX = transform.eulerAngles.x;
+        }
+        
 
         #region ---======검은안개======----
         ////안개를 씌우고 걷히게 하는 부분
@@ -56,5 +67,17 @@ public class DayAndNight : MonoBehaviour
         //    }
         //}
         #endregion
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(transform.rotation);
+        }
+        else
+        {
+            rot = (Quaternion)stream.ReceiveNext();
+        }
     }
 }

@@ -93,6 +93,8 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 
             PhotonNetwork.Instantiate(Path.Combine("Locker"), lockerPos.position, Quaternion.identity);
             PhotonNetwork.Instantiate(Path.Combine("Tools"), toolPos.position, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.identity);
+
             //gameStart.GetComponentInChildren<Text>().text = "게임 스타트";
             // 반응형 오브젝트 프리팹을 생성한다.
             //PhotonNetwork.Instantiate("InteractiveObject", new Vector3(0, 3, 0), Quaternion.identity);

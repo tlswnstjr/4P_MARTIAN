@@ -52,6 +52,7 @@ public class J_SlotButtons : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+        
         //아래 방법으로 사용하면 버튼을 생성하자마자 함수를 등록해줄수 있다
         //button.onClick.AddListener(() => print("버튼 클릭!"));
     }
@@ -121,7 +122,9 @@ public class J_SlotButtons : MonoBehaviourPun
             a.GetComponentInChildren<Text>().text = text3;
             a.transform.SetParent(slotButton.transform);
         }
+       
         clickButton.onClick.AddListener(Actions2);
+        clickButton.gameObject.AddComponent<PhotonView>();
         clickButton.GetComponent<J_SclectButton>().scls = _Slots;
         clickButton.GetComponentInChildren<Text>().text = text1;
         clickButton.transform.SetParent(slotButton.transform);
@@ -296,7 +299,10 @@ public class J_SlotButtons : MonoBehaviourPun
             J_Slots slotss = _Slots.GetComponent<J_Slots>();
             J_Locker j_Locker = GameObject.FindGameObjectWithTag("Locker").GetComponent<J_Locker>();
             if(j_Locker.photon.IsMine)
-                _Slots.GetComponent<PhotonView>().RPC("InvOutAndLockerGO", RpcTarget.AllBuffered);
+                //자신이 몇번째 스롯인지 알려줍니다 
+                J_LockerInvs.j_LockerInvs.GetComponent<PhotonView>().RPC("InvOutAndLockerGO",
+                    RpcTarget.AllBufferedViaServer, slotss.myWhyNub, 
+                    clickButton.GetComponent<J_SclectButton>().ss);
 
             //이 위까지 창고로 넣어주는 명령어입니다
 

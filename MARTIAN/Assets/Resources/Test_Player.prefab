@@ -1456,7 +1456,6 @@ GameObject:
   - component: {fileID: 3263816437808472986}
   - component: {fileID: 3838169656263412307}
   - component: {fileID: 4832493105984348026}
-  - component: {fileID: 1169526577}
   m_Layer: 11
   m_Name: Test_Player
   m_TagString: Players
@@ -1532,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   J_Players: {fileID: 717186410448667197}
-  sloters: {fileID: 1169526577}
+  sloters: {fileID: 0}
   cam: {fileID: 4681006332435144419}
   runSpeed: 10
   animator: {fileID: 6845938498363079853}
@@ -1550,35 +1549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6845938498363079853}
---- !u!114 &1169526577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4038276757827013374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead7128a623b48443a111493ab851da7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myWhyNub: 0
-  state: 0
-  infoItem: {fileID: 0}
-  _Slots: {fileID: 0}
-  slotButton: {fileID: 0}
-  button: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
-  clickButton: {fileID: 0}
-  player: {fileID: 0}
-  playerUseItem: {fileID: 0}
-  _Item: {fileID: 0}
-  mainIamge: {fileID: 0}
-  Image: {fileID: 0}
-  text: {fileID: 0}
-  names: 
-  itemMy: {fileID: 0}
 --- !u!1 &4394411031958909419
 GameObject:
   m_ObjectHideFlags: 0
