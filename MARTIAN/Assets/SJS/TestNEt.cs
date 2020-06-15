@@ -51,6 +51,6 @@ public class TestNEt : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         print("확인");
-        PhotonNetwork.LoadLevel("SM_Map");
+        PhotonNetwork.LoadLevel("SJSM_Map");
     }
 }
