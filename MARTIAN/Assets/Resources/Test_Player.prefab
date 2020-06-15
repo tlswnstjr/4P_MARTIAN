@@ -1121,6 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 1180057874746379268}
   isChecked: 0
+  childtr: {fileID: 0}
   state_INOUT: 0
   state_I_AM_OUT: 0
   state_I_AM_IN: 0
@@ -1137,7 +1138,6 @@ MonoBehaviour:
   isInven: 0
   doingAnim: 0
   can_I_Drilling: 0
-  cl: {fileID: 0}
   im: {fileID: 0}
   ph: {fileID: 0}
   ol: {fileID: 0}
@@ -1235,14 +1235,14 @@ MonoBehaviour:
   h_FullHungerColor: {r: 1, g: 0.77336574, b: 0.1273585, a: 1}
   h_ZeroHungerColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   h_CurrentHunger: 0
-  h_CaloriesBurned: 3
+  h_CaloriesBurned: 5
   t_StartThirsty: 100
   t_FillImage: {fileID: 3212529293929499396}
   t_Slider: {fileID: 8607818178756644304}
   t_FullThirstyColor: {r: 0.19215685, g: 0.25410202, b: 1, a: 1}
   t_ZeroThirstyColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
   t_CurrentThirsty: 0
-  t_ConsumptionMoisture: 1
+  t_ConsumptionMoisture: 3
 --- !u!114 &717186410448667197
 MonoBehaviour:
   m_ObjectHideFlags: 0

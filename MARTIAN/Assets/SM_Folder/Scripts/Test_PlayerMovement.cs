@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Test_PlayerMovement : MonoBehaviour
 {
@@ -111,18 +112,22 @@ public class Test_PlayerMovement : MonoBehaviour
 
     public void TurnONOFF()
     {
-        if (DayAndNight.sun.myRotX >= 170)
+        //만약 외부씬이 아닐경우에
+        if (SceneManager.GetActiveScene().name != "Test_INSIDE")
         {
-            for (int i = 0; i < lights.Length; i++)
+            if (DayAndNight.sun.myRotX >= 170)
             {
-                lights[i].GetComponent<Light>().enabled = true;
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<Light>().enabled = true;
+                }
             }
-        }
-        else if (DayAndNight.sun.myRotX >= -10)
-        {
-            for (int i = 0; i < lights.Length; i++)
+            else if (DayAndNight.sun.myRotX >= -10)
             {
-                lights[i].GetComponent<Light>().enabled = false;
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<Light>().enabled = false;
+                }
             }
         }
     }

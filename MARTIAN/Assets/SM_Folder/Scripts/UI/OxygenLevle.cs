@@ -55,7 +55,7 @@ public class OxygenLevle : MonoBehaviour
             b_Slider.gameObject.SetActive(false);
         }
         //산소가 줄어든다
-        m_CurrentOxygen -= Time.deltaTime / 10f;
+        m_CurrentOxygen -= Time.deltaTime / 230f;
         //UI를 표시하겠다(체온,산소 둘다)
         SetOxygenUI();
         //지속적으로 HP를 달게하는 코루틴을 멈추게할 임시 조건문
@@ -113,7 +113,7 @@ public class OxygenLevle : MonoBehaviour
         while (coroutineIsTrue)
         {
             yield return new WaitForSeconds(t);
-            ph.TakeDamage(1f);
+            ph.TakeDamage(10f);
             //m_CurrentOxygen = 0f;
         }
     }
