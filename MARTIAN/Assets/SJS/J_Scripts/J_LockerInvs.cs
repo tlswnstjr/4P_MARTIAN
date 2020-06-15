@@ -20,6 +20,8 @@ public class J_LockerInvs : MonoBehaviourPun
     {
         J_Slots slotss = 
             J_Inventory.j_Inventory.items[slotNmb].GetComponent<J_Slots>();
+
+        J_SlotButtons j_SlotButtons = slotss.GetComponent<J_SlotButtons>();
         for (int i = 0; i < J_LockerInvs.j_LockerInvs.items.Count; i++)
         {
             J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().mainIamge.SetActive(true);
@@ -43,6 +45,21 @@ public class J_LockerInvs : MonoBehaviourPun
                        slotss.Image.sprite,
                     amount +
                     int.Parse(J_LockerInvs.j_LockerInvs.items[i].GetComponent<J_Slots>().text.text));
+                }
+
+                if (J_ItemManager.j_Item.items2[slotss.myWhyNub].type == J_Item.ItemType.WEAPON)
+                {
+                    J_ItemManager.j_Item.items2[slotss.myWhyNub] = null;
+                    j_SlotButtons.ButtonClicks();
+                }
+                else
+                {
+                    J_ItemManager.j_Item.items2[slotss.myWhyNub].auount -= j_SlotButtons.clickButton.GetComponent<J_SclectButton>().ss;
+                    if (J_ItemManager.j_Item.items2[slotss.myWhyNub].auount == 0)
+                    {
+                        J_ItemManager.j_Item.items2[slotss.myWhyNub] = null;
+                    }
+                    j_SlotButtons.ButtonClicks();
                 }
             }
 

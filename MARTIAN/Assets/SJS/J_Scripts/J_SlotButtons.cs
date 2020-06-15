@@ -135,13 +135,34 @@ public class J_SlotButtons : MonoBehaviourPun
         b.transform.SetParent(slotButton.transform);
     }
 
-
+   
     void Actions()
     {
         //slotButton.SetActive(false);
+
+
+
+
+
+
     }
 
+    //J_Shuriken j_Shuriken;
+    //private void OnTriggerEnter(Collider other)
+    //{
+        
+    //    if(other.gameObject.layer == LayerMask.NameToLayer)
+    //    {
+    //        j_Shuriken = other.GetComponent<J_Shuriken>();
+    //        photonView.RPC("What", RpcTarget.AllBuffered);
+    //    }
+    //}
 
+    //[PunRPC]
+    //void What()
+    //{
+    //    j_Shuriken.dir = transform.position;
+    //}
     void Actions2()
     {
         #region 내 자신 인벤토리
@@ -301,7 +322,7 @@ public class J_SlotButtons : MonoBehaviourPun
             if(j_Locker.photon.IsMine)
                 //자신이 몇번째 스롯인지 알려줍니다 
                 J_LockerInvs.j_LockerInvs.GetComponent<PhotonView>().RPC("InvOutAndLockerGO",
-                    RpcTarget.AllBufferedViaServer, slotss.myWhyNub, 
+                    RpcTarget.MasterClient, slotss.myWhyNub, 
                     clickButton.GetComponent<J_SclectButton>().ss);
 
             //이 위까지 창고로 넣어주는 명령어입니다
@@ -421,7 +442,7 @@ public class J_SlotButtons : MonoBehaviourPun
                 x.GetComponent<MeshCollider>().isTrigger = true;
             }
             x.transform.position = playerUseItem.transform.position;
-            x.transform.rotation = playerUseItem.transform.rotation;
+            x.transform.forward = playerUseItem.transform.forward;
             x.gameObject.transform.parent = playerUseItem.transform;
 
             Anims anims = GameObject.FindGameObjectWithTag("ANIMS").GetComponent<Anims>();

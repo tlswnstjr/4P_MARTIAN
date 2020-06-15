@@ -76,6 +76,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
             transform.position = Vector3.Lerp(transform.position, otherPos, Time.deltaTime * lerpSpeed);
            transform.rotation = rot;
             J_Players.anim.SetFloat("Speed", animSpeed);
+            oxygenLevle.m_CurrentOxygen = hpbar;
         }
     }
 
