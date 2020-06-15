@@ -34,14 +34,14 @@ public class J_Coppers : MonoBehaviourPun
 
 
     //플레이어 스크립트의 정보를 할당 받을 변수입니다
-    Test_PlayerMovement _PlayerMove;
+    J_Players _PlayerMove;
     void Start()
     {
         //calculate pivot distance
         cubesPivotDistance = cubeSize * cubeInRow / 2;
         //use this value to create pivot vector)
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
-        _PlayerMove = GameObject.Find("Player_Body").GetComponent<Test_PlayerMovement>();
+        _PlayerMove = GameObject.Find("Player_Body").GetComponent<J_Players>();
         a = Random.Range(2, 6);
     }
 

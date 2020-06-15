@@ -33,6 +33,11 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
     public GameObject itemManager;
     //다른 플레이어의 이동을 동기화 해줄 변수
     Vector3 otherPos;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +72,7 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
             J_Players.Move(h, v, runSpeed);
             J_Players.Turnning();
             J_Players.PlayerInputs();
-            oxygenLevle.m_CurrentOxygen -= Time.deltaTime / 10f;
+            oxygenLevle.m_CurrentOxygen -= Time.deltaTime / 230f;
         }
         else
         {

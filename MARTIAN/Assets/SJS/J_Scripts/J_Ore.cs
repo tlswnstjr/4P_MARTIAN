@@ -8,7 +8,6 @@ public class J_Ore : J_Item
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
