@@ -2105,9 +2105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items2:
   - {fileID: 6948869891376731930, guid: 2338e285acc5194458d0afbccfe1c9a5, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6948869891376731930, guid: 2338e285acc5194458d0afbccfe1c9a5, type: 3}
+  - {fileID: 6948869891376731930, guid: 2338e285acc5194458d0afbccfe1c9a5, type: 3}
+  - {fileID: 6948869891376731930, guid: 2338e285acc5194458d0afbccfe1c9a5, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

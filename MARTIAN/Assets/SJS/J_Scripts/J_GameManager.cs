@@ -10,7 +10,7 @@ using System.IO;
 
 public class J_GameManager : MonoBehaviourPunCallbacks
 {
-   
+
     public static J_GameManager gm;
 
     public Transform lockerPos;
@@ -56,9 +56,9 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 
     public void SpawnPlayer()
     {
-        //일단 여기가 생성해주는 곳입니다 
+        //일단 여기가 생성해주는 곳입니다
         //그러면 빌드한 애동 여기서 생성을 해주는건데 왜 게임 씬 혹은 빌드 파일에서 서로의 플레이어가 보이지
-        //않는 것 일까요 흠 
+        //않는 것 일까요 흠
 
 
         PhotonNetwork.Instantiate(Path.Combine("Test_Player"), new Vector3(-10, 1, -20), Quaternion.identity);
@@ -66,7 +66,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         //Test_Player
         // PhotonNetwork.Instantiate(Path.Combine("Camera Rig"), transform.position, Quaternion.identity);
 
-        //GameObject obj = PhotonNetwork.Instantiate(Path.Combine("sss", "myChar"), 
+        //GameObject obj = PhotonNetwork.Instantiate(Path.Combine("sss", "myChar"),
         //     transform.position, Quaternion.identity);
         //  obj.transform.parent = parent.transform;
         //GameObject a = PhotonNetwork.Instantiate(imageF, transform.position, Quaternion.identity);
@@ -76,7 +76,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         //a.transform.SetParent(target.transform);
         //myNub = PhotonNetwork.PlayerList.Length;
         //myImages = a.GetComponent<Image>();
-        //방에 들어오면 각자의 번호를 부여해줍니다 그 번호에 따라서 자신의 위치가 정해집니다 
+        //방에 들어오면 각자의 번호를 부여해줍니다 그 번호에 따라서 자신의 위치가 정해집니다
         //myImages.sprite = charImages[Random.Range(0, 4)];
     }
 
@@ -85,15 +85,11 @@ public class J_GameManager : MonoBehaviourPunCallbacks
         // 만일, 내가 방장이라면...
         if (PhotonNetwork.IsMasterClient)
         {
-            //지금 막 방을 만든 사람이 반장이라면 맵 전체의 구성을 만들우 둔다 
-            //이제 여기서 추가해줘야하는 것들은 맵 뿐만아니라 각 플레이어끼리 상호작용하는 것들도 해줘야한다 
+            //지금 막 방을 만든 사람이 반장이라면 맵 전체의 구성을 만들우 둔다
+            //이제 여기서 추가해줘야하는 것들은 맵 뿐만아니라 각 플레이어끼리 상호작용하는 것들도 해줘야한다
             GameObject x = PhotonNetwork.Instantiate(Path.Combine("Ore", "Ore"), new Vector3(-10, 1, -40), Quaternion.identity);
             x.SetActive(true);
-
-
-            PhotonNetwork.Instantiate(Path.Combine("Locker"), lockerPos.position, Quaternion.identity);
-            PhotonNetwork.Instantiate(Path.Combine("Tools"), toolPos.position, Quaternion.identity);
-            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.Euler(50, 318,0));
+            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.identity);
             PhotonNetwork.Instantiate(Path.Combine("OrePos"), Vector3.zero, Quaternion.identity);
 
 
