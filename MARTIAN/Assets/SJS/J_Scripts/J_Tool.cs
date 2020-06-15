@@ -12,11 +12,11 @@ public class J_Tool : MonoBehaviour
 
     //툴 자신만의 ui상점을 받아옵니다
     public GameObject shop;
-    Test_PlayerMovement playerMove;
+    J_Players playerMove;
     // Start is called before the first frame update
     void Start()
     {
-        playerMove = GameObject.Find("Player_Body").GetComponent<Test_PlayerMovement>();
+        playerMove = GameObject.Find("Player_Body").GetComponent<J_Players>();
         shop = GameObject.Find("INVENTORY").transform.GetChild(2).gameObject;
     }
 

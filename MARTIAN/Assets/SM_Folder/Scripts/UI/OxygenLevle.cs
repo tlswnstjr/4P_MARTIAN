@@ -113,7 +113,7 @@ public class OxygenLevle : MonoBehaviour
         while (coroutineIsTrue)
         {
             yield return new WaitForSeconds(t);
-            ph.TakeDamage(10f);
+            ph.TakeDamage(1f);
             //m_CurrentOxygen = 0f;
         }
     }

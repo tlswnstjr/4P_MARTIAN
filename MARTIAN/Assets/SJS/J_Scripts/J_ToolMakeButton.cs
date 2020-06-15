@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class J_ToolMakeButton : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+using System.IO;
+public class J_ToolMakeButton : MonoBehaviourPun
 {
     //이 스크립트도 싱글턴으로 만들어 줍니다
     public static J_ToolMakeButton j_ToolMakeButton;
@@ -79,7 +81,9 @@ public class J_ToolMakeButton : MonoBehaviour
             if(_Item.itemName == J_Mune.mune.buttonNmb.GetComponent<J_ToolButtonInfo>().completeName)
             {
                 print("완성품입니다");
-                GameObject a = Instantiate(allItem.allItems[i]);
+                GameObject a = PhotonNetwork.Instantiate(Path.Combine(allItem.allItems[i].GetComponent<J_Item>().type.ToString(), 
+                    allItem.allItems[i].name), player.transform.position, Quaternion.identity);//(allItem.allItems[i]);
+                a.SetActive(true);
                 a.transform.position = player.transform.position;
             }
         }

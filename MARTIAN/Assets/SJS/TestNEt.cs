@@ -52,5 +52,6 @@ public class TestNEt : MonoBehaviourPunCallbacks
     {
         print("확인");
         PhotonNetwork.LoadLevel("SJSM_Map");
+        //PhotonNetwork.LoadLevel("Test_INSIDE");
     }
 }
