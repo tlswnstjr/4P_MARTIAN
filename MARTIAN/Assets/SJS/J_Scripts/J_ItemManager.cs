@@ -17,7 +17,7 @@ public class J_ItemManager : MonoBehaviourPun
     public GameObject inv;
     private void Awake()
     {
-        inv = J_Inventory.j_Inventory.gameObject;
+       
 
     }
 
@@ -40,11 +40,12 @@ public class J_ItemManager : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-       
+        inv = J_Inventory.j_Inventory.gameObject;
         if (inv.activeSelf)
         {
             for (int i = 0; i < items2.Length; i++)
             {
+                
                 J_Slots s = J_Inventory.j_Inventory.items[i].GetComponent<J_Slots>();
                 if(items2[i] !=null)
                 {

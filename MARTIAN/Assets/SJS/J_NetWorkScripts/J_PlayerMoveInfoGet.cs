@@ -45,7 +45,6 @@ public class J_PlayerMoveInfoGet : MonoBehaviourPun, IPunObservable
         if (photonView.IsMine)
         {
             J_GameManager.gm.view = photonView;
-
         }
         else
         {
