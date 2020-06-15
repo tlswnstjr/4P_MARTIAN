@@ -73,13 +73,13 @@ public class J_ToolMakeButton : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         allItem = GameObject.Find("ItemInformationManager").GetComponent<J_ItemInformationManager>();
-        for (int i = 0; i < allItem.comelpetes.Length; i++)
+        for (int i = 0; i < allItem.allItems.Length; i++)
         {
-            J_Item _Item = allItem.comelpetes[i].GetComponent<J_Item>();
+            J_Item _Item = allItem.allItems[i].GetComponent<J_Item>();
             if(_Item.itemName == J_Mune.mune.buttonNmb.GetComponent<J_ToolButtonInfo>().completeName)
             {
                 print("완성품입니다");
-                GameObject a = Instantiate(allItem.comelpetes[i]);
+                GameObject a = Instantiate(allItem.allItems[i]);
                 a.transform.position = player.transform.position;
             }
         }

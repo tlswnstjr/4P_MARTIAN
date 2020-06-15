@@ -37,7 +37,7 @@ public class J_Locker : J_LockerInvs
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     inventroyAndLocker.SetActive(!inventroyAndLocker.activeSelf);
-                    player.myMoveban = !player.myMoveban;
+                    //player.myMoveban = !player.myMoveban;
                 }
             }
             

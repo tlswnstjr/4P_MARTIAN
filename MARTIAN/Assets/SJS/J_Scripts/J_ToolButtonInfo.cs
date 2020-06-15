@@ -56,11 +56,11 @@ public class J_ToolButtonInfo : MonoBehaviour
     {
         J_ToolMakeButton.j_ToolMakeButton.s = true;
         j_ItemInformationManager = GameObject.Find("ItemInformationManager").GetComponent<J_ItemInformationManager>();
-        for (int i = 0; i < j_ItemInformationManager.comelpetes.Length; i++)
+        for (int i = 0; i < j_ItemInformationManager.allItems.Length; i++)
         {
-            if(j_ItemInformationManager.comelpetes[i].GetComponent<J_Item>().itemName == completeName)
+            if(j_ItemInformationManager.allItems[i].GetComponent<J_Item>().itemName == completeName)
             {
-                comelpete.sprite = j_ItemInformationManager.comelpetes[i].GetComponent<J_Item>().itemImage;
+                comelpete.sprite = j_ItemInformationManager.allItems[i].GetComponent<J_Item>().itemImage;
                 break;
             }
         }

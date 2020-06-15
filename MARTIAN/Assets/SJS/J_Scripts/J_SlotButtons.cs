@@ -306,7 +306,7 @@ public class J_SlotButtons : MonoBehaviourPun
             if (slotss.text.text == "")
             {
                 slotButton.SetActive(false);
-                slotss.MySeilf(null, null, 0);
+                slotss.MySeilf("", null, 0);
                 slotss.mainIamge.SetActive(false);
             }
         }
@@ -322,27 +322,14 @@ public class J_SlotButtons : MonoBehaviourPun
             if(j_Locker.photon.IsMine)
                 //자신이 몇번째 스롯인지 알려줍니다 
                 J_LockerInvs.j_LockerInvs.GetComponent<PhotonView>().RPC("InvOutAndLockerGO",
-                    RpcTarget.MasterClient, slotss.myWhyNub, 
+                    RpcTarget.AllBuffered, slotss.myWhyNub, 
                     clickButton.GetComponent<J_SclectButton>().ss);
 
             //이 위까지 창고로 넣어주는 명령어입니다
 
            //아래는 이제 인벤토리에서 지우는 명령어 입니다
 
-           if (J_ItemManager.j_Item.items2[slotss.myWhyNub].type == J_Item.ItemType.WEAPON)
-           {
-               J_ItemManager.j_Item.items2[slotss.myWhyNub] = null;
-               ButtonClicks();
-           }
-           else
-           {
-               J_ItemManager.j_Item.items2[slotss.myWhyNub].auount -= clickButton.GetComponent<J_SclectButton>().ss;
-               if (J_ItemManager.j_Item.items2[slotss.myWhyNub].auount == 0)
-               {
-                   J_ItemManager.j_Item.items2[slotss.myWhyNub] = null;
-               }
-               ButtonClicks();
-           }
+          
             #region 일차적인 것
             /* J_Slots slotss = _Slots.GetComponent<J_Slots>();
              for (int i = 0; i < J_LockerInvs.j_LockerInvs.items.Count; i++)
@@ -419,9 +406,9 @@ public class J_SlotButtons : MonoBehaviourPun
         {
             if (j_Item.type == J_Item.ItemType.WEAPON)
             {
-                for (int i = 0; i < J_ItemInformationManager.alls.comelpetes.Length; i++)
+                for (int i = 0; i < J_ItemInformationManager.alls.allItems.Length; i++)
                 {
-                    if (J_ItemInformationManager.alls.comelpetes[i].GetComponent<J_Item>().itemName == j_Item.itemName)
+                    if (J_ItemInformationManager.alls.allItems[i].GetComponent<J_Item>().itemName == j_Item.itemName)
                     {
                         x = PhotonNetwork.Instantiate(Path.Combine(j_Item.type.ToString(), j_Item.name.Replace("(Clone)", "")),
                             transform.position, Quaternion.identity);
