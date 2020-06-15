@@ -24,6 +24,7 @@ TagManager:
   - PlayerUseItemPos
   - ANIMS
   - Players
+  - Mineral
   layers:
   - Default
   - TransparentFX

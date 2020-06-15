@@ -32,6 +32,13 @@ public enum INside
 }
 #endregion
 
+[System.Serializable]
+public class Sound
+{
+    public string soundName;
+    public AudioClip clip;
+}
+
 public class Check_In_Outside : MonoBehaviourPun
 {
     #region -------===== IN/OUT 을 따지는 Enum ======-------
@@ -63,12 +70,11 @@ public class Check_In_Outside : MonoBehaviourPun
 
     public PhotonView playerBodys;
 
+    [Header("사운드 등록")]
+    [SerializeField] Sound[] clipSounds;
 
-
-
-
-
-
+    [Header("효과음 플레이어")]
+    [SerializeField] AudioSource[] audioPlayer;
 
 
         //레이저
@@ -119,6 +125,7 @@ public class Check_In_Outside : MonoBehaviourPun
         ph = gameObject.GetComponent<PlayerHP>();
         ol = gameObject.GetComponent<OxygenLevle>();
         anim = GetComponentInChildren<Animator>();
+        //audioPlayer = GetComponent<AudioSource>();
 
         state_I_AM_IN = INside.INsideEnd;
         state_I_AM_OUT = OUTside.OUTsideEnd;
@@ -172,17 +179,42 @@ public class Check_In_Outside : MonoBehaviourPun
         //}
     }
 
+    int PlayNum;
+    public void PlaySe(string _SoundName)
+    {
+        for (int i = 0; i < clipSounds.Length; i++)
+        {
+            if(_SoundName == clipSounds[i].soundName)
+            {
+                for (int x = 0; x < audioPlayer.Length; x++)
+                {
+                    if (!audioPlayer[x].isPlaying)
+                    {
+                        audioPlayer[x].clip = clipSounds[i].clip;
+                        audioPlayer[x].Play();
+                        PlayNum = x;
+                        return;
+                    }
+                }
+                Debug.Log("모든 효과음 플레이어가 사용중입니다!!!");
+                return;
+            }
+        }
+        Debug.Log("등록된 효과음이 없습니다");
+    }
+
     bool nope = false;
     bool yea = false;
   
     public void Switch_INOUT()
     {
-        if(playerBodys.IsMine)
-        {
+        //if(playerBodys.IsMine)
+        //{
             switch (state_INOUT)
             {
                 case WhereIAm.OUTSIDE:
                     nope = true;
+
                     //손의 차일드가 0보다 크다면
                     if (hand.childCount > 0 && isChecked == false)
                     {
@@ -213,7 +245,7 @@ public class Check_In_Outside : MonoBehaviourPun
                     }
                     break;
             }
-        }
+        //}
     
     }
 
@@ -246,85 +278,100 @@ public class Check_In_Outside : MonoBehaviourPun
     #region -----------====== 밖에서 사용할 아이템들의 함수 ========----------
     public void Switch_OUTSIDE()
     {
-        if(playerBodys.IsMine)
+        //if(playerBodys.IsMine)
+        //{
+        switch (state_I_AM_OUT)
         {
-            switch (state_I_AM_OUT)
-            {
-                case OUTside.Shovel:
-                    if (isInven || doingAnim) return;
-                    //삽의 바깥에서의 기능
-                    if (Input.GetButtonDown("Fire1"))
+            case OUTside.Shovel:
+                if (isInven || doingAnim) return;
+                //삽의 바깥에서의 기능
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    /*Shovel_OUTSIDE();*/
+                    anim.SetTrigger("Outside_Shovel");
+                    PlaySe("Shovel");
+                    doingAnim = true;
+                }
+                break;
+            case OUTside.Drill:
+                {
+                    if (can_I_Drilling)
                     {
-                        /*Shovel_OUTSIDE();*/
-                        anim.SetTrigger("Outside_Shovel");
-                        doingAnim = true;
-                    }
-                    break;
-                case OUTside.Drill:
-                    {
-                        if (can_I_Drilling)
+                        Debug.Log("왜 안타 썅");
+                        if (Input.GetKey(KeyCode.E))
                         {
-                            if (Input.GetKey(KeyCode.E))
+                            Debug.Log("야아아아아ㅏ아아아아ㅏ아아아");
+
+                            currntT += Time.deltaTime;
+                            if (a == false)
                             {
-                                currntT += Time.deltaTime;
-                                if (a == false)
-                                {
-                                    anim.SetBool("Drilling", true);
-                                    a = true;
-                                }
+                                anim.SetBool("Drilling", true);
+                                PlaySe("Drill");
+                                a = true;
+                            }
 
-                                if (currntT > 2)
+                            if (currntT > 2)
+                            {
+                                anim.SetBool("Drilling", false);
+                                if (audioPlayer[PlayNum].isPlaying)
                                 {
-                                    anim.SetBool("Drilling", false);
-
-                                    PhotonView pr = jacob.gameObject.GetComponent<PhotonView>();
-                                    pr.RPC("explode", RpcTarget.All);
-                                    currntT = 0;
-                                    a = false;
-                                    can_I_Drilling = false;
+                                    audioPlayer[PlayNum].Stop();
                                 }
+                                PhotonView pr = jacob.gameObject.GetComponent<PhotonView>();
+                                pr.RPC("explode", RpcTarget.All);
+                                currntT = 0;
+                                a = false;
+                                can_I_Drilling = false;
                             }
                         }
-                        else
+                    }
+                    else
+                    {
+                        anim.SetBool("Drilling", false);
+                        if (audioPlayer[PlayNum].isPlaying)
                         {
-                            anim.SetBool("Drilling", false);
-                            currntT = 0;
-                            a = false;
+                            audioPlayer[PlayNum].Stop();
                         }
+                        currntT = 0;
+                        a = false;
+                    }
 
-                    }                
-                    break;
-                case OUTside.BodyTemperaturePack:
-                    if (isInven || doingAnim) return;
-                    if (Input.GetKeyDown(KeyCode.E) && ol.b_CurrentTemperature < ol.b_StartTemperature && ItemManager.instance.bodyTemperaturePackCount > 0)
-                    {
-                        //ol.b_CurrentTemperature = ol.b_StartTemperature;
-                        anim.SetTrigger("Use_TemperaturePack");
-                        doingAnim = true;
-                    }
-                    break;
-                case OUTside.HeelPack:
-                    if (isInven || doingAnim) return;
-                    //E버튼을 누르면 ItemManger의 힐팩 카운트가 0보다 클때만 피를 회복하겠다.
-                    if (Input.GetKeyDown(KeyCode.E) && ph.m_CurrentHealth < ph.m_StartingHealth && ItemManager.instance.healPackCount > 0)
-                    {
-                        anim.SetTrigger("Use_HealPack");
-                        doingAnim = true;
-                    }
-                    break;
-                case OUTside.OxygenPack:
-                    if (isInven || doingAnim) return;
-                    if (Input.GetKeyDown(KeyCode.E) && ol.m_CurrentOxygen < ol.m_StartOxygen && ItemManager.instance.oxygenPackCount > 0)
-                    {
-                        anim.SetTrigger("Use_OxygerPack");
-                        doingAnim = true;
-                    }
-                    break;
-                case OUTside.OUTsideEnd:
-                    break;
-            }
+                }
+                break;
+            case OUTside.BodyTemperaturePack:
+                if (isInven || doingAnim) return;
+                if (Input.GetKeyDown(KeyCode.E) && ol.b_CurrentTemperature < ol.b_StartTemperature && ItemManager.instance.bodyTemperaturePackCount > 0)
+                {
+                    //ol.b_CurrentTemperature = ol.b_StartTemperature;
+                    anim.SetTrigger("Use_TemperaturePack");
+                    PlaySe("Eating");
+                    doingAnim = true;
+                }
+                break;
+            case OUTside.HeelPack:
+                if (isInven || doingAnim) return;
+                //E버튼을 누르면 ItemManger의 힐팩 카운트가 0보다 클때만 피를 회복하겠다.
+                if (Input.GetKeyDown(KeyCode.E) && ph.m_CurrentHealth < ph.m_StartingHealth && ItemManager.instance.healPackCount > 0)
+                {
+                    anim.SetTrigger("Use_HealPack");
+                    PlaySe("Eating");
+                    doingAnim = true;
+                }
+                break;
+            case OUTside.OxygenPack:
+                if (isInven || doingAnim) return;
+                if (Input.GetKeyDown(KeyCode.E) && ol.m_CurrentOxygen < ol.m_StartOxygen && ItemManager.instance.oxygenPackCount > 0)
+                {
+                    anim.SetTrigger("Use_OxygerPack");
+                    PlaySe("Eating");
+                    doingAnim = true;
+                }
+                break;
+            case OUTside.OUTsideEnd:
+                break;
         }
-      
+        //}
+
     }
 
     //밖에서 사용할 삽
@@ -353,11 +400,13 @@ public class Check_In_Outside : MonoBehaviourPun
                 if (Input.GetButtonDown("Fire1"))
                 {
                     anim.SetTrigger("Plant_Potato");/*PlantCrops(potatoFactory, ref im.potatoCount);*/
+                    PlaySe("Shovel");
                     doingAnim = true;
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     anim.SetTrigger("Eat_Potato"); /*cl.h_CurrentHunger += 5f;*/
+                    PlaySe("Eating");
                     doingAnim = true;
                 }
                 break;
@@ -366,11 +415,13 @@ public class Check_In_Outside : MonoBehaviourPun
                 if (Input.GetButtonDown("Fire1"))
                 {
                     anim.SetTrigger("Plant_Carrot");/*PlantCrops(carrotFactory, ref im.carrotCount);*/
+                    PlaySe("Shovel");
                     doingAnim = true;
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     anim.SetTrigger("Eat_Carrot");/*cl.h_CurrentHunger += 7f;*/
+                    PlaySe("Eating");
                     doingAnim = true;
                 }
                 break;
@@ -379,11 +430,13 @@ public class Check_In_Outside : MonoBehaviourPun
                 if (Input.GetButtonDown("Fire1"))
                 {
                     anim.SetTrigger("Plant_Turnip"); /*PlantCrops(radishFactory, ref im.radishCount);*/
+                    PlaySe("Shovel");
                     doingAnim = true;
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     anim.SetTrigger("Eat_Turnip");/*cl.h_CurrentHunger += 3f;*/
+                    PlaySe("Eating");
                     doingAnim = true;
                 }
                 break;
@@ -393,6 +446,7 @@ public class Check_In_Outside : MonoBehaviourPun
                 if (Input.GetButtonDown("Fire1"))
                 {
                     anim.SetTrigger("Inside_Shovel");/*Shovel_INSIDE();*/
+                    PlaySe("Shovel");
                     doingAnim = true;
                 }
                 break;
@@ -401,8 +455,8 @@ public class Check_In_Outside : MonoBehaviourPun
                 //E버튼을 누르면 ItemManger의 힐팩 카운트가 0보다 클때만 피를 회복하겠다.
                 if (Input.GetKeyDown(KeyCode.E) && ph.m_CurrentHealth < ph.m_StartingHealth && ItemManager.instance.healPackCount > 0)
                 {
-                    Debug.Log("111111111111111111111");
                     anim.SetTrigger("Use_HealPack");
+                    PlaySe("Eating");
                     doingAnim = true;
                 }
                 break;
@@ -411,11 +465,13 @@ public class Check_In_Outside : MonoBehaviourPun
                 if (Input.GetButtonDown("Fire1"))
                 {
                     anim.SetTrigger("SprinkleWater");/*SprinkleWater(ref im.waterCount);*/
+                    PlaySe("Splink Water");
                     doingAnim = true;
                 }
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     anim.SetTrigger("Drink_Water");/*cl.t_CurrentThirsty += 10f;*/
+                    PlaySe("Drinking");
                     doingAnim = true;
                 }
                 break;

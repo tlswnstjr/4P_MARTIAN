@@ -38,6 +38,10 @@ public class Test_PlayerMovement : MonoBehaviour
     //현제 보관함이랑 충돌을 하고 있는지 알기 위한 bool 변수입니다
     public bool lockerClick;
 
+    public AudioClip footStepClip;
+
+    public AudioSource audio;
+
     private void Awake()
     {
         parnt = gameObject.transform.parent;
@@ -101,6 +105,15 @@ public class Test_PlayerMovement : MonoBehaviour
         movement.Set(h, 0f, v);
         //애니메이터 컨트롤러의 파라미터값을 세팅
         anim.SetFloat("Speed", movement.magnitude);
+        if (h != 0 || v != 0)
+        {
+            audio.clip = footStepClip;
+            audio.Play();
+        }
+        else if (h == 0 || v == 0)
+        {
+            audio.Stop();
+        }
 
         // movement 를 내가 바라보는 방향에서의 방향으로 변경
         movement = transform.TransformDirection(movement);
@@ -112,7 +125,7 @@ public class Test_PlayerMovement : MonoBehaviour
 
     public void TurnONOFF()
     {
-        //만약 외부씬이 아닐경우에
+        //만약 내부씬이 아닐경우에
         if (SceneManager.GetActiveScene().name != "Test_INSIDE")
         {
             if (DayAndNight.sun.myRotX >= 170)

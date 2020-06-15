@@ -34,8 +34,12 @@ public class J_Players : MonoBehaviourPun
     public bool onAction;
 
     bool onInv;
-    
-     
+
+    public AudioClip footStepClip;
+
+    public AudioSource audio;
+
+
     //아이템을 클릭하여 나오는 선택창입니다
     public GameObject iamge;
 
@@ -80,6 +84,24 @@ public class J_Players : MonoBehaviourPun
         }
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetButtonDown("Horizontal")|| Input.GetButtonDown("Vertical"))
+        {
+            audio.clip = footStepClip;
+            audio.Play();
+        }
+        else if (Input.GetButton("Horizontal")|| Input.GetButton("Vertical"))
+        {
+            if (!audio.isPlaying)
+            {
+                audio.clip = footStepClip;
+                audio.Play();
+            }
+        }
+        else if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
+        {
+            audio.Stop();
+        }
 
          Move(h, v, 7);
         Turnning();
