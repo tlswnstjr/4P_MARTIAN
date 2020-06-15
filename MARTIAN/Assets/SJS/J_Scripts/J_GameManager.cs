@@ -93,7 +93,7 @@ public class J_GameManager : MonoBehaviourPunCallbacks
 
             PhotonNetwork.Instantiate(Path.Combine("Locker"), lockerPos.position, Quaternion.identity);
             PhotonNetwork.Instantiate(Path.Combine("Tools"), toolPos.position, Quaternion.identity);
-            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.Euler(50, 318,0));
             PhotonNetwork.Instantiate(Path.Combine("OrePos"), Vector3.zero, Quaternion.identity);
 
 
