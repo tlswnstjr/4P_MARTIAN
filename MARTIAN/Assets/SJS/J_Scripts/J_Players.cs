@@ -3,11 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 public class J_Players : MonoBehaviourPun
 {
-    //내 부모의 photonview 가져오기 
+    //내 부모의 photonview 가져오기
     public PhotonView view;
     //내 부모
     Transform parnt;
@@ -34,8 +34,12 @@ public class J_Players : MonoBehaviourPun
     public bool onAction;
 
     bool onInv;
-    
-     
+
+    public AudioClip footStepClip;
+
+    public AudioSource audio;
+
+
     //아이템을 클릭하여 나오는 선택창입니다
     public GameObject iamge;
 
@@ -75,15 +79,33 @@ public class J_Players : MonoBehaviourPun
 
         if (iamge.activeSelf == true)
         {
-            //아이템설정 창이 열려있으면 닫아준다 
+            //아이템설정 창이 열려있으면 닫아준다
             iamge.SetActive(false);
         }
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-         //Move(h, v, 7);
-        //Turnning();
-       // TurnONOFF();
+        if (Input.GetButtonDown("Horizontal")|| Input.GetButtonDown("Vertical"))
+        {
+            audio.clip = footStepClip;
+            audio.Play();
+        }
+        else if (Input.GetButton("Horizontal")|| Input.GetButton("Vertical"))
+        {
+            if (!audio.isPlaying)
+            {
+                audio.clip = footStepClip;
+                audio.Play();
+            }
+        }
+        else if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
+        {
+            audio.Stop();
+        }
+
+         Move(h, v, 7);
+        Turnning();
+        TurnONOFF();
         //inv.activeSelf ||
     }
 
@@ -122,18 +144,22 @@ public class J_Players : MonoBehaviourPun
     }
     public void TurnONOFF()
     {
-        if (DayAndNight.sun.myRotX >= 170)
+        //만약 외부씬이 아닐경우에
+        if (SceneManager.GetActiveScene().name != "Test_INSIDE")
         {
-            for (int i = 0; i < lights.Length; i++)
+            if (DayAndNight.sun.myRotX >= 170)
             {
-                lights[i].GetComponent<Light>().enabled = true;
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<Light>().enabled = true;
+                }
             }
-        }
-        else if (DayAndNight.sun.myRotX >= -10)
-        {
-            for (int i = 0; i < lights.Length; i++)
+            else if (DayAndNight.sun.myRotX >= -10)
             {
-                lights[i].GetComponent<Light>().enabled = false;
+                for (int i = 0; i < lights.Length; i++)
+                {
+                    lights[i].GetComponent<Light>().enabled = false;
+                }
             }
         }
     }

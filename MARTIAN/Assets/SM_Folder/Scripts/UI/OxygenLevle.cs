@@ -43,7 +43,7 @@ public class OxygenLevle : MonoBehaviour
 
         ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHP>();
 
-        Invoke("SetOxygenUI", 1); 
+        Invoke("SetOxygenUI", 1);
     }
 
     private void FixedUpdate()
@@ -55,9 +55,7 @@ public class OxygenLevle : MonoBehaviour
             b_Slider.gameObject.SetActive(false);
         }
         //산소가 줄어든다
-        //이 값을 J_PlayerMoveInfoGet에 넘겨 줘서 시리얼 라이즈에 넣어야한다 
-        //시이발 할거 줜나 많어 아 개빡친다 
-        m_CurrentOxygen -= Time.deltaTime / 10f;
+        m_CurrentOxygen -= Time.deltaTime / 230f;
         //UI를 표시하겠다(체온,산소 둘다)
         SetOxygenUI();
         //지속적으로 HP를 달게하는 코루틴을 멈추게할 임시 조건문
@@ -115,7 +113,7 @@ public class OxygenLevle : MonoBehaviour
         while (coroutineIsTrue)
         {
             yield return new WaitForSeconds(t);
-            ph.TakeDamage(1f);
+            ph.TakeDamage(10f);
             //m_CurrentOxygen = 0f;
         }
     }

@@ -25,15 +25,16 @@ public class J_ItemManager : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        if (photonView.IsMine)
+       /* if (photonView.IsMine)
         {
             j_Item = this;
         }
         else
         {
 
-        }
-        
+        }*/
+            j_Item = this;
+
     }
 
     // Update is called once per frame
