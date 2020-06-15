@@ -31,7 +31,7 @@ public class J_Car : J_CarRepair
     // Start is called before the first frame update
     void Start()
     {
-        playerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<Test_PlayerMovement>();
+        playerMove = GameObject.FindGameObjectWithTag("Player").GetComponent<J_Players>();
         //시작할때 상태는 고장난 상태입니다
         state = State.BROKEN;
     }
@@ -57,16 +57,17 @@ public class J_Car : J_CarRepair
     {
         if(onPlayerTrigger)
         {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                //플레이어 이동을 막습니다  
+          
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            //플레이어 이동을 막습니다  
 
-                playerMove.myMoveban = !playerMove.myMoveban;
-                carneedwindow.SetActive(!carneedwindow.activeSelf);
-                Test();
-                //버튼을 클릭할때 sss라는 확인용 bool값을 true로 만들어 줍니다
-                sss = true;
-            }
+            playerMove.myMoveban = !playerMove.myMoveban;
+            carneedwindow.SetActive(!carneedwindow.activeSelf);
+            Test();
+            //버튼을 클릭할때 sss라는 확인용 bool값을 true로 만들어 줍니다
+            sss = true;
         }
     }
 

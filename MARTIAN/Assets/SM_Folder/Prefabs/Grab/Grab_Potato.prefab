@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 943104072124743944}
   - component: {fileID: 943104072124743945}
   - component: {fileID: 943104072124743946}
+  - component: {fileID: 114135364198493120}
   m_Layer: 0
   m_Name: Grab_Potato
   m_TagString: Potato
@@ -91,3 +92,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114135364198493120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943104072124743947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a7b47148033444aaf5d82ed08f39d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: "\uAC10\uC790"
+  itemImage: {fileID: 21300000, guid: 61d2c0b37af50ce43b9ee99baed8ce83, type: 3}
+  auount: 1
+  my: {fileID: 0}
+  type: 1
+  click: 0

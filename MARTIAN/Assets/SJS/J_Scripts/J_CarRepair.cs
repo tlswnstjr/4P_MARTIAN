@@ -21,15 +21,12 @@ public class J_CarRepair : MonoBehaviour
 
 
     public bool sss = true;
-
-    public J_Wheels _Wheels;
-   public Test_PlayerMovement playerMove;
+   public J_Players playerMove;
     public void OnButtons()
     {
         j_Car.state = J_Car.State.REPAIR;
         playerMove.myMoveban = !playerMove.myMoveban;
         ButtonActionSet();
-        _Wheels.enabled = true;
     }
 
     //여기가 실제 값을 계산하는 곳입니다 

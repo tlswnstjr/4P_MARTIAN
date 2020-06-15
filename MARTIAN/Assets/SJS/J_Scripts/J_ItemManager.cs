@@ -17,7 +17,7 @@ public class J_ItemManager : MonoBehaviourPun
     public GameObject inv;
     private void Awake()
     {
-       
+        DontDestroyOnLoad(gameObject);
 
     }
 

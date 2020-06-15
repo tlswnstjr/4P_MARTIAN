@@ -89,9 +89,10 @@ public class J_GameManager : MonoBehaviourPunCallbacks
             //이제 여기서 추가해줘야하는 것들은 맵 뿐만아니라 각 플레이어끼리 상호작용하는 것들도 해줘야한다
             GameObject x = PhotonNetwork.Instantiate(Path.Combine("Ore", "Ore"), new Vector3(-10, 1, -40), Quaternion.identity);
             x.SetActive(true);
-            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Sun"), Vector3.zero, Quaternion.Euler(50, 318, 0));
             PhotonNetwork.Instantiate(Path.Combine("OrePos"), Vector3.zero, Quaternion.identity);
 
+            PhotonNetwork.Instantiate(Path.Combine("Tools"), toolPos.position, Quaternion.identity);
 
             //gameStart.GetComponentInChildren<Text>().text = "게임 스타트";
             // 반응형 오브젝트 프리팹을 생성한다.
